@@ -18,3 +18,4 @@ MonoBehaviour:
   cardName: Demon
   cardDescription: Deals 2 damage
   artwork: {fileID: 21300000, guid: b3497253e58513a469fb1bfa56829150, type: 3}
+  dataEffects: {fileID: 11400000, guid: ebe252c69e528ab4689de3736cadf08a, type: 2}

@@ -1,11 +1,11 @@
 using System.Collections.Generic;
-using System.Linq;
+using SimpleCardGame.Data.Effects;
 using SimpleTurnBasedGame;
 using UnityEngine;
 
 namespace SimpleCardGame.Data
 {
-    [CreateAssetMenu(menuName = "CardData")]
+    [CreateAssetMenu(menuName = "Data/Card")]
     public class CardData : ScriptableObject, ICardData
     {
         //--------------------------------------------------------------------------------------------------------------
@@ -18,6 +18,7 @@ namespace SimpleCardGame.Data
         [SerializeField] private string cardName;
         [SerializeField] private string cardDescription;
         [SerializeField] private Sprite artwork;
+        [SerializeField] private EffectsSet dataEffects;
                 
         //--------------------------------------------------------------------------------------------------------------
         

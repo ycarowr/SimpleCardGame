@@ -18,3 +18,4 @@ MonoBehaviour:
   cardName: Wizard
   cardDescription: Heals 2 life
   artwork: {fileID: 21300000, guid: 20455dcba2870e24eb931aa4570255c7, type: 3}
+  dataEffects: {fileID: 11400000, guid: 1945daaf54f2a5f46b748bfc19b0c0cd, type: 2}
