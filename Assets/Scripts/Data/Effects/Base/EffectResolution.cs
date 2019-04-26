@@ -1,14 +1,9 @@
 ﻿using SimpleCardGames.Data.Effects;
-using SimpleCardGames;
-using System;
-using System.Collections.Generic;
-using UnityEngine;
 
 namespace SimpleCardGames.Battle
 {
     public interface IEffectResolution
     {
-
     }
 
     public struct EffectResolution

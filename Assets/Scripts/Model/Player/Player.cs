@@ -1,9 +1,5 @@
-﻿using SimpleCardGames;
-using SimpleCardGames.Battle;
-using SimpleCardGames.Data.Deck;
-using System.Collections.Generic;
+﻿using SimpleCardGames.Data.Deck;
 using Tools;
-using UnityEngine;
 
 namespace SimpleCardGames.Battle
 {
@@ -45,7 +41,5 @@ namespace SimpleCardGames.Battle
         }
 
         //----------------------------------------------------------------------------------------------------------
-
-       
     }
 }

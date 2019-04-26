@@ -1,16 +1,13 @@
 ﻿using SimpleCardGames.Data;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
 namespace SimpleCardGames
-{ 
+{
     /// <summary>
     ///     Abstract card at the runtime.
     /// </summary>
     public abstract class RuntimeCard : IRuntimeCard
     {
-        protected RuntimeCard (ICardData data)
+        protected RuntimeCard(ICardData data)
         {
             Data = data;
         }

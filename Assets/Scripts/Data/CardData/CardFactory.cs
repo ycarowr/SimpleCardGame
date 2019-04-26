@@ -1,13 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using Patterns;
 using UnityEngine;
-
 
 namespace SimpleCardGames.Data
 {
-    public partial class CardFactory : PrefabPooler<CardFactory>
+    public class CardFactory : PrefabPooler<CardFactory>
     {
         private CardDatabase Database { get; set; }
 
@@ -28,12 +25,13 @@ namespace SimpleCardGames.Data
         private class CardDatabase
         {
             private const string PathDataBase = "CardDatabase";
-            private List<CardData> Cards { get; }
 
             public CardDatabase()
             {
                 Cards = Resources.LoadAll<CardData>(PathDataBase).ToList();
             }
+
+            private List<CardData> Cards { get; }
 
             public CardData Get(CardId id)
             {

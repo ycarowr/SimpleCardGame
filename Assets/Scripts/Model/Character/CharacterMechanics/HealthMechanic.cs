@@ -1,7 +1,4 @@
-﻿using SimpleCardGames.Data.Effects;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace SimpleCardGames.Battle
 {
@@ -9,7 +6,6 @@ namespace SimpleCardGames.Battle
     {
         public HealthMechanic(ICharacter character) : base(character)
         {
-
         }
 
         //----------------------------------------------------------------------------------------------------------
@@ -20,7 +16,7 @@ namespace SimpleCardGames.Battle
         }
 
         private int IgnoreOverKill(int damage)
-        { 
+        {
             var current = Attributes.Health;
             var total = Attributes.Health - damage;
             Attributes.Health = Mathf.Max(total, 0);

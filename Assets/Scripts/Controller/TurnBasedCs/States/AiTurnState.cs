@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using SimpleCardGames.Battle;
 using UnityEngine;
 
 namespace SimpleCardGames.Battle.Controller

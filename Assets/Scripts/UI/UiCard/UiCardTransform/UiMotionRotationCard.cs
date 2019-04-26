@@ -4,13 +4,13 @@ namespace Tools.UI.Card
 {
     public class UiMotionRotationCard : UiMotionBaseCard
     {
-        protected override float Threshold => 0.05f;
-
         //--------------------------------------------------------------------------------------------------------------
 
         public UiMotionRotationCard(IUiCard handler) : base(handler)
         {
         }
+
+        protected override float Threshold => 0.05f;
 
         //--------------------------------------------------------------------------------------------------------------
 

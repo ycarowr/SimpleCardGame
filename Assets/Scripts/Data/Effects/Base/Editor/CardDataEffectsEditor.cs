@@ -1,19 +1,19 @@
-﻿using UnityEditor;
-using UnityEngine;
-using System.Linq;
+﻿using System.Linq;
 using SimpleCardGames.Data.Effects;
+using UnityEditor;
+using UnityEngine;
 
 [CustomEditor(typeof(EffectsSet))]
 public class CardDataEffectsEditor : Editor
 {
-    EffectTriggerType ChosenTrigger = EffectTriggerType.OnPlay;
-
-    EffectsSet MyTarget { get { return target as EffectsSet; } }
+    private EffectTriggerType ChosenTrigger = EffectTriggerType.OnPlay;
 
     //cell sizes
-    GUILayoutOption WidthL = GUILayout.MaxWidth(115);
-    GUILayoutOption WidthS = GUILayout.MaxWidth(80);
-    GUILayoutOption WidthXS = GUILayout.MaxWidth(20);
+    private readonly GUILayoutOption WidthL = GUILayout.MaxWidth(115);
+    private readonly GUILayoutOption WidthS = GUILayout.MaxWidth(80);
+    private readonly GUILayoutOption WidthXS = GUILayout.MaxWidth(20);
+
+    private EffectsSet MyTarget => target as EffectsSet;
 
     public override void OnInspectorGUI()
     {
@@ -26,12 +26,12 @@ public class CardDataEffectsEditor : Editor
         DrawCurrentState();
     }
 
-    void DrawTriggersOperations()
+    private void DrawTriggersOperations()
     {
         GUILayout.Label("Triggers Effects", EditorStyles.boldLabel);
         Bh();
         GUILayout.Label("Selected Trigger: ", WidthL);
-        ChosenTrigger = (EffectTriggerType)EditorGUILayout.EnumPopup(ChosenTrigger, WidthS);
+        ChosenTrigger = (EffectTriggerType) EditorGUILayout.EnumPopup(ChosenTrigger, WidthS);
         Eh();
 
         Bh();
@@ -43,7 +43,7 @@ public class CardDataEffectsEditor : Editor
         Eh();
     }
 
-    void DrawCurrentState()
+    private void DrawCurrentState()
     {
         var allEffects = MyTarget.EffectsByTrigger;
 
@@ -53,8 +53,8 @@ public class CardDataEffectsEditor : Editor
         if (allEffects != null)
         {
             Bv();
-            
-            foreach (EffectTriggerType trigger in allEffects.Keys)
+
+            foreach (var trigger in allEffects.Keys)
             {
                 Bh();
                 Bv();
@@ -66,6 +66,7 @@ public class CardDataEffectsEditor : Editor
                 Ev();
                 Eh();
             }
+
             Ev();
         }
 
@@ -73,12 +74,12 @@ public class CardDataEffectsEditor : Editor
     }
 
 
-    void Space()
+    private void Space()
     {
         GUILayout.Space(25);
     }
 
-    void DrawLabelAndAddTrigger(EffectsByTrigger effectsByRole, EffectTriggerType trigger)
+    private void DrawLabelAndAddTrigger(EffectsByTrigger effectsByRole, EffectTriggerType trigger)
     {
         Bh();
 
@@ -89,12 +90,14 @@ public class CardDataEffectsEditor : Editor
         Eh();
     }
 
-    void DrawDataEffects(EffectsByTrigger effectsByRole, EffectTriggerType trigger)
+    private void DrawDataEffects(EffectsByTrigger effectsByRole, EffectTriggerType trigger)
     {
-        for (int i = 0; i < effectsByRole[trigger].Effects.Count; i++)
+        for (var i = 0; i < effectsByRole[trigger].Effects.Count; i++)
         {
             Bh();
-            effectsByRole[trigger].Effects[i] = (BaseEffectData)EditorGUILayout.ObjectField(effectsByRole[trigger].Effects[i], typeof(BaseEffectData), true);
+            effectsByRole[trigger].Effects[i] =
+                (BaseEffectData) EditorGUILayout.ObjectField(effectsByRole[trigger].Effects[i], typeof(BaseEffectData),
+                    true);
             if (GUILayout.Button("-", WidthXS))
             {
                 var effect = effectsByRole[trigger].Effects[i];
@@ -105,21 +108,21 @@ public class CardDataEffectsEditor : Editor
         }
     }
 
-    void RemoveEmptyLists()
+    private void RemoveEmptyLists()
     {
         var allEffects = MyTarget.EffectsByTrigger;
         var toRemove = allEffects.Where(x => x.Value.Effects.Count == 0)
-                .Select(x => x.Key)
-                .ToList();
+            .Select(x => x.Key)
+            .ToList();
 
         foreach (var key in toRemove)
             allEffects.Remove(key);
     }
-    
-    void AddTrigger()
+
+    private void AddTrigger()
     {
         var allEffects = MyTarget.EffectsByTrigger;
-        
+
         if (!allEffects.ContainsKey(ChosenTrigger))
         {
             var listEffect = new ListEffects();
@@ -128,35 +131,34 @@ public class CardDataEffectsEditor : Editor
         }
     }
 
-    void RemoveTrigger()
+    private void RemoveTrigger()
     {
         var allEffects = MyTarget.EffectsByTrigger;
         if (allEffects.ContainsKey(ChosenTrigger))
             allEffects.Remove(ChosenTrigger);
     }
 
-    void Bh()
+    private void Bh()
     {
         EditorGUILayout.BeginHorizontal();
     }
 
-    void Eh()
+    private void Eh()
     {
         EditorGUILayout.EndHorizontal();
     }
 
-    void Bv()
+    private void Bv()
     {
         EditorGUILayout.BeginVertical();
     }
 
-    void Ev()
+    private void Ev()
     {
         EditorGUILayout.EndVertical();
     }
 
-    void Label()
+    private void Label()
     {
-
     }
 }

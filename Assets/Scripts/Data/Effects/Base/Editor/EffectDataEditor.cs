@@ -1,14 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using SimpleCardGames.Data.Effects;
 using UnityEditor;
-using SimpleCardGames.Data.Effects;
+using UnityEngine;
 
 [CustomEditor(typeof(BaseEffectData), true)]
 public class EffectDataEditor : Editor
 {
-    BaseEffectData MyTarget { get { return target as BaseEffectData; } }
-    Vector2Int Position { get; set; }
+    private BaseEffectData MyTarget => target as BaseEffectData;
+    private Vector2Int Position { get; set; }
 
     public override void OnInspectorGUI()
     {
@@ -19,11 +17,12 @@ public class EffectDataEditor : Editor
             GUILayout.Label("Playmode: Debug");
             GUILayout.BeginHorizontal();
             Position = EditorGUILayout.Vector2IntField("Position: ", Position, GUILayout.Width(100));
-            
+
             if (GUILayout.Button("Resolve Targets"))
             {
                 //ResolveTargets();
             }
+
             GUILayout.EndHorizontal();
         }
     }

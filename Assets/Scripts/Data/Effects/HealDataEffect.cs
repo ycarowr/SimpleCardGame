@@ -1,7 +1,4 @@
-﻿
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace SimpleCardGames.Data.Effects
 {
@@ -10,7 +7,6 @@ namespace SimpleCardGames.Data.Effects
     {
         public override void Apply(IEffectable target, RuntimeCard source)
         {
-            
         }
     }
 }

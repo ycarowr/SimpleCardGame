@@ -14,10 +14,10 @@ namespace Tools.UI.Card
         #region Properties
 
         /// <summary>
-        ///      Card currently selected by the player.
+        ///     Card currently selected by the player.
         /// </summary>
         public IUiCard SelectedCard { get; private set; }
-        
+
         private event Action<IUiCard> OnCardSelected = card => { };
 
         private event Action<IUiCard> OnCardPlayed = card => { };
@@ -25,12 +25,20 @@ namespace Tools.UI.Card
         /// <summary>
         ///     Event raised when a card is played.
         /// </summary>
-        Action<IUiCard> IUiCardHand.OnCardPlayed { get => OnCardPlayed; set => OnCardPlayed = value; }
+        Action<IUiCard> IUiCardHand.OnCardPlayed
+        {
+            get => OnCardPlayed;
+            set => OnCardPlayed = value;
+        }
 
         /// <summary>
         ///     Event raised when a card is selected.
         /// </summary>
-        Action<IUiCard> IUiCardHand.OnCardSelected{ get => OnCardSelected; set => OnCardSelected = value; }
+        Action<IUiCard> IUiCardHand.OnCardSelected
+        {
+            get => OnCardSelected;
+            set => OnCardSelected = value;
+        }
 
         #endregion
 
@@ -79,7 +87,7 @@ namespace Tools.UI.Card
         }
 
         /// <summary>
-        ///    Unselect the card in the parameter.
+        ///     Unselect the card in the parameter.
         /// </summary>
         /// <param name="card"></param>
         public void UnselectCard(IUiCard card)

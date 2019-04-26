@@ -1,19 +1,13 @@
-﻿using SimpleCardGames.Data;
+﻿using System.Collections.Generic;
+using SimpleCardGames.Data;
 using SimpleCardGames.Data.Deck;
-using SimpleCardGames;
-using System;
-using System.Collections.Generic;
 using Tools;
 
 namespace SimpleCardGames.Battle
 {
-    public class Library: Collection<IRuntimeCard>, ILibrary
+    public class Library : Collection<IRuntimeCard>, ILibrary
     {
-        Configurations Configurations { get; }
         private readonly List<ICardData> cardRegister;
-        private BaseDeckData Deck { get; set; }
-        private IBoard Board { get; set; }
-        private IPlayer Owner { get; set; }
 
         //----------------------------------------------------------------------------------------------------------
 
@@ -27,18 +21,10 @@ namespace SimpleCardGames.Battle
             CreateAndShuffle();
         }
 
-        //----------------------------------------------------------------------------------------------------------
-
-        /// <summary>
-        ///     Creates and shuffle a library based on the cards in the register.
-        /// </summary>
-        private void CreateAndShuffle()
-        {
-            foreach (var card in cardRegister)
-                AddCard(card);
-
-            Shuffle();
-        }
+        private Configurations Configurations { get; }
+        private BaseDeckData Deck { get; }
+        private IBoard Board { get; }
+        private IPlayer Owner { get; }
 
         /// <summary>
         ///     Draw the card on the top of the Library.
@@ -59,6 +45,19 @@ namespace SimpleCardGames.Battle
         public void AddCard(ICardData cardData)
         {
             //new RuntimeCard
+        }
+
+        //----------------------------------------------------------------------------------------------------------
+
+        /// <summary>
+        ///     Creates and shuffle a library based on the cards in the register.
+        /// </summary>
+        private void CreateAndShuffle()
+        {
+            foreach (var card in cardRegister)
+                AddCard(card);
+
+            Shuffle();
         }
     }
 }

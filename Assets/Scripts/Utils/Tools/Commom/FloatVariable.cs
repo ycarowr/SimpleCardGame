@@ -1,11 +1,10 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(menuName ="Helpers/Variables/float")]
+[CreateAssetMenu(menuName = "Helpers/Variables/float")]
 public class FloatVariable : ScriptableObject
 {
 #if UNITY_EDITOR
-    [Multiline]
-    public string DeveloperDescription = "";
+    [Multiline] public string DeveloperDescription = "";
 #endif
     public float Value;
 

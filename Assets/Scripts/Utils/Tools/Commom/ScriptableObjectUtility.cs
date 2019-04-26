@@ -1,6 +1,6 @@
-﻿using UnityEngine;
+﻿using System.IO;
 using UnityEditor;
-using System.IO;
+using UnityEngine;
 
 public static class ScriptableObjectUtility
 {
@@ -8,23 +8,20 @@ public static class ScriptableObjectUtility
     /// <summary>
     //	This makes it easy to create, name and place unique new ScriptableObject asset files.
     /// </summary>
-    public static T CreateAsset<T>(string path = null, bool withFocus = false, bool withSave = false) where T : ScriptableObject
+    public static T CreateAsset<T>(string path = null, bool withFocus = false, bool withSave = false)
+        where T : ScriptableObject
     {
-        T asset = ScriptableObject.CreateInstance<T>();
+        var asset = ScriptableObject.CreateInstance<T>();
 
         if (path == null)
             path = AssetDatabase.GetAssetPath(Selection.activeObject);
 
         if (path == "")
-        {
             path = "Assets";
-        }
         else if (Path.GetExtension(path) != "")
-        {
             path = path.Replace(Path.GetFileName(AssetDatabase.GetAssetPath(Selection.activeObject)), "");
-        }
 
-        string assetPathAndName = AssetDatabase.GenerateUniqueAssetPath(path + ".asset");
+        var assetPathAndName = AssetDatabase.GenerateUniqueAssetPath(path + ".asset");
         AssetDatabase.CreateAsset(asset, assetPathAndName);
 
         if (withSave)
@@ -38,6 +35,7 @@ public static class ScriptableObjectUtility
             EditorUtility.FocusProjectWindow();
             Selection.activeObject = asset;
         }
+
         return asset;
     }
 
@@ -48,7 +46,7 @@ public static class ScriptableObjectUtility
         name = name.Replace("Hexgame", string.Empty);
         name = name.Replace("Data", string.Empty);
         name = name.Replace(".", string.Empty);
-        path += name + " "+ target.name;
+        path += name + " " + target.name;
         return CreateAsset<T>(path);
     }
 #endif

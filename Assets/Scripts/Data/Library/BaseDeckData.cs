@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 namespace SimpleCardGames.Data.Deck
@@ -21,6 +18,8 @@ namespace SimpleCardGames.Data.Deck
             return allData;
         }
 
-        public virtual void Initialize() { }
+        public virtual void Initialize()
+        {
+        }
     }
 }

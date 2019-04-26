@@ -1,7 +1,7 @@
 ﻿using Patterns;
+using SimpleCardGames.Battle.Controller;
 using SimpleCardGames.Data;
 using UnityEngine;
-using SimpleCardGames.Battle.Controller;
 
 namespace SimpleCardGames.Battle
 {
@@ -19,7 +19,7 @@ namespace SimpleCardGames.Battle
                 return;
 
             //the order matters
-                
+
             //First. Create game events Singleton
             GameEvents = Instantiate(GameEventsPrefab);
 

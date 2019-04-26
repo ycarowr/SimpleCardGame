@@ -13,6 +13,20 @@ namespace Tools.UI.Card
     {
         //--------------------------------------------------------------------------------------------------------------
 
+        #region Unitycallbacks
+
+        protected virtual void Awake()
+        {
+            //initialize register
+            Cards = new List<IUiCard>();
+
+            Clear();
+        }
+
+        #endregion
+
+        //--------------------------------------------------------------------------------------------------------------
+
         #region Properties
 
         /// <summary>
@@ -88,20 +102,6 @@ namespace Tools.UI.Card
         public void NotifyPileChange()
         {
             onPileChanged?.Invoke(Cards.ToArray());
-        }
-
-        #endregion
-
-        //--------------------------------------------------------------------------------------------------------------
-
-        #region Unitycallbacks
-
-        protected virtual void Awake()
-        {
-            //initialize register
-            Cards = new List<IUiCard>();
-
-            Clear();
         }
 
         #endregion

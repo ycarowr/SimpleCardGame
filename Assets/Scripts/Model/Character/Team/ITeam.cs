@@ -1,6 +1,5 @@
 ﻿using Tools;
 
-
 namespace SimpleCardGames.Battle
 {
     /// <summary>

@@ -47,7 +47,7 @@ namespace Tools.UI.Card
         public bool IsHovering => Fsm.IsCurrent<UiCardHover>();
         public bool IsDisabled => Fsm.IsCurrent<UiCardDisable>();
         public bool IsInitialized { get; private set; }
-        
+
         #endregion
 
         //--------------------------------------------------------------------------------------------------------------
@@ -61,12 +61,12 @@ namespace Tools.UI.Card
 
         public void MoveTo(Vector3 position, float speed, float delay)
         {
-            Movement.Execute(position, speed, delay, withZ: false);
+            Movement.Execute(position, speed, delay, false);
         }
 
         public void MoveToWithZ(Vector3 position, float speed, float delay)
         {
-            Movement.Execute(position, speed, delay, withZ: true);
+            Movement.Execute(position, speed, delay, true);
         }
 
         public void ScaleTo(Vector3 scale, float speed, float delay)
@@ -102,7 +102,7 @@ namespace Tools.UI.Card
         }
 
         public void Unselect()
-        { 
+        {
             Fsm.Unselect();
         }
 

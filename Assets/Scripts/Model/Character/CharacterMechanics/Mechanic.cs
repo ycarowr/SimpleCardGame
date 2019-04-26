@@ -5,12 +5,12 @@
     /// </summary>
     public abstract class CharMechanic
     {
-        protected ICharacter Character { get; set; }
-        protected CharAttributes Attributes => Character.Attributes;
-
         protected CharMechanic(ICharacter character)
         {
             Character = character;
         }
+
+        protected ICharacter Character { get; set; }
+        protected CharAttributes Attributes => Character.Attributes;
     }
 }

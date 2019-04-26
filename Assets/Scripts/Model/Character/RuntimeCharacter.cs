@@ -1,9 +1,3 @@
-using System.Collections;
-using UnityEngine;
-using System.Collections.Generic;
-using System;
-using SimpleCardGames;
-using SimpleCardGames;
 using SimpleCardGames.Data.Character;
 
 namespace SimpleCardGames.Battle
@@ -14,10 +8,10 @@ namespace SimpleCardGames.Battle
     public class RuntimeCharacter : ICharacter
     {
         public CharacterData Data { get; private set; }
-        public CharAttributes Attributes { get; private set; }
         public IPlayer Owner { get; private set; }
         public IBoard Board { get; private set; }
         public IBoardPosition Position { get; set; }
+        public CharAttributes Attributes { get; private set; }
 
         //----------------------------------------------------------------------------------------------------------
 
@@ -35,7 +29,6 @@ namespace SimpleCardGames.Battle
 
         public RuntimeCharacter()
         {
-
         }
 
         public RuntimeCharacter(CharacterData characterData, Player player, Board board)
@@ -89,6 +82,5 @@ namespace SimpleCardGames.Battle
         #endregion
 
         //----------------------------------------------------------------------------------------------------------
-
     }
 }

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using SimpleCardGames.Battle.Controller;
+using UnityEngine;
 
 namespace SimpleCardGames.Battle
 {
@@ -8,7 +9,7 @@ namespace SimpleCardGames.Battle
     public class UiPlayerHUDContainer : MonoBehaviour, IUiPlayer
     {
         public virtual PlayerSeat Seat => PlayerSeat.Top;
-        public IGameController Controller => Battle.Controller.GameController.Instance;
-        public IPlayerTurn PlayerController => Battle.Controller.GameController.Instance.GetPlayerController(Seat);
+        public IGameController Controller => GameController.Instance;
+        public IPlayerTurn PlayerController => GameController.Instance.GetPlayerController(Seat);
     }
 }

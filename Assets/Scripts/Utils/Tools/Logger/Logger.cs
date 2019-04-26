@@ -6,17 +6,6 @@ public class Logger : PersistentSingleton<Logger>
 {
     //----------------------------------------------------------------------------------------------------------
 
-    #region Fields and Properties
-
-    private const char Period = '.';
-    private const string OpenColor = "]: <color={0}><b>";
-    private const string CloseColor = "</b></color>";
-    [SerializeField] private bool AreLogsEnabled = true;
-
-    #endregion
-
-    //----------------------------------------------------------------------------------------------------------
-
     #region Log
 
     public void Log<T>(object log, string colorName = "black", Type param = null)
@@ -44,6 +33,17 @@ public class Logger : PersistentSingleton<Logger>
         var last = split.Length - 1;
         return last > 0 ? split[last] : string.Empty;
     }
+
+    #endregion
+
+    //----------------------------------------------------------------------------------------------------------
+
+    #region Fields and Properties
+
+    private const char Period = '.';
+    private const string OpenColor = "]: <color={0}><b>";
+    private const string CloseColor = "</b></color>";
+    [SerializeField] private bool AreLogsEnabled = true;
 
     #endregion
 

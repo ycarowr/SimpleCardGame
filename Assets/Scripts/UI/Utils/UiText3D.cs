@@ -1,13 +1,12 @@
-﻿using Extensions;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 
 public class UiText3D : MonoBehaviour
 {
-    [SerializeField] private string defaultText = string.Empty;
-
     [Tooltip("Color of the text.")] [SerializeField]
     protected Color color = Color.black;
+
+    [SerializeField] private string defaultText = string.Empty;
 
     [Tooltip("TMPro Component assigned by the Editor or Automatically on Awake.")]
     private TextMeshPro TmProText;

@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using Tools;
+﻿using Tools;
 
 namespace SimpleCardGames.Battle
 {

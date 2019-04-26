@@ -1,15 +1,14 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Tools.UI.Card
 {
     public class UiMotionMovementCard : UiMotionBaseCard
     {
-        private bool WithZ { get; set; }
-
         public UiMotionMovementCard(IUiCard handler) : base(handler)
         {
         }
+
+        private bool WithZ { get; set; }
 
         public override void Execute(Vector3 position, float speed, float delay, bool withZ)
         {
@@ -32,7 +31,7 @@ namespace Tools.UI.Card
             var current = Handler.transform.position;
             var amount = Speed * Time.deltaTime;
             var delta = Vector3.Lerp(current, Target, amount);
-            if(!WithZ)
+            if (!WithZ)
                 delta.z = Handler.transform.position.z;
             Handler.transform.position = delta;
         }

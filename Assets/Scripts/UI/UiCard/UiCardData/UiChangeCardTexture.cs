@@ -1,8 +1,5 @@
 ﻿using SimpleCardGames.Data;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
 
 namespace SimpleCardGames
 {
@@ -11,10 +8,10 @@ namespace SimpleCardGames
     {
         private SpriteRenderer MyRenderer { get; set; }
         private ICardHandDataHandler Handler { get; set; }
-        
+
         private void OnSetData(CardData data)
         {
-            SetTexture(data.Artwork);   
+            SetTexture(data.Artwork);
         }
 
         private void SetTexture(Sprite sprite)

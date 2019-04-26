@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace SimpleCardGames.Battle
 {
@@ -8,14 +7,13 @@ namespace SimpleCardGames.Battle
     /// </summary>
     public class BoardPosition : IBoardPosition
     {
-        public bool HasCharacter => Character != null;
-        public ICharacter Character { get; private set; }
-
         public BoardPosition(ICharacter character)
         {
-         
         }
-        
+
+        public ICharacter Character { get; private set; }
+        public bool HasCharacter => Character != null;
+
         public void AddCharacter(ICharacter character)
         {
             if (character == null)

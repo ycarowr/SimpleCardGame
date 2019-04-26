@@ -1,6 +1,5 @@
-﻿using UnityEngine;
-using Tools.UI.Card;
-using System;
+﻿using Tools.UI.Card;
+using UnityEngine;
 
 namespace SimpleCardGames.Battle.Controller
 {
@@ -10,6 +9,13 @@ namespace SimpleCardGames.Battle.Controller
     [RequireComponent(typeof(IUiCardHand))]
     public class UiPlayerCardsContainer : MonoBehaviour, IUiPlayer
     {
+        //----------------------------------------------------------------------------------------------------------
+
+        private void OnCardPlayed(IUiCard card)
+        {
+            Debug.Log("On Play " + card.Name);
+            //PlayerController.ProcessMove()
+        }
         //----------------------------------------------------------------------------------------------------------
 
         #region Properties
@@ -37,14 +43,6 @@ namespace SimpleCardGames.Battle.Controller
         }
 
         #endregion
-
-        //----------------------------------------------------------------------------------------------------------
-
-        private void OnCardPlayed(IUiCard card)
-        {
-            Debug.Log("On Play "+card.Name);
-            //PlayerController.ProcessMove()
-        }
 
         //----------------------------------------------------------------------------------------------------------
     }

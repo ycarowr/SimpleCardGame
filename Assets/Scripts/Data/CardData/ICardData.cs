@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using SimpleCardGames;
 
 namespace SimpleCardGames.Data
 {

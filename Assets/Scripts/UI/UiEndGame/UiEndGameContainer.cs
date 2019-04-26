@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using SimpleCardGames.Battle.Controller;
 using UnityEngine;
 
 namespace SimpleCardGames.Battle
@@ -51,7 +52,7 @@ namespace SimpleCardGames.Battle
 
         private const float DelayToEnable = 1f;
         private IUiUserInput UserInput { get; set; }
-        public IGameController Controller => Battle.Controller.GameController.Instance;
+        public IGameController Controller => GameController.Instance;
 
         #endregion
 

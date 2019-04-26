@@ -1,5 +1,4 @@
-﻿using SimpleCardGames;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.EventSystems;
 
 namespace Tools.UI.Card

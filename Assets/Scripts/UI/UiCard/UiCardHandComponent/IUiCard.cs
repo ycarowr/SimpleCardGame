@@ -4,11 +4,11 @@ namespace Tools.UI.Card
 {
     public interface IUiCard : IStateMachineHandler, IUiCardComponents, IUiCardTransform
     {
-        void Initialize();
         bool IsInitialized { get; }
         bool IsDragging { get; }
         bool IsHovering { get; }
         bool IsDisabled { get; }
+        void Initialize();
         void Disable();
         void Enable();
         void Select();

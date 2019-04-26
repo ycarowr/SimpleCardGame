@@ -1,37 +1,29 @@
-﻿using SimpleCardGames.Data;
-using System;
+﻿using System;
+using SimpleCardGames.Data;
 using UnityEngine;
 
 namespace SimpleCardGames
 {
     //--------------------------------------------------------------------------------------------------------------
-    
+
     #region Interface
 
     public interface ICardHandDataHandler
     {
         CardData Data { get; }
-        void SetData(CardData data);
         Action<CardData> OnSetData { get; set; }
+        void SetData(CardData data);
     }
 
     #endregion
-    
+
     //--------------------------------------------------------------------------------------------------------------
 
     public class UiCardHandDataComponent : MonoBehaviour, ICardHandDataHandler
     {
-        #region Properties
-        
-        public CardData Data { get; private set; }
-        public Action<CardData> OnSetData { get; set; } = (data) => {};
-
-        #endregion
-        
         //--------------------------------------------------------------------------------------------------------------
 
         #region Operations
-
 
         public void SetData(CardData data)
         {
@@ -40,6 +32,12 @@ namespace SimpleCardGames
         }
 
         #endregion
-       
+
+        #region Properties
+
+        public CardData Data { get; private set; }
+        public Action<CardData> OnSetData { get; set; } = data => { };
+
+        #endregion
     }
 }

@@ -85,7 +85,7 @@ namespace SimpleCardGames.Battle
     {
         void OnTickTime(int time, IPlayer player);
     }
-    
+
     /// <summary>
     ///     Broadcast of a draw card.
     /// </summary>
@@ -109,7 +109,7 @@ namespace SimpleCardGames.Battle
     {
         void OnPlayCard(IPlayer player, IRuntimeCard card);
     }
-    
+
     #endregion
 
     //----------------------------------------------------------------------------------------------------------

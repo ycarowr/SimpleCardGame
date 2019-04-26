@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using Extensions;
-using SimpleCardGames;
 using SimpleCardGames.Data;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -57,12 +55,18 @@ namespace Tools.UI.Card
         [Button]
         public void DrawRandom()
         {
-            var rand = UnityEngine.Random.Range(0, 3);
+            var rand = Random.Range(0, 3);
             switch (rand)
             {
-                case 0: DrawAWizard(); break;
-                case 1: DrawAChimera(); break;
-                case 2: DrawADemon(); break;
+                case 0:
+                    DrawAWizard();
+                    break;
+                case 1:
+                    DrawAChimera();
+                    break;
+                case 2:
+                    DrawADemon();
+                    break;
             }
         }
 

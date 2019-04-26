@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using Tools;
-using UnityEngine;
-
+﻿using Tools;
 
 namespace SimpleCardGames.Battle
 {

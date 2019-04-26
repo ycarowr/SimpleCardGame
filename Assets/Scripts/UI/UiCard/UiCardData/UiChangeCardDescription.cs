@@ -1,9 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-
-namespace SimpleCardGames
+﻿namespace SimpleCardGames
 {
     public class UiChangeCardDescription : UiChangeCardText
     {

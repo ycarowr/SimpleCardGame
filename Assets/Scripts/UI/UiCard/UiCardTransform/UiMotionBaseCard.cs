@@ -34,7 +34,7 @@ namespace Tools.UI.Card
         protected Vector3 Target { get; set; }
 
         /// <summary>
-        ///     Reference for the card. 
+        ///     Reference for the card.
         /// </summary>
         protected IUiCard Handler { get; }
 
@@ -92,7 +92,7 @@ namespace Tools.UI.Card
         }
 
         /// <summary>
-        /// Used to delay the Motion.
+        ///     Used to delay the Motion.
         /// </summary>
         /// <param name="delay"></param>
         /// <returns></returns>
@@ -103,7 +103,7 @@ namespace Tools.UI.Card
         }
 
         /// <summary>
-        ///     Stop the motion. It won't trigger OnFinishMotion. 
+        ///     Stop the motion. It won't trigger OnFinishMotion.
         ///     TODO: Cancel the Delay Coroutine.
         /// </summary>
         public virtual void StopMotion()
