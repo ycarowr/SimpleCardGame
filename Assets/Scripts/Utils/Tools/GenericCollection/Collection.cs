@@ -5,8 +5,7 @@ using Random = UnityEngine.Random;
 namespace Tools
 {
     /// <summary>
-    ///     Class that wraps some of the List and
-    ///     add some Linq functionality without garbage generation
+    ///     Class that wraps some of the List and add some Linq functionality without garbage generation
     /// </summary>
     /// <typeparam name="T"></typeparam>
     public class Collection<T> where T : class
@@ -28,7 +27,7 @@ namespace Tools
         }
 
         //units of the collection
-        private List<T> Units { get; }
+        protected List<T> Units { get; }
 
         public int Size => Units.Count;
 
@@ -165,6 +164,14 @@ namespace Tools
         {
             var lastIndex = Size - 1;
             return GetAndRemove(lastIndex);
+        }
+
+        /// <summary>
+        ///     Clears the list.
+        /// </summary>
+        public void Clear()
+        {
+            Units.Clear();
         }
 
         #endregion
