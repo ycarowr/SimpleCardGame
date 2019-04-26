@@ -1,9 +1,11 @@
-﻿namespace SimpleTurnBasedGame
+﻿using SimpleCardGame.Data.Effects;
+
+namespace SimpleTurnBasedGame
 {
     /// <summary>
     ///     All units that are able to take damage.
     /// </summary>
-    public interface IDamageable
+    public interface IDamageable : IEffectable
     {
         /// <summary>
         ///     Take some damage and return the real damage dealt after reductions or bonus.

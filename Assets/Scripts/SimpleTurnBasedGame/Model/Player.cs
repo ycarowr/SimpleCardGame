@@ -45,7 +45,7 @@ namespace SimpleTurnBasedGame
 
         //----------------------------------------------------------------------------------------------------------
 
-        #region DamagePlayers
+        #region Damage
 
         int IAttackable.DoAttack(IDamageable target, int bonusDamage)
         {
@@ -69,7 +69,7 @@ namespace SimpleTurnBasedGame
 
         //----------------------------------------------------------------------------------------------------------
 
-        #region HealPlayers
+        #region Heal
 
         int IHealer.DoHeal(IHealable target, int healAmount)
         {

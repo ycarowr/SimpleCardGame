@@ -9,7 +9,7 @@ namespace SimpleCardGame.Data.Effects
     [CreateAssetMenu(menuName = Path + "/Damage")]
     public class DamageDataEffect : BaseEffectData
     {
-        public override void Apply(IEffectAble target, RuntimeCard source)
+        public override void Apply(IEffectable target, RuntimeCard source)
         {
                
         }

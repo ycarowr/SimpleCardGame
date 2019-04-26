@@ -1,9 +1,11 @@
-﻿namespace SimpleTurnBasedGame
+﻿using SimpleCardGame.Data.Effects;
+
+namespace SimpleTurnBasedGame
 {
     /// <summary>
     ///     All units that are able to get healed.
     /// </summary>
-    public interface IHealable
+    public interface IHealable : IEffectable
     {
         /// <summary>
         ///     Heals damage and return the real amount after reductions or bonus.

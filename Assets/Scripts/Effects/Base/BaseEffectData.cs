@@ -30,6 +30,6 @@ namespace SimpleCardGame.Data.Effects
         /// </summary>
         /// <param name="target"></param>
         /// <param name="source"></param>
-        public abstract void Apply(IEffectAble target, RuntimeCard source);
+        public abstract void Apply(IEffectable target, RuntimeCard source);
     }
 }
