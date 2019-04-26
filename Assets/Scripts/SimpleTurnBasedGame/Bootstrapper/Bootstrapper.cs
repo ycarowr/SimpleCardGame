@@ -1,6 +1,7 @@
 ﻿using Patterns;
 using SimpleCardGame;
-using SimpleTurnBasedGame.ControllerCs;
+using SimpleCardGame.Data;
+using SimpleTurnBasedGame.Controller;
 using UnityEngine;
 
 namespace SimpleTurnBasedGame

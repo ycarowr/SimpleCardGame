@@ -1,4 +1,4 @@
-﻿namespace SimpleTurnBasedGame.ControllerCs
+﻿namespace SimpleTurnBasedGame.Controller
 {
     /// <summary>
     ///     Holds the Game flow when a match is Finished.

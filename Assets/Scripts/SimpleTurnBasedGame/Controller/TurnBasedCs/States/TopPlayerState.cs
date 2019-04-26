@@ -1,6 +1,6 @@
 ﻿using SimpleTurnBasedGame.AI;
 
-namespace SimpleTurnBasedGame.ControllerCs
+namespace SimpleTurnBasedGame.Controller
 {
     public class TopPlayerState : AiTurnState
     {

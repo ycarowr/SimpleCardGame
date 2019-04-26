@@ -1,7 +1,7 @@
 ﻿using Patterns;
 using UnityEngine;
 
-namespace SimpleTurnBasedGame.ControllerCs
+namespace SimpleTurnBasedGame.Controller
 {
     /// <summary>
     ///     Main Controller. Holds the FSM which controls the game flow. Also provides access to the players controllers.

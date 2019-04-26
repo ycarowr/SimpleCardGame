@@ -3,7 +3,7 @@
     /// <summary>
     ///     User HUD
     /// </summary>
-    public class UiUserContainer : UiPlayerContainer
+    public class UiUserContainer : UiPlayerHUDContainer
     {
         public override PlayerSeat Seat => PlayerSeat.Bottom;
 

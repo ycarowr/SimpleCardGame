@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine;
 
-namespace SimpleTurnBasedGame.ControllerCs
+namespace SimpleTurnBasedGame.Controller
 {
     public abstract class TurnState : BaseBattleState, IFinishPlayerTurn, IPlayerTurn
     {

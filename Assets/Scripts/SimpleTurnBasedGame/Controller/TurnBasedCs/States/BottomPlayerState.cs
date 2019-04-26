@@ -1,6 +1,6 @@
 ﻿using SimpleTurnBasedGame.AI;
 
-namespace SimpleTurnBasedGame.ControllerCs
+namespace SimpleTurnBasedGame.Controller
 {
     /// <summary>
     ///     Bottom, where the User is always sitting.

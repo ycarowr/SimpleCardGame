@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Patterns.StateMachine;
 
-namespace SimpleTurnBasedGame.ControllerCs
+namespace SimpleTurnBasedGame.Controller
 {
     public class TurnBasedFsm : BaseStateMachine
     {

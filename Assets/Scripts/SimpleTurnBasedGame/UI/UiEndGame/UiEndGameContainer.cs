@@ -51,7 +51,7 @@ namespace SimpleTurnBasedGame
 
         private const float DelayToEnable = 1f;
         private IUiUserInput UserInput { get; set; }
-        public IGameController GameController => ControllerCs.GameController.Instance;
+        public IGameController GameController => Controller.GameController.Instance;
 
         #endregion
 

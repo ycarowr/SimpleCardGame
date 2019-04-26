@@ -2,7 +2,7 @@
 using SimpleTurnBasedGame.AI;
 using UnityEngine;
 
-namespace SimpleTurnBasedGame.ControllerCs
+namespace SimpleTurnBasedGame.Controller
 {
     public class AiTurnState : TurnState
     {

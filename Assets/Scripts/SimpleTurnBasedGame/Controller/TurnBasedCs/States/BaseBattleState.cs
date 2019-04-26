@@ -1,7 +1,7 @@
 using Patterns;
 using Patterns.StateMachine;
 
-namespace SimpleTurnBasedGame.ControllerCs
+namespace SimpleTurnBasedGame.Controller
 {
     /// <summary>
     ///     The base of all the battle states. States work as controllers to provide access to a funcionality in the model.
