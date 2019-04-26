@@ -1,7 +1,7 @@
 ﻿namespace SimpleCardGames.Battle
 {
     /// <summary>
-    ///     Very simple game implementation.
+    ///     A game implementation.
     ///     TODO: Consider to break down this interface in smaller interfaces.
     /// </summary>
     public interface IPrimitiveGame

@@ -85,7 +85,31 @@ namespace SimpleCardGames.Battle
     {
         void OnTickTime(int time, IPlayer player);
     }
+    
+    /// <summary>
+    ///     Broadcast of a draw card.
+    /// </summary>
+    public interface IPlayerDrawCard : ISubject
+    {
+        void OnDrawCard(IPlayer player, IRuntimeCard card);
+    }
 
+    /// <summary>
+    ///     Broadcast of a discard card.
+    /// </summary>
+    public interface IPlayerDiscardCard : ISubject
+    {
+        void OnDiscardCard(IPlayer player, IRuntimeCard card);
+    }
+
+    /// <summary>
+    ///     Broadcast of a play card.
+    /// </summary>
+    public interface IPlayerPlayCard : ISubject
+    {
+        void OnPlayCard(IPlayer player, IRuntimeCard card);
+    }
+    
     #endregion
 
     //----------------------------------------------------------------------------------------------------------
