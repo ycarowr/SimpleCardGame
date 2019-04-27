@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4090370242299087316}
   - component: {fileID: 3260894156790656752}
   m_Layer: 0
-  m_Name: '------ GameData ------------'
+  m_Name: GameData
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43,4 +43,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eda4f2d80b28ab647990147af9765e64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isDontDestroyOnLoad: 0
+  isSilent: 1
   configurations: {fileID: 11400000, guid: 26259bb5222f3db44bffb3b0146e2011, type: 2}
+  deckData: {fileID: 11400000, guid: 520789cdd3c1f8e4b8b07bc7205c65e6, type: 2}
+  teamData: {fileID: 11400000, guid: 7a267dd9353faa249b16416b33727ca1, type: 2}

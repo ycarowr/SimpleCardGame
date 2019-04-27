@@ -39,7 +39,6 @@ namespace SimpleCardGames.Data
             }
         }
 
-
         #region Utils
 
         [Button]

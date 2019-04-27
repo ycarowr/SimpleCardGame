@@ -7,6 +7,7 @@ namespace SimpleCardGames.Battle
     /// </summary>
     public interface ILibrary
     {
+        bool IsFinite { get; }
         void Shuffle();
         IRuntimeCard DrawTop();
         void AddCard(ICardData cardData);

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using Patterns;
+using SimpleCardGames.Data.Character;
+using SimpleCardGames.Data.Deck;
 using UnityEngine;
 
 namespace SimpleCardGames.Battle
@@ -32,6 +34,8 @@ namespace SimpleCardGames.Battle
         //--------------------------------------------------------------------------------------------------------
 
         [SerializeField] private Configurations configurations;
+        [SerializeField] private BaseDeckData deckData;
+        [SerializeField] private TeamData teamData;
 
         #region Properties
 
@@ -80,8 +84,10 @@ namespace SimpleCardGames.Battle
         public void CreateGame()
         {
             //create and connect players to their seats
-            var player1 = new Player(PlayerSeat.Bottom, configurations);
-            var player2 = new Player(PlayerSeat.Top, configurations);
+            var player1 = new Player(PlayerSeat.Bottom, teamData: teamData, deckData: deckData, configurations: configurations);
+
+            //if the second player doesn't have a deck, send null
+            var player2 = new Player(PlayerSeat.Top, teamData: teamData, deckData : deckData, configurations: configurations);
 
             //create game data
             RuntimeGame = new Game(new List<IPlayer> {player1, player2}, configurations);

@@ -6,7 +6,7 @@ namespace SimpleCardGames.Battle
     {
         //----------------------------------------------------------------------------------------------------------
 
-        public CharAttributes(CharacterData data, IPlayer owner)
+        public CharAttributes(ICharacterData data, IPlayer owner)
         {
             SetData(data, owner);
         }
@@ -15,7 +15,7 @@ namespace SimpleCardGames.Battle
 
         public bool IsFullHealth => Health == DefaultMaxHealth;
 
-        public CharacterData CharacterData { get; set; }
+        public ICharacterData CharacterData { get; set; }
 
         public int Health { get; set; }
 
@@ -25,7 +25,7 @@ namespace SimpleCardGames.Battle
 
         public IPlayer Owner { get; set; }
 
-        public void SetData(CharacterData data, IPlayer owner)
+        public void SetData(ICharacterData data, IPlayer owner)
         {
             CharacterData = data;
             MaxHealth = data.Health;

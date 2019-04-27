@@ -1,4 +1,5 @@
 using SimpleCardGames.Data.Character;
+using UnityEngine;
 
 namespace SimpleCardGames.Battle
 {
@@ -7,9 +8,8 @@ namespace SimpleCardGames.Battle
     /// </summary>
     public class RuntimeCharacter : ICharacter
     {
-        public CharacterData Data { get; private set; }
+        public ICharacterData Data { get; private set; }
         public IPlayer Owner { get; private set; }
-        public IBoard Board { get; private set; }
         public IBoardPosition Position { get; set; }
         public CharAttributes Attributes { get; private set; }
 
@@ -27,20 +27,20 @@ namespace SimpleCardGames.Battle
 
         #region Initialize
 
-        public RuntimeCharacter()
+        private RuntimeCharacter()
         {
         }
 
-        public RuntimeCharacter(CharacterData characterData, Player player, Board board)
+        public RuntimeCharacter(ICharacterData characterData, IPlayer player)
         {
-            SetData(characterData, player, board);
+            Debug.Log("Character "+characterData.Name +" Created");
+            SetData(characterData, player);
         }
 
-        public void SetData(CharacterData cardData, Player player, Board board)
+        public void SetData(ICharacterData cardData, IPlayer player)
         {
             Owner = player;
             Data = cardData;
-            Board = board;
             Attributes = new CharAttributes(Data, Owner);
             Health = new HealthMechanic(this);
             Damage = new DamageMechanic(this);

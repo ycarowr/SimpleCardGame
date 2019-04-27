@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Tools;
 using UnityEngine;
 
 namespace SimpleCardGames.Data.Deck
@@ -8,18 +9,12 @@ namespace SimpleCardGames.Data.Deck
     {
         [SerializeField] protected List<CardData> cards = new List<CardData>();
 
-        [SerializeField] private bool forceReady;
-
-        public List<ICardData> GetCards()
+        public Collection<ICardData> GetCards()
         {
             //new list with everything inside
-            var allData = new List<ICardData>();
+            var allData = new Collection<ICardData>();
             cards.ForEach(characterData => allData.Add(characterData));
             return allData;
-        }
-
-        public virtual void Initialize()
-        {
         }
     }
 }

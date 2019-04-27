@@ -198,6 +198,24 @@ namespace SimpleCardGames
             }
 
             #endregion
+
+            //----------------------------------------------------------------------------------------------------------
+
+            #region Library
+            public Library LibraryPlayer = new Library();
+
+            [Serializable]
+            public class Library
+            {
+                [Tooltip("Whether the library has an finite amount of cards or it reshuffles automatically.")] public bool isFinite = false;
+                [Tooltip("Whether hands are discarded in the end of the turn or not.")] public bool isDiscardableHands = false;
+                [Tooltip("Amount of cards in the starting hand.")] [Range(0, 7)] public int startingAmount = 3;
+                [Tooltip("Quantity of cards drawn each turn.")] [Range(0, 7)] public int drawAmountByTurn = 1;
+            }
+            
+            #endregion
+
+            //----------------------------------------------------------------------------------------------------------
         }
 
         //----------------------------------------------------------------------------------------------------------

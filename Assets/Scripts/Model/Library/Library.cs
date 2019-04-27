@@ -2,20 +2,25 @@
 using SimpleCardGames.Data;
 using SimpleCardGames.Data.Deck;
 using Tools;
+using UnityEngine;
 
 namespace SimpleCardGames.Battle
 {
     public class Library : Collection<IRuntimeCard>, ILibrary
     {
-        private readonly List<ICardData> cardRegister;
+        private readonly Collection<ICardData> cardRegister;
+        public bool IsFinite => Configurations.Amount.LibraryPlayer.isFinite;
 
         //----------------------------------------------------------------------------------------------------------
 
-        public Library(IPlayer player, BaseDeckData deck, IBoard board, Configurations configurations)
+        public Library(IPlayer player, BaseDeckData deckData, Configurations configurations)
         {
-            Deck = deck;
+            Debug.Log("Library Created: "+ player.Seat);
+            if (deckData == null)
+                Debug.LogError("A deck cant have null cards");
+
+            Deck = deckData;
             Owner = player;
-            Board = board;
             Configurations = configurations;
             cardRegister = Deck.GetCards();
             CreateAndShuffle();
@@ -23,7 +28,6 @@ namespace SimpleCardGames.Battle
 
         private Configurations Configurations { get; }
         private BaseDeckData Deck { get; }
-        private IBoard Board { get; }
         private IPlayer Owner { get; }
 
         /// <summary>
@@ -34,27 +38,30 @@ namespace SimpleCardGames.Battle
         {
             if (Size == 0)
             {
-                var isFinite = false;
-                if (!isFinite)
+                if (!IsFinite)
                     CreateAndShuffle();
             }
 
             return GetLastAndRemove();
         }
 
+        /// <summary>
+        ///     Create and adds a card to the Library based on the data.
+        /// </summary>
+        /// <param name="cardData"></param>
         public void AddCard(ICardData cardData)
         {
-            //new RuntimeCard
+            Add(new RuntimeCard(cardData));
         }
 
         //----------------------------------------------------------------------------------------------------------
 
         /// <summary>
-        ///     Creates and shuffle a library based on the cards in the register.
+        ///     Creates and shuffle the Library based on the cards in the register.
         /// </summary>
         private void CreateAndShuffle()
         {
-            foreach (var card in cardRegister)
+            foreach (var card in cardRegister.Units)
                 AddCard(card);
 
             Shuffle();

@@ -3,11 +3,19 @@ using UnityEngine;
 
 namespace SimpleCardGames.Data.Character
 {
-    [CreateAssetMenu(menuName = "Data/Character")]
-    public class CharacterData : ScriptableObject
+    public interface ICharacterData
     {
-        [Tooltip("Root of the Effects")] public EffectsSet Effects;
+        int Health { get; }
+        string Name { get; }
+    }
 
-        [Range(1, 16)] public int Health;
+    [CreateAssetMenu(menuName = "Data/Character")]
+    public class CharacterData : ScriptableObject, ICharacterData
+    {
+        [Range(1, 16)] [SerializeField] private int health = 1;
+        [SerializeField] string characterName;
+
+        int ICharacterData.Health => health;
+        string ICharacterData.Name => characterName;
     }
 }
