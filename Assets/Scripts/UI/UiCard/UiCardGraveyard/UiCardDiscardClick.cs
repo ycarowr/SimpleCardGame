@@ -24,11 +24,12 @@ namespace Tools.UI.Card
 
         private void PlayRandom(PointerEventData obj)
         {
-            if (UnityEngine.Input.GetKeyDown(KeyCode.Space))
+            var myPlayer = GameController.Instance.GetPlayerController(PlayerSeat.Bottom).Player;
+            if (myPlayer.Hand.Size > 0)
             {
-                // it will be removed
-                var rndCard = GameController.Instance.GetPlayerController(PlayerSeat.Bottom).Player.Hand.Units.RandomItem();
-                Utils.PlayCard(rndCard);
+                var rndCard = myPlayer.Hand.Units.RandomItem();
+                if (rndCard != null)
+                    myPlayer.Discard(rndCard);
             }
         }
     }
