@@ -29,14 +29,20 @@ MonoBehaviour:
     TopPlayer:
       Archetype: 2
       IsAi: 1
-  Damage:
-    MaxDamage: 4
-    MinDamage: 1
-  Heal:
-    MaxHeal: 4
-    MinHeal: 1
-  HealthPlayers:
-    healthBottomPlayer: 6
-    healthTopPlayer: 6
-  Bonus:
-    Value: 2
+  Amount:
+    Damage:
+      MaxDamage: 4
+      MinDamage: 1
+    Heal:
+      MaxHeal: 4
+      MinHeal: 1
+    HealthPlayers:
+      healthBottomPlayer: 6
+      healthTopPlayer: 6
+    Bonus:
+      Value: 2
+    LibraryPlayer:
+      isFinite: 0
+      isDiscardableHands: 0
+      startingAmount: 5
+      drawAmountByTurn: 1

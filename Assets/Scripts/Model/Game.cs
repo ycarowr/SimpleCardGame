@@ -20,9 +20,6 @@ namespace SimpleCardGames.Battle
             ProcessStartGame = new ProcessStartGame(this);
             ProcessStartPlayerTurn = new ProcessStartPlayer(this);
             ProcessFinishPlayerTurn = new ProcessFinishPlayer(this);
-            ProcessDamageMove = new ProcessDamageMove(this);
-            ProcessHealMove = new ProcessHealMove(this);
-            ProcessRandomMove = new ProcessRandomMove(this);
             ProcessTick = new ProcessTick(this);
             Logger.Instance.Log<Game>("Game Created", "blue");
         }
@@ -33,14 +30,14 @@ namespace SimpleCardGames.Battle
 
         #region Properties
 
-        ITurnLogic IPrimitiveGame.TurnLogic => ProcessTurn;
+        public List<IPlayer> Players => ProcessTurn.Players;
+        public ITurnLogic TurnLogic => ProcessTurn;
         public bool IsGameStarted { get; set; }
         public bool IsGameFinished { get; set; }
         public bool IsTurnInProgress { get; set; }
         public int TurnTime { get; set; }
         public int TotalTime { get; set; }
         public Configurations Configurations { get; }
-        public IBoard Board => null;
 
         #region Processes
 
@@ -50,9 +47,6 @@ namespace SimpleCardGames.Battle
         private ProcessTick ProcessTick { get; }
         private ProcessStartPlayer ProcessStartPlayerTurn { get; }
         private ProcessFinishPlayer ProcessFinishPlayerTurn { get; }
-        private ProcessDamageMove ProcessDamageMove { get; }
-        private ProcessHealMove ProcessHealMove { get; }
-        private ProcessRandomMove ProcessRandomMove { get; }
 
         #endregion
 
@@ -80,21 +74,6 @@ namespace SimpleCardGames.Battle
         public void FinishCurrentPlayerTurn()
         {
             ProcessFinishPlayerTurn.Execute();
-        }
-
-        public void Heal()
-        {
-            ProcessHealMove.Execute();
-        }
-
-        public void Damage()
-        {
-            ProcessDamageMove.Execute();
-        }
-
-        public void Random()
-        {
-            ProcessRandomMove.Execute();
         }
 
         public void Tick()

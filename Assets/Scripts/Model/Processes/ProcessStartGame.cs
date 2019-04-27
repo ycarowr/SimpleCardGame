@@ -1,4 +1,7 @@
-﻿namespace SimpleCardGames.Battle
+﻿using System;
+using System.Collections.Generic;
+
+namespace SimpleCardGames.Battle
 {
     /// <inheritdoc />
     /// <summary>
@@ -18,6 +21,8 @@
             if (Game.IsGameStarted) return;
 
             Game.IsGameStarted = true;
+
+            //calculus of the starting player
             Game.TurnLogic.DecideStarterPlayer();
 
             OnGameStarted(Game.TurnLogic.StarterPlayer);

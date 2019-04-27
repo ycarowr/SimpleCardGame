@@ -13,12 +13,11 @@ namespace SimpleCardGames.Data
             Database = new CardDatabase();
         }
 
-        public GameObject Get(CardId id)
+        public GameObject Get(IRuntimeCard card)
         {
-            var cardData = Database.Get(id);
             var cardUi = Get(modelsPooled[0]);
-            var handler = cardUi.GetComponent<ICardHandDataHandler>();
-            handler.SetData(cardData);
+            var handler = cardUi.GetComponent<ICardHandData>();
+            handler.SetCard(card);
             return cardUi.gameObject;
         }
 
@@ -38,27 +37,5 @@ namespace SimpleCardGames.Data
                 return Cards?.Find(card => card.Id == id);
             }
         }
-
-        #region Utils
-
-        [Button]
-        private void CreateAWizard()
-        {
-            Get(CardId.Wizard);
-        }
-
-        [Button]
-        private void CreateADemon()
-        {
-            Get(CardId.Demon);
-        }
-
-        [Button]
-        private void CreateAChimera()
-        {
-            Get(CardId.Chimera);
-        }
-
-        #endregion
     }
 }

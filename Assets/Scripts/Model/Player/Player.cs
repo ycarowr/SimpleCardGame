@@ -1,4 +1,5 @@
-﻿using SimpleCardGames.Data.Character;
+﻿using System;
+using SimpleCardGames.Data.Character;
 using SimpleCardGames.Data.Deck;
 using Tools;
 using UnityEngine;
@@ -14,6 +15,8 @@ namespace SimpleCardGames.Battle
         {
             Configurations = configurations;
             Seat = seat;
+
+            Hand = new Collection<IRuntimeCard>();
 
             if (teamData != null)
                 Team = teamData.GetMembers(this);
@@ -40,13 +43,108 @@ namespace SimpleCardGames.Battle
 
         //----------------------------------------------------------------------------------------------------------
 
+        void IPlayer.DrawStartingHand()
+        {
+            var quant = Configurations.Amount.LibraryPlayer.startingAmount;
+            for (int i = 0; i < quant; i++)
+                Draw(); 
+        }
+
+        public bool Draw()
+        {
+            if (Library == null)
+                return false;
+
+            var card = Library.DrawTop();
+            Hand.Add(card);
+            OnDrawCard(this, card);
+            return true;
+        }
+
+        //----------------------------------------------------------------------------------------------------------
+
+        public bool Discard(IRuntimeCard card)
+        {
+            var hasCard = Hand.Has(card);
+            if (!hasCard)
+                return false;
+
+            Hand.Remove(card);
+            OnDiscardCard(this, card);
+            return true;
+        }
+
+        //----------------------------------------------------------------------------------------------------------
+
+        bool IPlayer.Play(IRuntimeCard card)
+        {
+            var hasCard = Hand.Has(card);
+            if (!hasCard)
+                return false;
+
+            Hand.Remove(card);
+            OnPlayCard(this, card);
+            return true;
+        }
+
+        //----------------------------------------------------------------------------------------------------------
+
         void IPlayer.FinishTurn()
         {
+            if (Configurations.Amount.LibraryPlayer.isDiscardableHands)
+                DiscardAll();
+        }
+
+        private void DiscardAll()
+        {
+            var quant = Hand.Size;
+            for (var i = 0; i < quant; i++)
+                Discard(Hand.Units[0]);
         }
 
         void IPlayer.StartTurn()
         {
+            var quant = Configurations.Amount.LibraryPlayer.drawAmountByTurn;
+            for (int i = 0; i < quant; i++)
+                Draw();
         }
+
+        //----------------------------------------------------------------------------------------------------------
+
+        #region Dispatch Events
+
+        /// <summary>
+        ///     Dispatch card draw to the listeners.
+        /// </summary>
+        /// <param name="player"></param>
+        /// <param name="card"></param>
+        private void OnDrawCard(Player player, IRuntimeCard card)
+        {
+            GameEvents.Instance.Notify<IPlayerDrawCard>(i => i.OnDrawCard(player, card));
+
+        }
+
+        /// <summary>
+        ///     Dispatch card discarded to the listeners.
+        /// </summary>
+        /// <param name="player"></param>
+        /// <param name="card"></param>
+        private void OnDiscardCard(Player player, IRuntimeCard card)
+        {
+            GameEvents.Instance.Notify<IPlayerDiscardCard>(i => i.OnDiscardCard(player, card));
+        }
+
+        /// <summary>
+        ///     Dispatch card played to the listeners.
+        /// </summary>
+        /// <param name="player"></param>
+        /// <param name="card"></param>
+        private void OnPlayCard(Player player, IRuntimeCard card)
+        {
+            GameEvents.Instance.Notify<IPlayerPlayCard>(i => i.OnPlayCard(player, card));
+        }
+
+        #endregion
 
         //----------------------------------------------------------------------------------------------------------
     }

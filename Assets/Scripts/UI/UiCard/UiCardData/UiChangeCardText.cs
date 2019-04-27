@@ -4,9 +4,9 @@ namespace SimpleCardGames
 {
     public abstract class UiChangeCardText : UiText3D
     {
-        protected ICardHandDataHandler Handler { get; set; }
+        protected ICardHandData Handler { get; set; }
 
-        private void OnSetData(CardData data)
+        private void OnSetData(ICardData data)
         {
             SetText(GetText());
         }
@@ -14,7 +14,7 @@ namespace SimpleCardGames
         protected override void Awake()
         {
             base.Awake();
-            Handler = GetComponentInParent<ICardHandDataHandler>();
+            Handler = GetComponentInParent<ICardHandData>();
             Handler.OnSetData += OnSetData;
         }
 

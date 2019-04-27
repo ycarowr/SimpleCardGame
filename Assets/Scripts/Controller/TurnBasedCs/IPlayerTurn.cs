@@ -7,6 +7,6 @@
         bool IsMyTurn { get; }
         PlayerSeat Seat { get; }
         IPlayer Player { get; }
-        bool ProcessMove(MoveType move);
+        bool PlayCard(IRuntimeCard card);
     }
 }

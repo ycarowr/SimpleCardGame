@@ -69,7 +69,7 @@ namespace SimpleCardGames.Battle.Controller
                 yield break;
 
             var bestMove = AiModule.GetBestMove();
-            ProcessMove(bestMove);
+            //ProcessMove(bestMove);
         }
 
         private IEnumerator AiFinishTurn(float delay)

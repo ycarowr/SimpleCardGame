@@ -40,20 +40,20 @@ namespace SimpleCardGames.Battle
 
         void UiButtonDamage.IPressDamage.PressDamageMove()
         {
-            if (Ui.PlayerController.ProcessMove(MoveType.DamageMove))
-                DisableInput();
+            //if (Ui.PlayerController.ProcessMove(MoveType.DamageMove))
+            //    DisableInput();
         }
 
         void UiButtonHeal.IPressHeal.PressHealMove()
         {
-            if (Ui.PlayerController.ProcessMove(MoveType.HealMove))
-                DisableInput();
+            //if (Ui.PlayerController.ProcessMove(MoveType.HealMove))
+            //    DisableInput();
         }
 
         void UiButtonRandom.IPressRandom.PressRandomMove()
         {
-            if (Ui.PlayerController.ProcessMove(MoveType.RandomMove))
-                DisableInput();
+            //if (Ui.PlayerController.ProcessMove(MoveType.RandomMove))
+            //    DisableInput();
         }
 
         #endregion

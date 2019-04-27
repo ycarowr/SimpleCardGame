@@ -87,7 +87,7 @@ namespace SimpleCardGames.Battle
             var player1 = new Player(PlayerSeat.Bottom, teamData: teamData, deckData: deckData, configurations: configurations);
 
             //if the second player doesn't have a deck, send null
-            var player2 = new Player(PlayerSeat.Top, teamData: teamData, deckData : deckData, configurations: configurations);
+            var player2 = new Player(PlayerSeat.Top, teamData: teamData, deckData : null, configurations: configurations);
 
             //create game data
             RuntimeGame = new Game(new List<IPlayer> {player1, player2}, configurations);

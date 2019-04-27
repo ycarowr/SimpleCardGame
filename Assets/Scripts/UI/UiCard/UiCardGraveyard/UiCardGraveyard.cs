@@ -27,6 +27,7 @@ namespace Tools.UI.Card
             base.Awake();
             CardHand = transform.parent.GetComponentInChildren<UiCardHand>();
             CardHand.OnCardPlayed += AddCard;
+            CardHand.OnCardDiscarded += AddCard;
         }
 
         #endregion

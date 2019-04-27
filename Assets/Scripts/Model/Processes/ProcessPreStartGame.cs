@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace SimpleCardGames.Battle
 {
@@ -19,7 +20,17 @@ namespace SimpleCardGames.Battle
         {
             if (Game.IsGameStarted) return;
 
+            //players draw starting cards
+            DrawStartingHands();
+
             OnGamePreStarted(Game.TurnLogic.Players);
+        }
+
+
+        private void DrawStartingHands()
+        {
+            foreach (var player in Game.Players)
+                player.DrawStartingHand();
         }
 
         /// <summary>

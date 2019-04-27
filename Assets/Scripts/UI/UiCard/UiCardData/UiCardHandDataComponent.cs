@@ -1,43 +1,32 @@
 ﻿using System;
-using SimpleCardGames.Data;
 using UnityEngine;
 
-namespace SimpleCardGames
+namespace SimpleCardGames.Data
 {
     //--------------------------------------------------------------------------------------------------------------
 
-    #region Interface
-
-    public interface ICardHandDataHandler
+    public interface ICardHandData
     {
-        CardData Data { get; }
-        Action<CardData> OnSetData { get; set; }
-        void SetData(CardData data);
+        IRuntimeCard Card { get; }
+        ICardData Data { get; }
+        Action<ICardData> OnSetData { get; set; }
+        void SetCard(IRuntimeCard card);
     }
-
-    #endregion
 
     //--------------------------------------------------------------------------------------------------------------
 
-    public class UiCardHandDataComponent : MonoBehaviour, ICardHandDataHandler
+    public class UiCardHandDataComponent : MonoBehaviour, ICardHandData
     {
         //--------------------------------------------------------------------------------------------------------------
 
-        #region Operations
-
-        public void SetData(CardData data)
+        public void SetCard(IRuntimeCard card)
         {
-            Data = data;
+            Card = card;
             OnSetData?.Invoke(Data);
         }
 
-        #endregion
-
-        #region Properties
-
-        public CardData Data { get; private set; }
-        public Action<CardData> OnSetData { get; set; } = data => { };
-
-        #endregion
+        public ICardData Data => Card.Data;
+        public Action<ICardData> OnSetData { get; set; } = data => { };
+        public IRuntimeCard Card { get; set; }
     }
 }

@@ -26,10 +26,10 @@
             if (Game.IsGameFinished)
                 return;
 
-            Game.TurnTime++;
-            Game.TotalTime++;
-            var reverseTime = (int) (TimeOutTurn - 1 - Game.TurnTime - TimeStartTurn);
-            OnTickTime(reverseTime, Game.TurnLogic.CurrentPlayer);
+            //Game.TurnTime++;
+            //Game.TotalTime++;
+            //var reverseTime = (int) (TimeOutTurn - 1 - Game.TurnTime - TimeStartTurn);
+            //OnTickTime(reverseTime, Game.TurnLogic.CurrentPlayer);
         }
 
         /// <summary>

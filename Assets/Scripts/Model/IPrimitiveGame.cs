@@ -1,14 +1,15 @@
-﻿namespace SimpleCardGames.Battle
+﻿using System.Collections.Generic;
+
+namespace SimpleCardGames.Battle
 {
     /// <summary>
-    ///     A game implementation.
-    ///     TODO: Consider to break down this interface in smaller interfaces.
+    ///     A game interface.
     /// </summary>
     public interface IPrimitiveGame
     {
         Configurations Configurations { get; }
-
-        IBoard Board { get; }
+        
+        List<IPlayer> Players { get; }
 
         ITurnLogic TurnLogic { get; }
 
@@ -29,12 +30,6 @@
         void StartCurrentPlayerTurn();
 
         void FinishCurrentPlayerTurn();
-
-        void Heal();
-
-        void Damage();
-
-        void Random();
 
         void Tick();
     }

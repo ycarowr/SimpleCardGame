@@ -171,18 +171,20 @@ public class PrefabPooler<T> : SingletonMB<T> where T : class
     #region Events
 
     /// <summary>
+    ///     Override this method to do something when before pool an object.
     /// </summary>
     /// <param name="prefabModel"></param>
-    private void OnPool(GameObject prefabModel)
+    protected virtual void OnPool(GameObject prefabModel)
     {
         // If you need to execute some code right BEFORE the object is pooled, you can do it here.
         // Clean references or reset variables are very common cases.
     }
 
     /// <summary>
+    ///     Override this method to do something after release an object.
     /// </summary>
     /// <param name="prefabModel"></param>
-    private void OnRelease(GameObject prefabModel)
+    protected virtual void OnRelease(GameObject prefabModel)
     {
         // If you need to execute some code right AFTER the object is released, you can do it here.
         // Clean references or reset variables are very common cases.

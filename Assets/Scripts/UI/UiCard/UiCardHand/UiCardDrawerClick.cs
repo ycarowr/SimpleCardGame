@@ -1,4 +1,8 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using Patterns;
+using SimpleCardGames.Battle;
+using SimpleCardGames.Battle.Controller;
+using UnityEngine;
 using UnityEngine.EventSystems;
 
 namespace Tools.UI.Card
@@ -16,9 +20,21 @@ namespace Tools.UI.Card
             Input.OnPointerClick += DrawCard;
         }
 
+        [Button]
+        private void Draw()
+        {
+            DrawCard(null);
+        }
+
         private void DrawCard(PointerEventData obj)
         {
-            CardDrawer.DrawRandom();
+            GameController.Instance.GetPlayerController(PlayerSeat.Bottom).Player.Draw();
+        }
+
+        private void Update()
+        {
+            if (UnityEngine.Input.GetKeyDown(KeyCode.Tab))
+                DrawCard(null);
         }
     }
 }

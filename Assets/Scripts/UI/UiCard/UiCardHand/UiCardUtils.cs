@@ -1,8 +1,14 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using Extensions;
 using SimpleCardGames.Data;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Extensions;
+using System.Linq;
+using SimpleCardGames;
+using SimpleCardGames.Battle.Controller;
+using SimpleCardGames.Battle;
 
 namespace Tools.UI.Card
 {
@@ -23,7 +29,7 @@ namespace Tools.UI.Card
         [SerializeField] [Tooltip("Game view transform")]
         private Transform gameView;
 
-        private UiCardHand CardHand { get; set; }
+        private IUiCardHand CardHand { get; set; }
 
         #endregion
 
@@ -36,85 +42,36 @@ namespace Tools.UI.Card
             CardHand = transform.parent.GetComponentInChildren<UiCardHand>();
         }
 
-        private IEnumerator Start()
-        {
-            //starting cards
-            for (var i = 0; i < 6; i++)
-            {
-                yield return new WaitForSeconds(0.2f);
-                DrawRandom();
-            }
-        }
-
         #endregion
 
         //--------------------------------------------------------------------------------------------------------------
 
-        #region Operations
-
-        [Button]
-        public void DrawRandom()
+        public void Draw(IRuntimeCard card)
         {
-            var rand = Random.Range(0, 3);
-            switch (rand)
-            {
-                case 0:
-                    DrawAWizard();
-                    break;
-                case 1:
-                    DrawAChimera();
-                    break;
-                case 2:
-                    DrawADemon();
-                    break;
-            }
-        }
-
-        [Button]
-        public void DrawAWizard()
-        {
-            var cardGo = CardFactory.Instance.Get(CardId.Wizard);
-            DrawCard(cardGo);
-        }
-
-        [Button]
-        public void DrawAChimera()
-        {
-            var cardGo = CardFactory.Instance.Get(CardId.Chimera);
-            DrawCard(cardGo);
-        }
-
-        [Button]
-        public void DrawADemon()
-        {
-            var cardGo = CardFactory.Instance.Get(CardId.Demon);
-            DrawCard(cardGo);
-        }
-
-
-        public void DrawCard(GameObject cardGo)
-        {
+            var cardGo = CardFactory.Instance.Get(card);
+            var uiCard = cardGo.GetComponent<IUiCard>();
             cardGo.name = "Card_" + Count;
-            var card = cardGo.GetComponent<IUiCard>();
-            card.transform.position = deckPosition.position;
+            cardGo.transform.position = deckPosition.position;
             Count++;
-            CardHand.AddCard(card);
+            CardHand.AddCard(uiCard);
+        }
+ 
+        public void Discard(IRuntimeCard card)
+        {
+            var uiCard = CardHand.GetCard(card);
+            CardHand.DiscardCard(uiCard);
         }
 
-        [Button]
-        public void PlayCard()
+        public void PlayCard(IRuntimeCard card)
         {
-            if (CardHand.Cards.Count > 0)
-            {
-                var randomCard = CardHand.Cards.RandomItem();
-                CardHand.PlayCard(randomCard);
-            }
+            var uiCard = CardHand.GetCard(card);
+            CardHand.PlayCard(uiCard);
         }
+
+        //--------------------------------------------------------------------------------------------------------------
 
         private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.Tab)) DrawAWizard();
-            if (Input.GetKeyDown(KeyCode.Space)) PlayCard();
+        { 
             if (Input.GetKeyDown(KeyCode.Escape)) Restart();
         }
 
@@ -122,8 +79,6 @@ namespace Tools.UI.Card
         {
             SceneManager.LoadScene(0);
         }
-
-        #endregion
 
         //--------------------------------------------------------------------------------------------------------------
     }

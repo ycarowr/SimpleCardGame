@@ -1,10 +1,12 @@
-﻿using UnityEngine;
+﻿using SimpleCardGames.Data;
+using UnityEngine;
 
 namespace Tools.UI.Card
 {
     [RequireComponent(typeof(Collider))]
     [RequireComponent(typeof(Rigidbody))]
-    [RequireComponent(typeof(IMouseInput))]
+    [RequireComponent(typeof(IMouseInput))] 
+    [RequireComponent(typeof(ICardHandData))]
     public class UiCardHandComponent : MonoBehaviour, IUiCard
     {
         //--------------------------------------------------------------------------------------------------------------
@@ -41,6 +43,7 @@ namespace Tools.UI.Card
         private Rigidbody MyRigidbody { get; set; }
         private IMouseInput MyInput { get; set; }
         private IUiCardHand Hand { get; set; }
+        public ICardHandData HandData { get; private set; }
         public MonoBehaviour MonoBehavior => this;
         public Camera MainCamera => Camera.main;
         public bool IsDragging => Fsm.IsCurrent<UiCardDrag>();
@@ -126,7 +129,7 @@ namespace Tools.UI.Card
         {
             if (IsInitialized)
                 return;
-
+            HandData = GetComponent<ICardHandData>();
             Hand = transform.parent.GetComponentInChildren<IUiCardHand>();
             //components
             MyTransform = transform;

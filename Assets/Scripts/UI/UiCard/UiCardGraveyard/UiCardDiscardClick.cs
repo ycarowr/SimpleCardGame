@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿using Extensions;
+using SimpleCardGames.Battle;
+using SimpleCardGames.Battle.Controller;
+using UnityEngine;
 using UnityEngine.EventSystems;
 
 namespace Tools.UI.Card
@@ -21,7 +24,12 @@ namespace Tools.UI.Card
 
         private void PlayRandom(PointerEventData obj)
         {
-            Utils.PlayCard();
+            if (UnityEngine.Input.GetKeyDown(KeyCode.Space))
+            {
+                // it will be removed
+                var rndCard = GameController.Instance.GetPlayerController(PlayerSeat.Bottom).Player.Hand.Units.RandomItem();
+                Utils.PlayCard(rndCard);
+            }
         }
     }
 }

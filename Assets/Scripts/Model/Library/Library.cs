@@ -15,7 +15,6 @@ namespace SimpleCardGames.Battle
 
         public Library(IPlayer player, BaseDeckData deckData, Configurations configurations)
         {
-            Debug.Log("Library Created: "+ player.Seat);
             if (deckData == null)
                 Debug.LogError("A deck cant have null cards");
 
@@ -41,8 +40,9 @@ namespace SimpleCardGames.Battle
                 if (!IsFinite)
                     CreateAndShuffle();
             }
-
-            return GetLastAndRemove();
+            var card = GetLastAndRemove();
+            Debug.Log("Drawn card: "+card.Data.CardName);
+            return card;
         }
 
         /// <summary>
@@ -61,10 +61,12 @@ namespace SimpleCardGames.Battle
         /// </summary>
         private void CreateAndShuffle()
         {
+            Debug.Log("Library Created: " + Owner.Seat);
             foreach (var card in cardRegister.Units)
                 AddCard(card);
 
             Shuffle();
+            Debug.Log("Shuffled");
         }
     }
 }

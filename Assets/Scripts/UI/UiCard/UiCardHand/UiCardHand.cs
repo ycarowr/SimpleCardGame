@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SimpleCardGames;
+using System;
 
 namespace Tools.UI.Card
 {
@@ -22,6 +23,8 @@ namespace Tools.UI.Card
 
         private event Action<IUiCard> OnCardPlayed = card => { };
 
+        private event Action<IUiCard> OnCardDiscarded= card => { };
+
         /// <summary>
         ///     Event raised when a card is played.
         /// </summary>
@@ -38,6 +41,15 @@ namespace Tools.UI.Card
         {
             get => OnCardSelected;
             set => OnCardSelected = value;
+        }
+
+        /// <summary>
+        ///     Event raised when a card is selected.
+        /// </summary>
+        Action<IUiCard> IUiCardHand.OnCardDiscarded
+        {
+            get => OnCardDiscarded;
+            set => OnCardDiscarded = value;
         }
 
         #endregion
@@ -87,6 +99,20 @@ namespace Tools.UI.Card
         }
 
         /// <summary>
+        ///     Discard the card in the parameter.
+        /// </summary>
+        /// <param name="card"></param>
+        public void DiscardCard(IUiCard card)
+        {
+            if (card == null)
+                throw new ArgumentNullException("Null is not a valid argument.");
+
+            RemoveCard(card);
+            OnCardDiscarded?.Invoke(card);
+            EnableCards();
+        }
+
+        /// <summary>
         ///     Unselect the card in the parameter.
         /// </summary>
         /// <param name="card"></param>
@@ -131,6 +157,11 @@ namespace Tools.UI.Card
         private void NotifyCardSelected()
         {
             OnCardSelected?.Invoke(SelectedCard);
+        }
+
+        public IUiCard GetCard(IRuntimeCard card)
+        {
+            return Cards.Find(x => x.HandData.Data == card.Data);
         }
 
         #endregion

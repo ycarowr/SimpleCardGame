@@ -21,6 +21,7 @@
             if (Game.IsGameFinished)
                 return;
 
+
             Game.IsTurnInProgress = true;
             Game.TurnLogic.UpdateCurrentPlayer();
             Game.TurnLogic.CurrentPlayer.StartTurn();

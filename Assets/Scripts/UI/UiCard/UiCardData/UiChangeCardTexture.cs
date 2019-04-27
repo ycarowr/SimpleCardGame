@@ -7,9 +7,9 @@ namespace SimpleCardGames
     public class UiChangeCardTexture : MonoBehaviour
     {
         private SpriteRenderer MyRenderer { get; set; }
-        private ICardHandDataHandler Handler { get; set; }
+        private ICardHandData Handler { get; set; }
 
-        private void OnSetData(CardData data)
+        private void OnSetData(ICardData data)
         {
             SetTexture(data.Artwork);
         }
@@ -22,7 +22,7 @@ namespace SimpleCardGames
         private void Awake()
         {
             MyRenderer = GetComponent<SpriteRenderer>();
-            Handler = GetComponentInParent<ICardHandDataHandler>();
+            Handler = GetComponentInParent<ICardHandData>();
             Handler.OnSetData += OnSetData;
         }
 
