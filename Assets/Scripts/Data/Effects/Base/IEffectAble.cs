@@ -12,5 +12,6 @@
     /// </summary>
     public interface IEffector
     {
+        EffectsSet Effects { get; }
     }
 }

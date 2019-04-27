@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   teamMembers:
   - {fileID: 11400000, guid: 6c70aa5f64a6a1243ad08cf2e3f86d90, type: 2}
-  description: This is my team with my hero(es)
+  description: Player's hero(es)

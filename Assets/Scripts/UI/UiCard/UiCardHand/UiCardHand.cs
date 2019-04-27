@@ -64,7 +64,10 @@ namespace Tools.UI.Card
         /// <param name="card"></param>
         public void SelectCard(IUiCard card)
         {
-            SelectedCard = card ?? throw new ArgumentNullException("Null is not a valid argument.");
+            if (card == null)
+                return;
+
+            SelectedCard = card;
 
             //disable all cards
             DisableCards();
@@ -90,7 +93,7 @@ namespace Tools.UI.Card
         public void PlayCard(IUiCard card)
         {
             if (card == null)
-                throw new ArgumentNullException("Null is not a valid argument.");
+                return;
 
             SelectedCard = null;
             RemoveCard(card);
@@ -105,7 +108,7 @@ namespace Tools.UI.Card
         public void DiscardCard(IUiCard card)
         {
             if (card == null)
-                throw new ArgumentNullException("Null is not a valid argument.");
+                return;
 
             RemoveCard(card);
             OnCardDiscarded?.Invoke(card);

@@ -1,4 +1,5 @@
 ﻿using SimpleCardGames.Data;
+using SimpleCardGames.Data.Effects;
 using UnityEngine;
 
 namespace SimpleCardGames
@@ -12,6 +13,8 @@ namespace SimpleCardGames
         {
             SetData(data);
         }
+
+        EffectsSet IEffector.Effects => Data.Effects;
 
         /// <summary>
         ///     Reference for all card data.
