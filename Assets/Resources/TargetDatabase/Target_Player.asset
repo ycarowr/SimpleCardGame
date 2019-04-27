@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e89525b13202e564eb4e743e88065a14, type: 3}
-  m_Name: HealEffect_1
+  m_Script: {fileID: 11500000, guid: 51904d44826c8b048af2115d751b7952, type: 3}
+  m_Name: Target_Player
   m_EditorClassIdentifier: 
-  description: Heals the current player for 1
-  amount: 1
+  description: "It affects the player. \nUsually makes him \ndraw or discard cards"
+  playerSeat: 0

@@ -9,9 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50b17764b24a1fc40b45bdb28f893ff8, type: 3}
-  m_Name: DrawCard_2
+  m_Script: {fileID: 11500000, guid: b3085671932303b4bb366e6d2d998589, type: 3}
+  m_Name: Damage_Enemies_1
   m_EditorClassIdentifier: 
-  amount: 2
-  target: {fileID: 11400000, guid: 37df52f7500694548a3a3193f1c95aee, type: 2}
-  description: Player who played it draw 2 cards
+  amount: 1
+  target: {fileID: 11400000, guid: fbf2fa02b4a6f284e8fbd0481b7a779d, type: 2}
+  description: 'It does 1 damage to all opponent''s
+
+    characters'

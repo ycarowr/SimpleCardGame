@@ -9,8 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3085671932303b4bb366e6d2d998589, type: 3}
-  m_Name: DamageEffect_3
+  m_Script: {fileID: 11500000, guid: e89525b13202e564eb4e743e88065a14, type: 3}
+  m_Name: Heal_Players_2
   m_EditorClassIdentifier: 
-  description: It does 3 damage to the opponent
-  amount: 3
+  amount: 2
+  target: {fileID: 11400000, guid: 6ac7e9ce94606d3458e76b17f1f4b29e, type: 2}
+  description: 'It heals to all opponent''s
+
+    characters for 2'

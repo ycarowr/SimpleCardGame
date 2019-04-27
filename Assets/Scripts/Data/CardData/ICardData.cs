@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using SimpleCardGames.Data.Effects;
+using UnityEngine;
 
 namespace SimpleCardGames.Data
 {
@@ -9,5 +10,6 @@ namespace SimpleCardGames.Data
         CardType CardType { get; }
         string CardDescription { get; }
         Sprite Artwork { get; }
+        EffectsSet Effects { get; }
     }
 }

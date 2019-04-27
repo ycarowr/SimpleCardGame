@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3085671932303b4bb366e6d2d998589, type: 3}
-  m_Name: DamageEffect_1
+  m_Script: {fileID: 11500000, guid: a547d7c1279943644a714b5f278e892b, type: 3}
+  m_Name: Target_Opponent Team
   m_EditorClassIdentifier: 
-  description: It does 1 damage to the opponent
-  amount: 1
+  description: It affects all the enemy team.
+  opponentSeat: 0

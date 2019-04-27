@@ -21,8 +21,6 @@ namespace SimpleCardGames.Battle
             if (teamData != null)
                 Team = teamData.GetMembers(this);
 
-            Debug.Log("Team Created "+ Seat);
-
             if (deckData != null)
                 Library = new Library(this, deckData, Configurations);
         }
@@ -56,6 +54,7 @@ namespace SimpleCardGames.Battle
                 return false;
 
             var card = Library.DrawTop();
+            card.Draw();
             Hand.Add(card);
             OnDrawCard(this, card);
             return true;
@@ -68,7 +67,7 @@ namespace SimpleCardGames.Battle
             var hasCard = Hand.Has(card);
             if (!hasCard)
                 return false;
-
+            card.Discard();
             Hand.Remove(card);
             OnDiscardCard(this, card);
             return true;
@@ -82,6 +81,7 @@ namespace SimpleCardGames.Battle
             if (!hasCard)
                 return false;
 
+            card.Play();
             Hand.Remove(card);
             OnPlayCard(this, card);
             return true;

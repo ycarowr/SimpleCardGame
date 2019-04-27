@@ -5,13 +5,9 @@ using UnityEngine;
 
 namespace SimpleCardGames.Data
 {
-    [CreateAssetMenu(menuName = "Data/Card")]
+    [CreateAssetMenu(menuName = "Data/Card")] 
     public class CardData : ScriptableObject, ICardData
     {
-        //--------------------------------------------------------------------------------------------------------------
-                
-        private const string Path = "CardDatabase";
-        private static List<CardData> dataBase = new List<CardData>();
         [SerializeField] private CardId id;
         [SerializeField] private MoveType moveType;
         [SerializeField] private CardType cardType;
@@ -28,16 +24,7 @@ namespace SimpleCardGames.Data
         public MoveType MoveType => moveType;
         public string CardDescription => cardDescription;
         public Sprite Artwork => artwork;
-
-
-        //--------------------------------------------------------------------------------------------------------------       
-
-        private void OnEnable()
-        {
-            dataBase.Add(this);
-        }
+        public EffectsSet Effects => dataEffects;
         
-        
-        //--------------------------------------------------------------------------------------------------------------
     }
 }

@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50b17764b24a1fc40b45bdb28f893ff8, type: 3}
-  m_Name: DrawCard_2
+  m_Script: {fileID: 11500000, guid: 44f2e0d6ca3b89e4b86463abaf50e0e5, type: 3}
+  m_Name: Discard_Random_1
   m_EditorClassIdentifier: 
-  amount: 2
+  amount: 1
   target: {fileID: 11400000, guid: 37df52f7500694548a3a3193f1c95aee, type: 2}
-  description: Player who played it draw 2 cards
+  description: The player discards a card randomly

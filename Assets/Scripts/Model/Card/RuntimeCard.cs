@@ -10,7 +10,6 @@ namespace SimpleCardGames
     {
         public RuntimeCard(ICardData data)
         {
-            Debug.Log("Runtime Card: "+data.CardName + " Created");
             SetData(data);
         }
 
@@ -33,7 +32,7 @@ namespace SimpleCardGames
         /// </summary>
         public void Draw()
         {
-            Debug.Log("Draw "+ Data.CardName);
+            
         }
 
         /// <summary>
@@ -41,7 +40,7 @@ namespace SimpleCardGames
         /// </summary>
         public void Play()
         {
-            Debug.Log("Play " + Data.CardName);
+            
         }
 
         /// <summary>
@@ -49,7 +48,7 @@ namespace SimpleCardGames
         /// </summary>
         public void Discard()
         {
-            Debug.Log("Discard " + Data.CardName);
+            
         }
     }
 }

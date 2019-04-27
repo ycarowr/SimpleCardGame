@@ -7,15 +7,15 @@ namespace SimpleCardGames.Battle.Controller
     ///     Main Card UI. It resolves the dependencies accessing the game controller via Singleton.
     /// </summary>
     [RequireComponent(typeof(IUiCardHand))]
-    public class UiPlayerCardsContainer : MonoBehaviour, IUiPlayer
+    public class UiCardPlayer : MonoBehaviour, IUiPlayer
     {
         //----------------------------------------------------------------------------------------------------------
 
         private void OnCardPlayed(IUiCard card)
         {
-            Debug.Log("On Play " + card.Name);
-            //PlayerController.ProcessMove()
+            
         }
+
         //----------------------------------------------------------------------------------------------------------
 
         #region Properties

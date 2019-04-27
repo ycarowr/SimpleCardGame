@@ -41,7 +41,6 @@ namespace SimpleCardGames.Battle
                     CreateAndShuffle();
             }
             var card = GetLastAndRemove();
-            Debug.Log("Drawn card: "+card.Data.CardName);
             return card;
         }
 
@@ -61,12 +60,10 @@ namespace SimpleCardGames.Battle
         /// </summary>
         private void CreateAndShuffle()
         {
-            Debug.Log("Library Created: " + Owner.Seat);
             foreach (var card in cardRegister.Units)
                 AddCard(card);
 
             Shuffle();
-            Debug.Log("Shuffled");
         }
     }
 }

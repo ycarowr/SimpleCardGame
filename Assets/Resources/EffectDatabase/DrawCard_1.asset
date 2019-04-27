@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50b17764b24a1fc40b45bdb28f893ff8, type: 3}
   m_Name: DrawCard_1
   m_EditorClassIdentifier: 
-  description: Player who played it draw a card
   amount: 1
+  target: {fileID: 11400000, guid: 37df52f7500694548a3a3193f1c95aee, type: 2}
+  description: Player who played it draw a card

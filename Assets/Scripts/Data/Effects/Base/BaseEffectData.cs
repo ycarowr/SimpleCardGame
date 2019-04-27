@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using SimpleCardGames.Data.Target;
+using UnityEngine;
 
 namespace SimpleCardGames.Data.Effects
 {
@@ -11,9 +12,13 @@ namespace SimpleCardGames.Data.Effects
 
         //---------------------------------------------------------------------------------------------------------------------
 
-        [field: SerializeField]
-        [field: Tooltip("Quantity of the effect.")]
-        public int Amount { get; }
+        [SerializeField]
+        [Tooltip("Quantity of the effect.")]
+        private int amount;
+        public int Amount => amount;
+
+        [SerializeField] [Tooltip("Targets of this effect.")] private BaseTargetType target;
+        public BaseTargetType Target => target;
 
         //---------------------------------------------------------------------------------------------------------------------
 
@@ -22,7 +27,7 @@ namespace SimpleCardGames.Data.Effects
         /// </summary>
         /// <param name="target"></param>
         /// <param name="source"></param>
-        public abstract void Apply(IEffectable target, RuntimeCard source);
+        public abstract void Apply(IEffectable target, IEffector source);
         //---------------------------------------------------------------------------------------------------------------------
 
         #region Fields

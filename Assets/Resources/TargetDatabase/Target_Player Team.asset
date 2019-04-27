@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e89525b13202e564eb4e743e88065a14, type: 3}
-  m_Name: HealEffect_3
+  m_Script: {fileID: 11500000, guid: ad4130e51024ccb44b9688f4053adcfd, type: 3}
+  m_Name: Target_Player Team
   m_EditorClassIdentifier: 
-  description: Heals the current player for 1
-  amount: 3
+  description: It affects all the player team.
+  playerSeat: 0

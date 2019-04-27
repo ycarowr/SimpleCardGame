@@ -1,12 +1,14 @@
-﻿using Tools;
+﻿using SimpleCardGames.Data.Effects;
+using Tools;
 
 namespace SimpleCardGames.Battle
 {
-    public interface IPlayer
+    public interface IPlayer : IEffectable
     {
         Configurations Configurations { get; }
         Collection<IRuntimeCard> Hand { get; }
         PlayerSeat Seat { get; }
+        ITeam Team { get; }
         void StartTurn();
         void FinishTurn();
         void DrawStartingHand();
