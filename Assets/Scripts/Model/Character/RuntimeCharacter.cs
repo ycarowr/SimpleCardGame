@@ -37,10 +37,10 @@ namespace SimpleCardGames.Battle
             SetData(characterData, player);
         }
 
-        public void SetData(ICharacterData cardData, IPlayer player)
+        public void SetData(ICharacterData data, IPlayer player)
         {
             Owner = player;
-            Data = cardData;
+            Data = data;
             Attributes = new CharAttributes(Data, Owner);
             Health = new HealthMechanic(this);
             Damage = new DamageMechanic(this);

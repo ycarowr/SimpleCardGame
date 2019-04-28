@@ -7,6 +7,7 @@ namespace SimpleCardGames.Battle
     {
         Configurations Configurations { get; }
         Collection<IRuntimeCard> Hand { get; }
+        ILibrary Library { get; }
         PlayerSeat Seat { get; }
         ITeam Team { get; }
         void StartTurn();

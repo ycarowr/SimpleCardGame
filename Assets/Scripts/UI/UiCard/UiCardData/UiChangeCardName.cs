@@ -4,7 +4,7 @@
     {
         protected override string GetText()
         {
-            return Handler.Data.CardName;
+            return Handler.Data.Name;
         }
     }
 }

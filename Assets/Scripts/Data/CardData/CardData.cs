@@ -11,16 +11,16 @@ namespace SimpleCardGames.Data
         [SerializeField] private CardId id;
         [SerializeField] private CardType cardType;
         [SerializeField] private string cardName;
-        [SerializeField] private string cardDescription;
+        [SerializeField] private string description;
         [SerializeField] private Sprite artwork;
         [SerializeField] private EffectsSet dataEffects;
                 
         //--------------------------------------------------------------------------------------------------------------
         
         public CardId Id => id;
-        public string CardName => cardName;
         public CardType CardType => cardType;
-        public string CardDescription => cardDescription;
+        public string Name => cardName;
+        public string Description => description;
         public Sprite Artwork => artwork;
         public EffectsSet Effects => dataEffects;
         

@@ -4,6 +4,7 @@ using SimpleCardGames.Data.Character;
 using SimpleCardGames.Data.Deck;
 using Tools;
 using UnityEngine;
+using SimpleCardGames.Data.Effects;
 
 namespace SimpleCardGames.Battle
 {
@@ -24,11 +25,19 @@ namespace SimpleCardGames.Battle
 
             if (deckData != null)
                 Library = new Library(this, deckData, Configurations);
+
+            #region Mechanics
+
+            DrawMechanics = new DrawMechanics(this);
+            DiscardMechanics = new DiscardMechanics(this);
+            PlayCardMechanics = new PlayCardMechanics(this);
+            StartTurnMechanics = new StartTurnMechanics(this);
+            FinishTurnMechanics = new FinishTurnMechanics(this);
+
+            #endregion
         }
 
         //----------------------------------------------------------------------------------------------------------
-
-        public IBoard Board { get; private set; }
 
         public ILibrary Library { get; private set; }
 
@@ -42,129 +51,75 @@ namespace SimpleCardGames.Battle
 
         //----------------------------------------------------------------------------------------------------------
 
+        #region Draw 
+
+        public DrawMechanics DrawMechanics { get; }
+
         void IPlayer.DrawStartingHand()
         {
-            var quant = Configurations.Amount.LibraryPlayer.startingAmount;
-            for (int i = 0; i < quant; i++)
-                Draw(); 
+            DrawMechanics.DrawStartingHand();
         }
 
-        void IDrawable.DoDraw(int amount, Data.Effects.IEffector source)
+        void IDrawable.DoDraw(int amount, IEffector source)
         {
-            for (var i = 0; i < amount; i++)
-                Draw();
+            DrawMechanics.DoDraw(amount, source);
         }
 
         public bool Draw()
         {
-            if (Library == null)
-                return false;
-
-            var card = Library.DrawTop();
-            card.Draw();
-            Hand.Add(card);
-            OnDrawCard(this, card);
-            return true;
-        }
-
-        //----------------------------------------------------------------------------------------------------------
-
-        void IDiscardable.DoDiscard(int amount, Data.Effects.IEffector source)
-        {
-            for (var i = 0; i < amount; i++)
-            {
-                if (Hand.Size <= 0)
-                    break;
-
-                var card = Hand.Units.RandomItem();
-                Discard(card);
-            }
-        }
-
-        public bool Discard(IRuntimeCard card)
-        {
-            var hasCard = Hand.Has(card);
-            if (!hasCard)
-                return false;
-            card.Discard();
-            Hand.Remove(card);
-            OnDiscardCard(this, card);
-            return true;
-        }
-
-        //----------------------------------------------------------------------------------------------------------
-
-        bool IPlayer.Play(IRuntimeCard card)
-        {
-            var hasCard = Hand.Has(card);
-            if (!hasCard)
-                return false;
-
-            Hand.Remove(card);
-            card.Play();
-            OnPlayCard(this, card);
-            return true;
-        }
-
-        //----------------------------------------------------------------------------------------------------------
-
-        void IPlayer.FinishTurn()
-        {
-            if (Configurations.Amount.LibraryPlayer.isDiscardableHands)
-                DiscardAll();
-        }
-
-        private void DiscardAll()
-        {
-            var quant = Hand.Size;
-            for (var i = 0; i < quant; i++)
-                Discard(Hand.Units[0]);
-        }
-
-        void IPlayer.StartTurn()
-        {
-            var quant = Configurations.Amount.LibraryPlayer.drawAmountByTurn;
-            for (int i = 0; i < quant; i++)
-                Draw();
-        }
-
-        //----------------------------------------------------------------------------------------------------------
-
-        #region Dispatch Events
-
-        /// <summary>
-        ///     Dispatch card draw to the listeners.
-        /// </summary>
-        /// <param name="player"></param>
-        /// <param name="card"></param>
-        private void OnDrawCard(Player player, IRuntimeCard card)
-        {
-            GameEvents.Instance.Notify<IPlayerDrawCard>(i => i.OnDrawCard(player, card));
-
-        }
-
-        /// <summary>
-        ///     Dispatch card discarded to the listeners.
-        /// </summary>
-        /// <param name="player"></param>
-        /// <param name="card"></param>
-        private void OnDiscardCard(Player player, IRuntimeCard card)
-        {
-            GameEvents.Instance.Notify<IPlayerDiscardCard>(i => i.OnDiscardCard(player, card));
-        }
-
-        /// <summary>
-        ///     Dispatch card played to the listeners.
-        /// </summary>
-        /// <param name="player"></param>
-        /// <param name="card"></param>
-        private void OnPlayCard(Player player, IRuntimeCard card)
-        {
-            GameEvents.Instance.Notify<IPlayerPlayCard>(i => i.OnPlayCard(player, card));
+            return DrawMechanics.Draw();
         }
 
         #endregion
 
         //----------------------------------------------------------------------------------------------------------
+
+        #region Discard 
+
+        public DiscardMechanics DiscardMechanics { get; }
+
+        void IDiscardable.DoDiscard(int amount, Data.Effects.IEffector source)
+        {
+            DiscardMechanics.DoDiscard(amount, source);
+        }
+
+        public bool Discard(IRuntimeCard card)
+        {
+            return DiscardMechanics.Discard(card);
+        }
+
+        #endregion
+
+        //----------------------------------------------------------------------------------------------------------
+
+        #region Play
+
+        public PlayCardMechanics PlayCardMechanics { get; }
+
+        bool IPlayer.Play(IRuntimeCard card)
+        {
+            return PlayCardMechanics.Play(card);
+        }
+
+        #endregion
+
+        //----------------------------------------------------------------------------------------------------------
+
+        #region Turn
+        
+        public StartTurnMechanics StartTurnMechanics { get; }
+        public FinishTurnMechanics FinishTurnMechanics { get; }
+
+        void IPlayer.FinishTurn()
+        {
+            FinishTurnMechanics.FinishTurn();
+        }
+
+        void IPlayer.StartTurn()
+        {
+            StartTurnMechanics.StartTurn();
+        }
+
+        #endregion
     }
 }
