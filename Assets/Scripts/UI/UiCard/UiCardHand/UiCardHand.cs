@@ -1,5 +1,8 @@
 ﻿using SimpleCardGames;
+using SimpleCardGames.Battle;
+using SimpleCardGames.Battle.Controller;
 using System;
+using UnityEngine;
 
 namespace Tools.UI.Card
 {
@@ -12,7 +15,17 @@ namespace Tools.UI.Card
     {
         //--------------------------------------------------------------------------------------------------------------
 
+        protected override void Awake()
+        {
+            base.Awake();
+            Controller = GetComponent<IUiPlayer>();
+        }
+
+        //--------------------------------------------------------------------------------------------------------------
+
         #region Properties
+
+        private IUiPlayer Controller { get; set; }
 
         /// <summary>
         ///     Card currently selected by the player.
@@ -87,18 +100,25 @@ namespace Tools.UI.Card
         }
 
         /// <summary>
-        ///     Play the card in the parameter.
+        ///     Play the card in the parameter. If can't unselect it.
         /// </summary>
-        /// <param name="card"></param>
-        public void PlayCard(IUiCard card)
+        /// <param name="uiCard"></param>
+        public void PlayCard(IUiCard uiCard)
         {
-            if (card == null)
+            if (uiCard == null)
                 return;
 
-            SelectedCard = null;
-            RemoveCard(card);
-            OnCardPlayed?.Invoke(card);
-            EnableCards();
+            var card = uiCard.HandData.RuntimeCard;
+            var isplayed = Controller.PlayerController.PlayCard(card);
+
+            if(isplayed)
+            {
+                SelectedCard = null;
+                RemoveCard(uiCard);
+                OnCardPlayed?.Invoke(uiCard);
+                EnableCards();
+            } else
+                Unselect();
         }
 
         /// <summary>

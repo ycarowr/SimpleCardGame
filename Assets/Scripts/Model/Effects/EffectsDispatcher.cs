@@ -1,12 +1,14 @@
 ﻿
 using System;
 using SimpleCardGames.Data.Effects;
+using UnityEngine;
+using static SimpleCardGames.Data.Effects.EffectsSet;
 
 namespace SimpleCardGames.Battle
 {
-    public class EffectsDispatcher
+    public static partial class EffectsDispatcher
     {
-        private static void DispatchEvents(IRuntimeCard card, EffectTriggerType triggerType)
+        public static void DispatchEffects(IRuntimeCard card, EffectTriggerType triggerType)
         {
             //grab all effects from the card
             var effects = GetEffects(card);
@@ -23,9 +25,9 @@ namespace SimpleCardGames.Battle
                 EffectsResolver.Resolve(effect, card);
         }
 
-        private static EffectsByTrigger GetEffects(IRuntimeCard card)
+        private static EffectRegister GetEffects(IRuntimeCard card)
         {
-            return card.Data.Effects.EffectsByTrigger;
+            return card.Data.Effects.Register;
         }
     }
 }

@@ -2,7 +2,7 @@
 using SimpleCardGames.Data.Effects;
 using UnityEngine;
 
-namespace SimpleCardGames
+namespace SimpleCardGames.Battle
 {
     /// <summary>
     ///     A card at the runtime.
@@ -35,7 +35,7 @@ namespace SimpleCardGames
         /// </summary>
         public void Draw()
         {
-            
+            EffectsDispatcher.DispatchEffects(this, EffectTriggerType.OnDraw);
         }
 
         /// <summary>
@@ -43,7 +43,7 @@ namespace SimpleCardGames
         /// </summary>
         public void Play()
         {
-            
+            EffectsDispatcher.DispatchEffects(this, EffectTriggerType.OnPlay);
         }
 
         /// <summary>
@@ -51,7 +51,7 @@ namespace SimpleCardGames
         /// </summary>
         public void Discard()
         {
-            
+            EffectsDispatcher.DispatchEffects(this, EffectTriggerType.OnDiscard);
         }
     }
 }

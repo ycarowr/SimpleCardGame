@@ -9,7 +9,6 @@ namespace SimpleCardGames.Data
     public class CardData : ScriptableObject, ICardData
     {
         [SerializeField] private CardId id;
-        [SerializeField] private MoveType moveType;
         [SerializeField] private CardType cardType;
         [SerializeField] private string cardName;
         [SerializeField] private string cardDescription;
@@ -21,7 +20,6 @@ namespace SimpleCardGames.Data
         public CardId Id => id;
         public string CardName => cardName;
         public CardType CardType => cardType;
-        public MoveType MoveType => moveType;
         public string CardDescription => cardDescription;
         public Sprite Artwork => artwork;
         public EffectsSet Effects => dataEffects;

@@ -7,6 +7,8 @@ namespace SimpleCardGames.Data.Effects
     {
         public override void Apply(IEffectable target, IEffector source)
         {
+            var drawable = target as IDrawable;
+            drawable.DoDraw(Amount, source);
         }
     }
 }

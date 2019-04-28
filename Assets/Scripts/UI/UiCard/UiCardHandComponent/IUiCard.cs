@@ -18,5 +18,6 @@ namespace Tools.UI.Card
         void Hover();
         void Draw();
         void Discard();
+        void Play();
     }
 }

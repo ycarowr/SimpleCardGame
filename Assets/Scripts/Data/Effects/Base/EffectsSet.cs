@@ -4,39 +4,31 @@ using UnityEngine;
 
 namespace SimpleCardGames.Data.Effects
 {
+    /// <summary>
+    ///     It holds all the effects of a card. 
+    /// </summary>
     [CreateAssetMenu(menuName = "Data/Effect Set")]
     public class EffectsSet : ScriptableObject
     {
-        public static EffectTriggerType[] AllTriggers =
+        [SerializeField] private EffectRegister register = new EffectRegister();
+        public EffectRegister Register => register;
+
+        /// <summary>
+        ///     A register of effects organized by trigger type.
+        ///     TODO: Evalute whether to keep or not the sorted dictionary.
+        /// </summary>
+        [Serializable]
+        public class EffectRegister : SerializableSortedDictionary<EffectTriggerType, ListEffects>
         {
-            EffectTriggerType.OnPlay,
-            EffectTriggerType.OnPlayerStartTurn,
-            EffectTriggerType.OnPlayerFinishTurn,
-            EffectTriggerType.OnDraw,
-            EffectTriggerType.OnDiscard
-        };
+        }
 
-        public static Dictionary<EffectTriggerType, string> AllTriggersByName =
-            new Dictionary<EffectTriggerType, string>
-            {
-                {EffectTriggerType.OnPlayerStartTurn, "On Start Turn"},
-                {EffectTriggerType.OnPlayerFinishTurn, "On Finish Turn"},
-                {EffectTriggerType.OnDraw, "On Draw"},
-                {EffectTriggerType.OnDiscard, "On Discard"},
-                {EffectTriggerType.OnPlay, "On Play"}
-            };
-
-        [field: SerializeField] public EffectsByTrigger EffectsByTrigger { get; } = new EffectsByTrigger();
-    }
-
-    [Serializable]
-    public class EffectsByTrigger : SerializableSortedDictionary<EffectTriggerType, ListEffects>
-    {
-    }
-
-    [Serializable]
-    public class ListEffects
-    {
-        public List<BaseEffectData> Effects = new List<BaseEffectData>();
+        /// <summary>
+        ///     Just a serializable list of effects.
+        /// </summary>
+        [Serializable]
+        public class ListEffects
+        {
+            public List<BaseEffectData> Effects = new List<BaseEffectData>();
+        }
     }
 }

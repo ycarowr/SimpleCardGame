@@ -7,6 +7,8 @@ namespace SimpleCardGames.Data.Effects
     {
         public override void Apply(IEffectable target, IEffector source)
         {
+            var discardable = target as IDiscardable;
+            discardable.DoDiscard(Amount, source);
         }
     }
 }

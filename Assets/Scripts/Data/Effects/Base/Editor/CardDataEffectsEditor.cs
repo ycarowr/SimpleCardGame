@@ -2,6 +2,7 @@
 using SimpleCardGames.Data.Effects;
 using UnityEditor;
 using UnityEngine;
+using static SimpleCardGames.Data.Effects.EffectsSet;
 
 [CustomEditor(typeof(EffectsSet))]
 public class CardDataEffectsEditor : Editor
@@ -45,7 +46,7 @@ public class CardDataEffectsEditor : Editor
 
     private void DrawCurrentState()
     {
-        var allEffects = MyTarget.EffectsByTrigger;
+        var allEffects = MyTarget.Register;
 
         Space();
 
@@ -79,7 +80,7 @@ public class CardDataEffectsEditor : Editor
         GUILayout.Space(25);
     }
 
-    private void DrawLabelAndAddTrigger(EffectsByTrigger effectsByRole, EffectTriggerType trigger)
+    private void DrawLabelAndAddTrigger(EffectRegister effectsByRole, EffectTriggerType trigger)
     {
         Bh();
 
@@ -90,7 +91,7 @@ public class CardDataEffectsEditor : Editor
         Eh();
     }
 
-    private void DrawDataEffects(EffectsByTrigger effectsByRole, EffectTriggerType trigger)
+    private void DrawDataEffects(EffectRegister effectsByRole, EffectTriggerType trigger)
     {
         for (var i = 0; i < effectsByRole[trigger].Effects.Count; i++)
         {
@@ -110,7 +111,7 @@ public class CardDataEffectsEditor : Editor
 
     private void RemoveEmptyLists()
     {
-        var allEffects = MyTarget.EffectsByTrigger;
+        var allEffects = MyTarget.Register;
         var toRemove = allEffects.Where(x => x.Value.Effects.Count == 0)
             .Select(x => x.Key)
             .ToList();
@@ -121,7 +122,7 @@ public class CardDataEffectsEditor : Editor
 
     private void AddTrigger()
     {
-        var allEffects = MyTarget.EffectsByTrigger;
+        var allEffects = MyTarget.Register;
 
         if (!allEffects.ContainsKey(ChosenTrigger))
         {
@@ -133,7 +134,7 @@ public class CardDataEffectsEditor : Editor
 
     private void RemoveTrigger()
     {
-        var allEffects = MyTarget.EffectsByTrigger;
+        var allEffects = MyTarget.Register;
         if (allEffects.ContainsKey(ChosenTrigger))
             allEffects.Remove(ChosenTrigger);
     }

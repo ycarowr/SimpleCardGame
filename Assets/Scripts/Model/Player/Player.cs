@@ -1,4 +1,5 @@
 ﻿using System;
+using Extensions;
 using SimpleCardGames.Data.Character;
 using SimpleCardGames.Data.Deck;
 using Tools;
@@ -48,6 +49,12 @@ namespace SimpleCardGames.Battle
                 Draw(); 
         }
 
+        void IDrawable.DoDraw(int amount, Data.Effects.IEffector source)
+        {
+            for (var i = 0; i < amount; i++)
+                Draw();
+        }
+
         public bool Draw()
         {
             if (Library == null)
@@ -61,6 +68,18 @@ namespace SimpleCardGames.Battle
         }
 
         //----------------------------------------------------------------------------------------------------------
+
+        void IDiscardable.DoDiscard(int amount, Data.Effects.IEffector source)
+        {
+            for (var i = 0; i < amount; i++)
+            {
+                if (Hand.Size <= 0)
+                    break;
+
+                var card = Hand.Units.RandomItem();
+                Discard(card);
+            }
+        }
 
         public bool Discard(IRuntimeCard card)
         {
@@ -81,8 +100,8 @@ namespace SimpleCardGames.Battle
             if (!hasCard)
                 return false;
 
-            card.Play();
             Hand.Remove(card);
+            card.Play();
             OnPlayCard(this, card);
             return true;
         }

@@ -117,7 +117,7 @@ namespace SimpleCardGames.Battle.Controller
                 return false;
 
             Player.Play(card);
-            return TryPassTurn();
+            return true;
         }
 
         /// <summary>

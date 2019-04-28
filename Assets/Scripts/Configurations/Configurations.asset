@@ -44,5 +44,5 @@ MonoBehaviour:
     LibraryPlayer:
       isFinite: 0
       isDiscardableHands: 1
-      startingAmount: 5
-      drawAmountByTurn: 5
+      startingAmount: 3
+      drawAmountByTurn: 3

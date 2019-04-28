@@ -3,7 +3,7 @@ using Tools;
 
 namespace SimpleCardGames.Battle
 {
-    public interface IPlayer : IEffectable
+    public interface IPlayer : IEffectable, IDrawable, IDiscardable
     {
         Configurations Configurations { get; }
         Collection<IRuntimeCard> Hand { get; }

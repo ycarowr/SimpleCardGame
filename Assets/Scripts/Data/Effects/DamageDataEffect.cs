@@ -7,6 +7,7 @@ namespace SimpleCardGames.Data.Effects
     {
         public override void Apply(IEffectable target, IEffector source)
         {
+            Debug.Log("Apply: "+GetType());
         }
     }
 }
