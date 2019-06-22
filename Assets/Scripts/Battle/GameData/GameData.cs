@@ -8,25 +8,6 @@ using UnityEngine;
 namespace SimpleCardGames.Battle
 {
     /// <summary>
-    ///     All classes dependent of the game data.
-    /// </summary>
-    public interface IGameDataHandler
-    {
-        IGameData Data { get; }
-    }
-
-    /// <summary>
-    ///     Game data public interface
-    /// </summary>
-    public interface IGameData
-    {
-        IPrimitiveGame RuntimeGame { get; }
-        void CreateGame();
-        void LoadGame();
-        void Clear();
-    }
-
-    /// <summary>
     ///     Game data concrete implementation with Singleton Pattern.
     /// </summary>
     public class GameData : SingletonMB<GameData>, IGameData
