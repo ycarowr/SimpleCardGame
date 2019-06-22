@@ -8,7 +8,6 @@ namespace SimpleCardGames.Data.Card
         int CardCost { get; }
         CardType CardType { get; }
         CardMonsterType CardMonsterType { get; }
-        CardRarity CardRarity { get; }
         EffectsSet Effects { get; }
     }
 }

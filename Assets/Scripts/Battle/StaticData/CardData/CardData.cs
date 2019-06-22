@@ -10,7 +10,6 @@ namespace SimpleCardGames.Data.Card
         [SerializeField] private int cardCost;
         [SerializeField] private CardMonsterType cardMonsterType;
         [SerializeField] private string cardName;
-        [SerializeField] private CardRarity cardRarity;
         [SerializeField] private CardType cardType;
         [SerializeField] private EffectsSet dataEffects;
         [SerializeField] private string description;
@@ -22,7 +21,6 @@ namespace SimpleCardGames.Data.Card
         public int CardCost => cardCost;
         public CardType CardType => cardType;
         public CardMonsterType CardMonsterType => cardMonsterType;
-        public CardRarity CardRarity => cardRarity;
         public string Name => cardName;
         public string Description => description;
         public Sprite Artwork => artwork;
