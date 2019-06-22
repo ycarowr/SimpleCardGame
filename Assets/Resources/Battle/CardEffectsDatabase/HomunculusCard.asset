@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0424d04f92f9b4b4b8c60b85c7577c3e, type: 3}
+  m_Name: HomunculusCard
+  m_EditorClassIdentifier: 
+  register:
+    MyKeys:
+    - tType: 0
+      triggerAmt: 1
+    MyValues:
+    - Effects:
+      - {fileID: 11400000, guid: 77dd14d37d37b1c4a9e9796bef40ea53, type: 2}

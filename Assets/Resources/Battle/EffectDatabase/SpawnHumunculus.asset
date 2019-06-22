@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 259197a61a30bed4e9edb9939673c317, type: 3}
+  m_Name: SpawnHumunculus
+  m_EditorClassIdentifier: 
+  amount: 1
+  target: {fileID: 11400000, guid: 37df52f7500694548a3a3193f1c95aee, type: 2}
+  description: Spawns a humunculus card to the player
+  characterData: {fileID: 11400000, guid: c588e183cab1b624997b63f36a5c4436, type: 2}

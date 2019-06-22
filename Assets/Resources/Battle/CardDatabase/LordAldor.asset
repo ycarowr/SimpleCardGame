@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9788cb5bde3843b8894eb8e24faf6222, type: 3}
+  m_Name: LordAldor
+  m_EditorClassIdentifier: 
+  id: 7
+  cardCost: 3
+  cardType: 0
+  cardMonsterType: 0
+  cardRarity: 2
+  cardName: Lord Aldor
+  description: 'Summon: Deal 1 dmg to all enemies'
+  artwork: {fileID: 21300000, guid: 97eed4db298436a45971e9b17442b6e5, type: 3}
+  dataEffects: {fileID: 11400000, guid: 6fae80881762e4dab8fdf0b207a5dc6d, type: 2}

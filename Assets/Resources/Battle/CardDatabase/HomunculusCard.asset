@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9788cb5bde3843b8894eb8e24faf6222, type: 3}
+  m_Name: HomunculusCard
+  m_EditorClassIdentifier: 
+  id: 5
+  cardCost: 1
+  cardType: 0
+  cardMonsterType: 3
+  cardRarity: 1
+  cardName: Homunculus
+  description: 
+  artwork: {fileID: 21300000, guid: d1c8ba9ef43048c47836cb992db3e34e, type: 3}
+  dataEffects: {fileID: 11400000, guid: a7b2b9f1c896ab34ab643d45ec42d7c8, type: 2}
