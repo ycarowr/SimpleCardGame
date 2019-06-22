@@ -8,7 +8,7 @@ namespace SimpleCardGames.Battle
     /// </summary>
     public class PreStartGameMechanics : BaseGameMechanics
     {
-        public PreStartGameMechanics(IPrimitiveGame game) : base(game)
+        public PreStartGameMechanics(IGame game) : base(game)
         {
         }
 

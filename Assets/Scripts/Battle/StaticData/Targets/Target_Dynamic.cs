@@ -17,7 +17,7 @@ namespace SimpleCardGames.Data.Target
         public override bool IsDynamic => true;
         public override int TargetAmount => targetAmount;
 
-        public override ITargetable[] GetTargets(IEffectable source, IPrimitiveGame gameData)
+        public override ITargetable[] GetTargets(IEffectable source, IGame gameData)
         {
             return targets.ToArray();
         }

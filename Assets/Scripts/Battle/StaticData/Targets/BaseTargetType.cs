@@ -22,7 +22,7 @@ namespace SimpleCardGames.Data.Target
         /// <param name="source"></param>
         /// <param name="gameData"></param>
         /// <returns></returns>
-        public abstract ITargetable[] GetTargets(IEffectable source, IPrimitiveGame gameData);
+        public abstract ITargetable[] GetTargets(IEffectable source, IGame gameData);
 
 
         public virtual void Subscribe(ITargetResolver Resolver)

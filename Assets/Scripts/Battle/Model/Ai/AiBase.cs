@@ -9,7 +9,7 @@
 
         #region Constructor
 
-        protected AiBase(IPlayer player, IPrimitiveGame game)
+        protected AiBase(IPlayer player, IGame game)
         {
             Game = game;
             Player = player;
@@ -26,7 +26,7 @@
 
         #region Properties
 
-        protected IPrimitiveGame Game { get; }
+        protected IGame Game { get; }
         protected IPlayer Player { get; }
         protected IPlayer Enemy { get; }
 

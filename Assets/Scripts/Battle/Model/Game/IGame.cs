@@ -5,7 +5,7 @@ namespace SimpleCardGames.Battle
     /// <summary>
     ///     A game interface.
     /// </summary>
-    public interface IPrimitiveGame
+    public interface IGame
     {
         Configurations Configurations { get; }
 

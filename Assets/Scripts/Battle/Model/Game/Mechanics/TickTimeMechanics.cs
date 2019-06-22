@@ -5,7 +5,7 @@
     /// </summary>
     public class TickTimeMechanics : BaseGameMechanics
     {
-        public TickTimeMechanics(IPrimitiveGame game) : base(game)
+        public TickTimeMechanics(IGame game) : base(game)
         {
         }
 

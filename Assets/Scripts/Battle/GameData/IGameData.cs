@@ -5,7 +5,7 @@ namespace SimpleCardGames.Battle
     /// </summary>
     public interface IGameData
     {
-        IPrimitiveGame RuntimeGame { get; }
+        IGame RuntimeGame { get; }
         void CreateGame();
         void LoadGame();
         void Clear();

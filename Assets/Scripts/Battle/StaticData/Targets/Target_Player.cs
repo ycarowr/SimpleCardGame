@@ -10,7 +10,7 @@ namespace SimpleCardGames.Data.Target
     [CreateAssetMenu(menuName = SOPath + "/Player")]
     public class Target_Player : BaseTargetType
     {
-        public override ITargetable[] GetTargets(IEffectable source, IPrimitiveGame gameData)
+        public override ITargetable[] GetTargets(IEffectable source, IGame gameData)
         {
             //get the player
             var player = gameData.TurnLogic.GetPlayer(PlayerSeat);

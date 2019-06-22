@@ -6,7 +6,7 @@ namespace SimpleCardGames.Battle
     ///     Simple concrete Game Implementation.
     ///     TODO: Consider to break this class down into small partial classes.
     /// </summary>
-    public class Game : IPrimitiveGame
+    public class Game : IGame
     {
         //----------------------------------------------------------------------------------------------------------
 

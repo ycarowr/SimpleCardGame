@@ -6,7 +6,7 @@
     /// </summary>
     public class FinishPlayerTurnMechanics : BaseGameMechanics
     {
-        public FinishPlayerTurnMechanics(IPrimitiveGame game) : base(game)
+        public FinishPlayerTurnMechanics(IGame game) : base(game)
         {
         }
 

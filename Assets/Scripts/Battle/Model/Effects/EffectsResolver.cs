@@ -11,7 +11,7 @@ namespace SimpleCardGames.Battle
             /// <summary>
             ///     Resolves the game data reference using singleton pattern.
             /// </summary>
-            private static IPrimitiveGame GameData => GameController.Instance.Data.RuntimeGame;
+            private static IGame GameData => GameController.Instance.Data.RuntimeGame;
 
             /// <summary>
             ///     Resolves and apply an effect caused by a source uppon one or many targets.

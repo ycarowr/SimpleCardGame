@@ -15,10 +15,10 @@ namespace SimpleCardGames.Battle
 
         #region Constructor
 
-        public AiModule(IPlayer player, IPrimitiveGame game)
+        public AiModule(IPlayer player, IGame game)
         {
             //add all submodules 
-            subModules.Add(AiArchetype.Aggressive, GetAi(AiArchetype.Aggressive, player, game));
+            subModules.Add(AiArchetype.RandomMoves, GetAi(AiArchetype.RandomMoves, player, game));
 
             //define current ai randomly
             CurrentAi = subModules.Keys.ToList().RandomItem();
@@ -37,11 +37,11 @@ namespace SimpleCardGames.Battle
         /// <param name="player"></param>
         /// <param name="game"></param>
         /// <returns></returns>
-        private static AiBase GetAi(AiArchetype archetype, IPlayer player, IPrimitiveGame game)
+        private static AiBase GetAi(AiArchetype archetype, IPlayer player, IGame game)
         {
             switch (archetype)
             {
-                case AiArchetype.Aggressive: return new AiRandomMoves(player, game);
+                case AiArchetype.RandomMoves: return new AiRandomMoves(player, game);
                 default:
                     throw new ArgumentOutOfRangeException(nameof(archetype), archetype, null);
             }

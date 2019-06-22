@@ -6,7 +6,7 @@
     /// </summary>
     public class StartGameMechanics : BaseGameMechanics
     {
-        public StartGameMechanics(IPrimitiveGame game) : base(game)
+        public StartGameMechanics(IGame game) : base(game)
         {
         }
 

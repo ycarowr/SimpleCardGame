@@ -5,7 +5,7 @@
     /// </summary>
     public class AttackMechanics : BaseGameMechanics
     {
-        public AttackMechanics(IPrimitiveGame game) : base(game)
+        public AttackMechanics(IGame game) : base(game)
         {
         }
 

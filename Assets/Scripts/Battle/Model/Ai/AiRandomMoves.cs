@@ -5,11 +5,11 @@ using Extensions;
 namespace SimpleCardGames.Battle
 {
     /// <summary>
-    ///     This AiConfigs will always try to do damage.
+    ///     This Ai always pick a random move.
     /// </summary>
     public class AiRandomMoves : AiBase
     {
-        public AiRandomMoves(IPlayer player, IPrimitiveGame game) : base(player, game)
+        public AiRandomMoves(IPlayer player, IGame game) : base(player, game)
         {
         }
 

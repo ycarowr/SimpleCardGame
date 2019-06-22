@@ -26,7 +26,7 @@ namespace SimpleCardGames.Battle
         /// <summary>
         ///     All game data.
         /// </summary>
-        public IPrimitiveGame RuntimeGame { get; private set; }
+        public IGame RuntimeGame { get; private set; }
 
         #endregion
 

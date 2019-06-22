@@ -10,7 +10,7 @@ namespace SimpleCardGames.Data.Target
     [CreateAssetMenu(menuName = SOPath + "/Opponent Team")]
     public class Target_OpponentTeam : BaseTargetType
     {
-        public override ITargetable[] GetTargets(IEffectable source, IPrimitiveGame gameData)
+        public override ITargetable[] GetTargets(IEffectable source, IGame gameData)
         {
             //get player team
             var team = gameData.TurnLogic.GetPlayer(OpponentSeat).Team;
