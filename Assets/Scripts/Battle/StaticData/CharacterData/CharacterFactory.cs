@@ -6,13 +6,17 @@ using UnityEngine;
 
 namespace SimpleCardGames.Data.Character
 {
+    /// <summary>
+    ///     Database that manages static character data.
+    /// </summary>
     public class CharacterFactory : PrefabPooler<CharacterFactory, IUiCharacter>
     {
         private CharacterDatabase Database { get; set; }
 
         protected override void OnAwake()
         {
-            Database = new CharacterDatabase();
+            if(Database == null)
+                Database = new CharacterDatabase();
         }
 
         public IUiCharacter Get(IRuntimeCharacter character)

@@ -5,6 +5,9 @@ using UnityEngine;
 
 namespace SimpleCardGames.Data.Card
 {
+    /// <summary>
+    ///     Database that manages static card data.
+    /// </summary>
     public class CardDatabase : Singleton<CardDatabase>
     {
         private const string PathDataBase = "Battle/CardDatabase";
