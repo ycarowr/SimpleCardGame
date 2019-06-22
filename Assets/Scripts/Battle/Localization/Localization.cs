@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using Patterns;
 
+/// <summary>
+///     TODO: Not fully implemented. Demands to load the [tag, text] from a file.
+/// </summary>
 public class Localization : Singleton<Localization>
 {
     private readonly Dictionary<LocalizationIds, string> data = new Dictionary<LocalizationIds, string>();
