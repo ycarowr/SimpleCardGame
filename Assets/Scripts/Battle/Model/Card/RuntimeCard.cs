@@ -1,25 +1,28 @@
 ﻿using System.Collections.Generic;
+using Patterns;
 using SimpleCardGames.Data.Card;
 using SimpleCardGames.Data.Effects;
+using UnityEngine.Experimental.PlayerLoop;
 
 namespace SimpleCardGames.Battle
 {
     /// <summary>
     ///     A card at the runtime.
     /// </summary>
-    public class RuntimeCard : IRuntimeCard
+    public class RuntimeCard : IRuntimeCard, IPoolable
     {
+        public RuntimeCard()
+        {
+            Restart();
+        }
+        
         public RuntimeCard(ICardData data)
         {
+            Restart();
             SetData(data);
         }
 
-        public Dictionary<BaseEffectData, ITargetable[]> Targets { get; private set; }
-
-        public void AddTargets(BaseEffectData effect, ITargetable[] targets)
-        {
-            Targets.Add(effect, targets);
-        }
+        public Dictionary<BaseEffectData, ITargetable[]> Targets { get; private set; } = new Dictionary<BaseEffectData, ITargetable[]>();
 
         EffectsSet IEffectable.Effects => Data.Effects;
 
@@ -27,6 +30,11 @@ namespace SimpleCardGames.Battle
         ///     Reference for all card data.
         /// </summary>
         public ICardData Data { get; private set; }
+        
+        public void AddTargets(BaseEffectData effect, ITargetable[] targets)
+        {
+            Targets.Add(effect, targets);
+        }
 
         /// <summary>
         ///     Called when it is drawn.
@@ -55,7 +63,7 @@ namespace SimpleCardGames.Battle
         /// <summary>
         ///     Reset all values.
         /// </summary>
-        public void Reset()
+        public void Restart()
         {
             Targets.Clear();
         }
@@ -71,7 +79,6 @@ namespace SimpleCardGames.Battle
         /// <param name="data"></param>
         public void SetData(ICardData data)
         {
-            Targets = new Dictionary<BaseEffectData, ITargetable[]>();
             Data = data;
         }
     }

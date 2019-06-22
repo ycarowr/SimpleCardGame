@@ -12,6 +12,6 @@ namespace SimpleCardGames
         void Discard();
         void Draw();
         void AddTargets(BaseEffectData effect, ITargetable[] targets);
-        void Reset();
+        void Restart();
     }
 }

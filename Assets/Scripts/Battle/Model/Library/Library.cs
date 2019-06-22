@@ -54,7 +54,9 @@ namespace SimpleCardGames.Battle
         /// <param name="cardData"></param>
         public void AddCard(ICardData cardData)
         {
-            Add(new RuntimeCard(cardData));
+            var card = RuntimeCardFactory.Instance.Get();
+            card.SetData(cardData);
+            Add(card);
         }
 
         //----------------------------------------------------------------------------------------------------------

@@ -7,7 +7,9 @@ namespace Patterns
     ///     Creates a Singleton Class which allows to Pool/Release objects of the type <typeparam name="T"></typeparam>>.
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public abstract class Pooler<T> : Singleton<T> where T : class, IPoolable, new()
+    public abstract class Pooler<T, T1> : Singleton<T1> 
+        where T : class, IPoolable, new()
+        where T1 : class, new()
     {
         //--------------------------------------------------------------------------------------------------------------
 

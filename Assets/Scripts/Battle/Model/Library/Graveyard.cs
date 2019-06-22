@@ -16,7 +16,7 @@ namespace SimpleCardGames.Battle
         public void AddCard(IRuntimeCard card)
         {
             Add(card);
-            card.Reset();
+            card.Restart();
         }
     }
 }

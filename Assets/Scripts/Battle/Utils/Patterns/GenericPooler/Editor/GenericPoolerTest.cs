@@ -13,7 +13,7 @@ namespace Test
     }
 
     //pool used in the tests
-    public class PoolTest : Pooler<PoolableTest>
+    public class PoolTest : Pooler<PoolableTest, PoolTest>
     {
         public const int Size = 20;
 
@@ -117,7 +117,7 @@ namespace Test
                 pool.Release(null);
             }
 
-            Assert.Throws<Pooler<PoolableTest>.PoolerArgumentException>(releaseNull);
+            Assert.Throws<Pooler<PoolableTest, PoolTest>.PoolerArgumentException>(releaseNull);
         }
     }
 }
