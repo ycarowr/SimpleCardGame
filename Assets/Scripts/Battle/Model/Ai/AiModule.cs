@@ -41,7 +41,7 @@ namespace SimpleCardGames.Battle
         {
             switch (archetype)
             {
-                case AiArchetype.Aggressive: return new AiAggressive(player, game);
+                case AiArchetype.Aggressive: return new AiRandomMoves(player, game);
                 default:
                     throw new ArgumentOutOfRangeException(nameof(archetype), archetype, null);
             }
