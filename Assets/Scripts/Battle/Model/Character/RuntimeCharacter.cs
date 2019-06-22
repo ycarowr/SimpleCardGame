@@ -7,16 +7,21 @@ namespace SimpleCardGames.Battle
     /// </summary>
     public class RuntimeCharacter : IRuntimeCharacter
     {
+        //----------------------------------------------------------------------------------------------------------
+
+        private RuntimeCharacter()
+        {
+        }
+
+        public RuntimeCharacter(ICharacterData characterData, IPlayer player)
+        {
+            SetData(characterData, player);
+        }
+
         public IPlayer Owner { get; private set; }
         public IBoardPosition Position { get; set; }
         public ICharacterData Data { get; private set; }
         public CharAttributes Attributes { get; private set; }
-
-        void IRuntimeCharacter.StartPlayerTurn()
-        {
-            Attributes.HasSummoningSickness = false;
-            AttackTurn.ResetAttackQuantity();
-        }
 
         //----------------------------------------------------------------------------------------------------------
 
@@ -31,27 +36,10 @@ namespace SimpleCardGames.Battle
 
         //----------------------------------------------------------------------------------------------------------
 
-        #region Mechanics
-
-        private AtkTrnMechanic AttackTurn { get; set; }
-        private HealthMechanic Health { get; set; }
-        private DamageMechanic Damage { get; set; }
-        private DeathMechanic Death { get; set; }
-        private HealMechanic Heal { get; set; }
-
-        #endregion
-
-        //----------------------------------------------------------------------------------------------------------
-
-        #region Initialize
-
-        private RuntimeCharacter()
+        void IRuntimeCharacter.StartPlayerTurn()
         {
-        }
-
-        public RuntimeCharacter(ICharacterData characterData, IPlayer player)
-        {
-            SetData(characterData, player);
+            Attributes.HasSummoningSickness = false;
+            AttackTurn.ResetAttackQuantity();
         }
 
         public void SetData(ICharacterData data, IPlayer player)
@@ -63,10 +51,22 @@ namespace SimpleCardGames.Battle
             Damage = new DamageMechanic(this);
             Heal = new HealMechanic(this);
             Death = new DeathMechanic(this);
-            AttackTurn = new AtkTrnMechanic(this);
+            AttackTurn = new AttackCharacterMechanic(this);
         }
 
+        //----------------------------------------------------------------------------------------------------------
+
+        #region Mechanics
+
+        private AttackCharacterMechanic AttackTurn { get; set; }
+        private HealthMechanic Health { get; set; }
+        private DamageMechanic Damage { get; set; }
+        private DeathMechanic Death { get; set; }
+        private HealMechanic Heal { get; set; }
+
         #endregion
+
+        //----------------------------------------------------------------------------------------------------------
 
         #region Attack
 
@@ -126,7 +126,5 @@ namespace SimpleCardGames.Battle
         }
 
         #endregion
-
-        //----------------------------------------------------------------------------------------------------------
     }
 }

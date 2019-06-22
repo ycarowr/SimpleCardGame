@@ -24,13 +24,6 @@ namespace SimpleCardGames.Battle
             ProcessAttack = new AttackMechanics(this);
             ProcessFinishGame = new FinishGameMechanics(this);
 
-            AddMechanic(ProcessPreStartGame);
-            AddMechanic(ProcessStartGame);
-            AddMechanic(ProcessStartPlayerTurn);
-            AddMechanic(ProcessFinishPlayerTurn);
-            AddMechanic(ProcessTick);
-            AddMechanic(ProcessAttack);
-            AddMechanic(ProcessFinishGame);
             Logger.Instance.Log<Game>("Game Created", "blue");
         }
 
@@ -40,6 +33,7 @@ namespace SimpleCardGames.Battle
 
         #region Properties
 
+        public FinishGameMechanics FinishGame => ProcessFinishGame;
         public List<IPlayer> Players => ProcessTurn.Players;
         public ITurnLogic TurnLogic => ProcessTurn;
         public bool IsGameStarted { get; set; }
@@ -97,11 +91,6 @@ namespace SimpleCardGames.Battle
         public void Attack(AttackMechanics.RuntimeAttackData data)
         {
             ProcessAttack.Execute(data);
-        }
-
-        private void AddMechanic(BaseGameMechanics mechanic)
-        {
-            Mechanics.Add(mechanic);
         }
 
         #endregion

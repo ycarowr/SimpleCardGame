@@ -15,16 +15,7 @@ namespace SimpleCardGames.Battle
 
             Attributes.Owner.Team.RemoveMember(Character);
             OnDeath(Attributes.Owner, Character);
-            var finishGame = GetFinishGameMechanics();
-            finishGame.CheckWinCondition();
-        }
-
-        private FinishGameMechanics GetFinishGameMechanics()
-        {
-            var mechanic =
-                GameController.Instance.Data.RuntimeGame.Mechanics.Find(x =>
-                    x.GetType() == typeof(FinishGameMechanics));
-            return mechanic as FinishGameMechanics;
+            GameController.Instance.Data.RuntimeGame.FinishGame.CheckWinCondition();
         }
 
         public void OnDeath(IPlayer Owner, IRuntimeCharacter target)

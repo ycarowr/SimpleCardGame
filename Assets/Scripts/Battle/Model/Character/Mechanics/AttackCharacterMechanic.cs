@@ -1,8 +1,8 @@
 ﻿namespace SimpleCardGames.Battle
 {
-    public class AtkTrnMechanic : CharMechanic
+    public class AttackCharacterMechanic : CharMechanic
     {
-        public AtkTrnMechanic(IRuntimeCharacter character) : base(character)
+        public AttackCharacterMechanic(IRuntimeCharacter character) : base(character)
         {
             ResetAttackQuantity();
             AttacksThisTurn = Attributes.MaxAttackPerTurn;

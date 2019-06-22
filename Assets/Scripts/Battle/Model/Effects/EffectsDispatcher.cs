@@ -13,7 +13,7 @@ namespace SimpleCardGames.Battle
             var effects = GetEffects(card);
 
             //return if the specified trigger is not present
-            if (!effects.Any(eff => eff.Key.tType == triggerType))
+            if (effects.All(eff => eff.Key.tType != triggerType))
                 return;
 
             //grab all effects of the specified trigger

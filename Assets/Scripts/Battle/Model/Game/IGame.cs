@@ -9,7 +9,7 @@ namespace SimpleCardGames.Battle
     {
         Configurations Configurations { get; }
 
-        List<BaseGameMechanics> Mechanics { get; }
+        FinishGameMechanics FinishGame { get; }
 
         List<IPlayer> Players { get; }
 
