@@ -3,7 +3,11 @@ using System.Collections.Generic;
 
 namespace Patterns
 {
-    public class GenericPooler<T> where T : class, IPoolableObject, new()
+    /// <summary>
+    ///     Creates a Singleton Class which allows to Pool/Release objects of the type <typeparam name="T"></typeparam>>.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    public abstract class Pooler<T> : Singleton<T> where T : class, IPoolable, new()
     {
         //--------------------------------------------------------------------------------------------------------------
 
@@ -13,7 +17,7 @@ namespace Patterns
         ///     Constructor, you must have to specify the starting size of the pool
         /// </summary>
         /// <param name="startingSize"></param>
-        public GenericPooler(int startingSize)
+        protected Pooler(int startingSize)
         {
             StartSize = startingSize;
 
@@ -21,7 +25,7 @@ namespace Patterns
             for (var i = 0; i < StartSize; ++i)
             {
                 var obj = new T();
-                freeObjects.Add(obj);
+                free.Add(obj);
             }
         }
 
@@ -31,9 +35,9 @@ namespace Patterns
 
         #region Exceptions
 
-        public class GenericPoolerArgumentException : ArgumentException
+        public class PoolerArgumentException : ArgumentException
         {
-            public GenericPoolerArgumentException(string message) : base(message)
+            public PoolerArgumentException(string message) : base(message)
             {
             }
         }
@@ -42,26 +46,16 @@ namespace Patterns
 
         //--------------------------------------------------------------------------------------------------------------
 
-        #region Fields
-
-        private readonly List<T> busyObjects = new List<T>();
-        private readonly List<T> freeObjects = new List<T>();
-
-        #endregion
-
-        //--------------------------------------------------------------------------------------------------------------
-
-        #region Utility
+        private readonly List<T> busy = new List<T>();
+        private readonly List<T> free = new List<T>();
 
         public int StartSize { get; }
 
-        public int SizeFreeObjects => freeObjects.Count;
+        public int SizeFreeObjects => free.Count;
 
-        public int SizeBusyObjects => busyObjects.Count;
+        public int SizeBusyObjects => busy.Count;
 
         public Type PoolType => typeof(T);
-
-        #endregion
 
         //--------------------------------------------------------------------------------------------------------------
 
@@ -78,8 +72,8 @@ namespace Patterns
             if (SizeFreeObjects > 0)
             {
                 //pool the last object
-                pooled = freeObjects[SizeFreeObjects - 1];
-                freeObjects.Remove(pooled);
+                pooled = free[SizeFreeObjects - 1];
+                free.Remove(pooled);
             }
             else
             {
@@ -88,8 +82,9 @@ namespace Patterns
             }
 
             //add to the busy list
-            busyObjects.Add(pooled);
-
+            busy.Add(pooled);
+            
+            OnPool(pooled);
             return pooled;
         }
 
@@ -100,16 +95,36 @@ namespace Patterns
         public void Release(T released)
         {
             if (released == null)
-                throw new GenericPoolerArgumentException("Can't Release a null object");
+                throw new PoolerArgumentException("Can't Release a null object");
 
             //reset object
             released.Restart();
 
             //add back to the freelist
-            freeObjects.Add(released);
+            free.Add(released);
 
             //remove from busy list
-            busyObjects.Remove(released);
+            busy.Remove(released);
+            
+            OnRelease(released);
+        }
+
+        /// <summary>
+        ///     Dispatched before pool an object.
+        /// </summary>
+        /// <param name="obj"></param>
+        protected virtual void OnPool(T obj)
+        {
+            
+        }
+        
+        /// <summary>
+        ///     Dispatched after release an object.
+        /// </summary>
+        /// <param name="obj"></param>
+        protected virtual void OnRelease(T obj)
+        {
+            
         }
 
         #endregion

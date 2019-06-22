@@ -1,6 +1,6 @@
 ﻿namespace Patterns
 {
-    public interface IPoolableObject
+    public interface IPoolable
     {
         void Restart();
     }

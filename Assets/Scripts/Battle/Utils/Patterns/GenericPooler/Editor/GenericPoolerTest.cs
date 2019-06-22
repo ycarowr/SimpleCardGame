@@ -5,7 +5,7 @@ using Patterns;
 namespace Test
 {
     //poolable empty object used in the tests
-    public class PoolableObjectTest : IPoolableObject
+    public class PoolableTest : IPoolable
     {
         public void Restart()
         {
@@ -13,7 +13,7 @@ namespace Test
     }
 
     //pool used in the tests
-    public class PoolTest : GenericPooler<PoolableObjectTest>
+    public class PoolTest : Pooler<PoolableTest>
     {
         public const int Size = 20;
 
@@ -82,7 +82,7 @@ namespace Test
             var pool = new PoolTest();
 
             //store all pooled objects
-            var allPooledObjects = new List<PoolableObjectTest>();
+            var allPooledObjects = new List<PoolableTest>();
 
             //pool all the start size
             for (var i = 0; i < pool.StartSize; i++)
@@ -117,7 +117,7 @@ namespace Test
                 pool.Release(null);
             }
 
-            Assert.Throws<GenericPooler<PoolableObjectTest>.GenericPoolerArgumentException>(releaseNull);
+            Assert.Throws<Pooler<PoolableTest>.PoolerArgumentException>(releaseNull);
         }
     }
 }
