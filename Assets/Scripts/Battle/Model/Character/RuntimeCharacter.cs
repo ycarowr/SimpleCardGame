@@ -1,3 +1,4 @@
+using Patterns;
 using SimpleCardGames.Data.Character;
 
 namespace SimpleCardGames.Battle
@@ -5,11 +6,11 @@ namespace SimpleCardGames.Battle
     /// <summary>
     ///     A concrete character in the game.
     /// </summary>
-    public class RuntimeCharacter : IRuntimeCharacter
+    public class RuntimeCharacter : IRuntimeCharacter, IPoolable
     {
         //----------------------------------------------------------------------------------------------------------
 
-        private RuntimeCharacter()
+        public RuntimeCharacter()
         {
         }
 
@@ -18,9 +19,7 @@ namespace SimpleCardGames.Battle
             SetData(characterData, player);
         }
 
-        public IPlayer Owner { get; private set; }
-        public IBoardPosition Position { get; set; }
-        public ICharacterData Data { get; private set; }
+        public ICharacterData Data { get; set; }
         public CharAttributes Attributes { get; private set; }
 
         //----------------------------------------------------------------------------------------------------------
@@ -44,9 +43,8 @@ namespace SimpleCardGames.Battle
 
         public void SetData(ICharacterData data, IPlayer player)
         {
-            Owner = player;
             Data = data;
-            Attributes = new CharAttributes(Data, Owner);
+            Attributes = new CharAttributes(Data, player);
             Health = new HealthMechanic(this);
             Damage = new DamageMechanic(this);
             Heal = new HealMechanic(this);
@@ -126,5 +124,12 @@ namespace SimpleCardGames.Battle
         }
 
         #endregion
+        
+        //----------------------------------------------------------------------------------------------------------
+
+        public void Restart()
+        {
+            
+        }
     }
 }

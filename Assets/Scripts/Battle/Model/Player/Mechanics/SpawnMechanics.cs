@@ -14,7 +14,9 @@ namespace SimpleCardGames.Battle
 
         public void DoSpawn(int amount, ICharacterData data, IEffectable source)
         {
-            var member = new RuntimeCharacter(data, Player);
+            var member = RuntimeCharacterFactory.Instance.Get();
+            member.SetData(data, Player);
+            
             for (var i = 0; i < amount; i++)
                 Player.Team.AddMember(member);
 

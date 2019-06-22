@@ -64,12 +64,18 @@ namespace SimpleCardGames.Battle
         {
             if (capitainDataRegister != null)
             {
-                Captain = new RuntimeCharacter(capitainDataRegister, Owner);
+                var member = RuntimeCharacterFactory.Instance.Get();
+                member.SetData(capitainDataRegister, Owner);
+                Captain = member;
                 AddMember(Captain);
             }
 
             foreach (var memberData in memberDataRegister)
-                AddMember(new RuntimeCharacter(memberData, Owner));
+            {
+                var member = RuntimeCharacterFactory.Instance.Get();
+                member.SetData(memberData, Owner);
+                AddMember(member);
+            }
         }
 
         /// <summary>

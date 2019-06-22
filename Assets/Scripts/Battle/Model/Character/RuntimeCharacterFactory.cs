@@ -6,13 +6,13 @@ using SimpleCardGames.Data.Effects;
 namespace SimpleCardGames.Battle
 {
     /// <summary>
-    ///     Manages RuntimeCard memory allocation.
+    ///     Manages RuntimeCharacter memory allocation.
     /// </summary>
-    public class RuntimeCardFactory : Pooler<RuntimeCard, RuntimeCardFactory>
+    public class RuntimeCharacterFactory : Pooler<RuntimeCharacter, RuntimeCharacterFactory>
     {
         private const int Size = 30;
         
-        public RuntimeCardFactory() : base(Size)
+        public RuntimeCharacterFactory() : base(Size)
         {
             
         }
