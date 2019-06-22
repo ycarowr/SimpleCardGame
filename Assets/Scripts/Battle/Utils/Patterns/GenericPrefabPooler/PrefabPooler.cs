@@ -167,7 +167,7 @@ public class PrefabPooler<T, T1> : SingletonMB<T>
                 poolAbleObjects[model].Add(pooledObj);
             }
 
-        pooledObj.transform.parent = transform;
+        pooledObj.transform.SetParent(transform);
         pooledObj.transform.localPosition = Vector3.zero;
         OnRelease(pooledObj);
     }
