@@ -24,9 +24,6 @@ namespace SimpleCardGames.Battle
                 EffectsResolver.Resolve(effect, card, card.Targets[effect]);
         }
 
-        private static EffectRegister GetEffects(IRuntimeCard card)
-        {
-            return card.Data.Effects.Register;
-        }
+        static EffectRegister GetEffects(IRuntimeCard card) => card.Data.Effects.Register;
     }
 }

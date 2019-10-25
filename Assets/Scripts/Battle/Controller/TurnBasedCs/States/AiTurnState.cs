@@ -10,10 +10,8 @@ namespace SimpleCardGames.Battle.Controller
         #region Constructor
 
         protected AiTurnState(TurnBasedFsm fsm, IGameData gameData, Configurations configurations) : base(fsm, gameData,
-            configurations)
-        {
+            configurations) =>
             AiModule = new AiModule(Player, GameData.RuntimeGame);
-        }
 
         #endregion
 
@@ -21,11 +19,11 @@ namespace SimpleCardGames.Battle.Controller
 
         #region Properties
 
-        private Coroutine AiFinishTurnRoutine { get; set; }
-        private AiModule AiModule { get; }
+        Coroutine AiFinishTurnRoutine { get; set; }
+        AiModule AiModule { get; }
         protected virtual AiArchetype AiArchetype => Configurations.Ai.TopPlayer.Archetype;
-        private float AiFinishTurnDelay => Configurations.AiFinishTurnDelay;
-        private float AiDoTurnDelay => Configurations.AiDoTurnDelay;
+        float AiFinishTurnDelay => Configurations.AiFinishTurnDelay;
+        float AiDoTurnDelay => Configurations.AiDoTurnDelay;
 
         #endregion
 
@@ -58,7 +56,7 @@ namespace SimpleCardGames.Battle.Controller
 
         #region Coroutines
 
-        private IEnumerator AiDoTurn()
+        IEnumerator AiDoTurn()
         {
             yield return new WaitForSeconds(AiDoTurnDelay);
 
@@ -77,7 +75,7 @@ namespace SimpleCardGames.Battle.Controller
             }
         }
 
-        private IEnumerator AiFinishTurn(float delay)
+        IEnumerator AiFinishTurn(float delay)
         {
             yield return new WaitForSeconds(delay);
             if (!IsMyTurn)

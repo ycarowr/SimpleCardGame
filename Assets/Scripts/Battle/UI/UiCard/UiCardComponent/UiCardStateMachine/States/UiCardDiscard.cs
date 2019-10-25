@@ -13,7 +13,7 @@ namespace SimpleCardGames.Battle.UI.Card
         {
         }
 
-        private Vector3 StartScale { get; set; }
+        Vector3 StartScale { get; set; }
 
         //--------------------------------------------------------------------------------------------------------------
 
@@ -26,16 +26,13 @@ namespace SimpleCardGames.Battle.UI.Card
             SetRotation();
         }
 
-        private void SetScale()
+        void SetScale()
         {
             var finalScale = Handler.transform.localScale * Parameters.DiscardedSize;
             Handler.Motion.ScaleTo(finalScale, Parameters.ScaleSpeed);
         }
 
-        private void SetRotation()
-        {
-            Handler.Motion.RotateTo(Vector3.zero, Parameters.RotationSpeed);
-        }
+        void SetRotation() => Handler.Motion.RotateTo(Vector3.zero, Parameters.RotationSpeed);
 
         #endregion
     }

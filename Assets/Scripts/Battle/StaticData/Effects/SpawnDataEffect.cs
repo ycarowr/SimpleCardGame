@@ -7,7 +7,7 @@ namespace SimpleCardGames.Data.Effects
     public class SpawnDataEffect : BaseEffectData
     {
         [SerializeField] [Tooltip("Character who will be spawned")]
-        private CharacterData characterData;
+        CharacterData characterData;
 
         public override void Apply(ITargetable target, IEffectable source)
         {
@@ -15,9 +15,6 @@ namespace SimpleCardGames.Data.Effects
             spawner.DoSpawn(Amount, characterData, source);
         }
 
-        public CharacterData GetCharacterSpawnedFromEffect()
-        {
-            return characterData;
-        }
+        public CharacterData GetCharacterSpawnedFromEffect() => characterData;
     }
 }

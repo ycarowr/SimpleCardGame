@@ -2,9 +2,6 @@
 {
     public class UiChangeCardCost : UiChangeCardText
     {
-        protected override string GetText()
-        {
-            return Handler.StaticData.CardCost.ToString();
-        }
+        protected override string GetText() => Handler.StaticData.CardCost.ToString();
     }
 }

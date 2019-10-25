@@ -8,12 +8,12 @@ using static SimpleCardGames.Data.Effects.EffectsSet;
 public class EffectsSetEditor : Editor
 {
     //cell sizes
-    private readonly GUILayoutOption WidthL = GUILayout.MaxWidth(115);
-    private readonly GUILayoutOption WidthS = GUILayout.MaxWidth(80);
-    private readonly GUILayoutOption WidthXS = GUILayout.MaxWidth(20);
-    private EffectTriggerType ChosenTrigger = EffectTriggerType.OnPlay;
+    readonly GUILayoutOption WidthL = GUILayout.MaxWidth(115);
+    readonly GUILayoutOption WidthS = GUILayout.MaxWidth(80);
+    readonly GUILayoutOption WidthXS = GUILayout.MaxWidth(20);
+    EffectTriggerType ChosenTrigger = EffectTriggerType.OnPlay;
 
-    private EffectsSet MyTarget => target as EffectsSet;
+    EffectsSet MyTarget => target as EffectsSet;
 
     public override void OnInspectorGUI()
     {
@@ -29,7 +29,7 @@ public class EffectsSetEditor : Editor
             SaveChanges();
     }
 
-    private void DrawTriggersOperations()
+    void DrawTriggersOperations()
     {
         GUILayout.Label("Triggers Effects", EditorStyles.boldLabel);
         Bh();
@@ -46,7 +46,7 @@ public class EffectsSetEditor : Editor
         Eh();
     }
 
-    private void DrawCurrentState()
+    void DrawCurrentState()
     {
         var allEffects = MyTarget.Register;
 
@@ -77,12 +77,9 @@ public class EffectsSetEditor : Editor
     }
 
 
-    private void Space()
-    {
-        GUILayout.Space(25);
-    }
+    void Space() => GUILayout.Space(25);
 
-    private void DrawLabelAndAddTrigger(EffectRegister effectsByRole, EffectTriggerType trigger)
+    void DrawLabelAndAddTrigger(EffectRegister effectsByRole, EffectTriggerType trigger)
     {
         var effcond = effectsByRole.First(eff => eff.Key.tType == trigger).Key;
         Bh();
@@ -97,7 +94,7 @@ public class EffectsSetEditor : Editor
         Eh();
     }
 
-    private void DrawDataEffects(EffectRegister effectsByRole, EffectTriggerType trigger)
+    void DrawDataEffects(EffectRegister effectsByRole, EffectTriggerType trigger)
     {
         var effcond = effectsByRole.First(eff => eff.Key.tType == trigger).Key;
         for (var i = 0; i < effectsByRole[effcond].Effects.Count; i++)
@@ -122,7 +119,7 @@ public class EffectsSetEditor : Editor
         }
     }
 
-    private void RemoveEmptyLists()
+    void RemoveEmptyLists()
     {
         var allEffects = MyTarget.Register;
         var toRemove = allEffects.Where(x => x.Value.Effects.Count == 0)
@@ -133,7 +130,7 @@ public class EffectsSetEditor : Editor
             allEffects.Remove(key);
     }
 
-    private void AddTrigger()
+    void AddTrigger()
     {
         var allEffects = MyTarget.Register;
 
@@ -147,7 +144,7 @@ public class EffectsSetEditor : Editor
         SaveChanges();
     }
 
-    private void RemoveTrigger()
+    void RemoveTrigger()
     {
         var allEffects = MyTarget.Register;
         if (allEffects.Any(eff => eff.Key.tType == ChosenTrigger))
@@ -155,31 +152,19 @@ public class EffectsSetEditor : Editor
         SaveChanges();
     }
 
-    private void Bh()
-    {
-        EditorGUILayout.BeginHorizontal();
-    }
+    void Bh() => EditorGUILayout.BeginHorizontal();
 
-    private void Eh()
-    {
-        EditorGUILayout.EndHorizontal();
-    }
+    void Eh() => EditorGUILayout.EndHorizontal();
 
-    private void Bv()
-    {
-        EditorGUILayout.BeginVertical();
-    }
+    void Bv() => EditorGUILayout.BeginVertical();
 
-    private void Ev()
-    {
-        EditorGUILayout.EndVertical();
-    }
+    void Ev() => EditorGUILayout.EndVertical();
 
-    private void Label()
+    void Label()
     {
     }
 
-    private void SaveChanges()
+    void SaveChanges()
     {
         EditorUtility.SetDirty(target);
         AssetDatabase.SaveAssets();

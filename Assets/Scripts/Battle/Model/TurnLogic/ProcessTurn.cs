@@ -49,10 +49,7 @@ namespace SimpleCardGames.Battle
 
         public int QuantPlayers => Players.Count;
 
-        bool ITurnLogic.IsMyTurn(IPlayer player)
-        {
-            return CurrentPlayer == player;
-        }
+        bool ITurnLogic.IsMyTurn(IPlayer player) => CurrentPlayer == player;
 
         #endregion
 
@@ -86,10 +83,9 @@ namespace SimpleCardGames.Battle
             CurrentPlayerSeat = StarterPlayerSeat;
         }
 
-        public IPlayer GetOpponent(IPlayer player)
-        {
-            return player.Seat == PlayerSeat.Left ? GetPlayer(PlayerSeat.Right) : GetPlayer(PlayerSeat.Left);
-        }
+        public IPlayer GetOpponent(IPlayer player) => player.Seat == PlayerSeat.Left
+            ? GetPlayer(PlayerSeat.Right)
+            : GetPlayer(PlayerSeat.Left);
 
         public IPlayer GetPlayer(PlayerSeat seat)
         {
@@ -100,15 +96,9 @@ namespace SimpleCardGames.Battle
             return null;
         }
 
-        public void SetCurrentSeat(PlayerSeat current)
-        {
-            CurrentPlayerSeat = current;
-        }
+        public void SetCurrentSeat(PlayerSeat current) => CurrentPlayerSeat = current;
 
-        public void SetStarterSeat(PlayerSeat first)
-        {
-            StarterPlayerSeat = first;
-        }
+        public void SetStarterSeat(PlayerSeat first) => StarterPlayerSeat = first;
 
         #endregion
     }

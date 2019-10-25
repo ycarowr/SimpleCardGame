@@ -9,15 +9,13 @@ namespace SimpleCardGames.Battle.UI.Character
 
 
         public UiCharacterSelected(IUiCharacter handler, BaseStateMachine fsm, UiCharacterParameters parameters) : base(
-            handler, fsm, parameters)
-        {
+            handler, fsm, parameters) =>
             DefaultSize = handler.transform.localScale;
-        }
 
         //--------------------------------------------------------------------------------------------------------------
 
-        private Camera MyCamera { get; }
-        private Vector3 DefaultSize { get; }
+        Camera MyCamera { get; }
+        Vector3 DefaultSize { get; }
         public Collider UnselectZone { get; }
 
         //--------------------------------------------------------------------------------------------------------------
@@ -30,7 +28,7 @@ namespace SimpleCardGames.Battle.UI.Character
             SetScale();
         }
 
-        private void SetScale()
+        void SetScale()
         {
             var finalScale = Parameters.ScaleSelect * Parameters.ScaleIdle * DefaultSize;
             finalScale.z = 1;

@@ -46,14 +46,14 @@ namespace SimpleCardGames.Battle
         #region Processes
 
         public List<BaseGameMechanics> Mechanics { get; set; } = new List<BaseGameMechanics>();
-        private ProcessTurn ProcessTurn { get; }
-        private PreStartGameMechanics ProcessPreStartGame { get; }
-        private StartGameMechanics ProcessStartGame { get; }
-        private TickTimeMechanics ProcessTick { get; }
-        private StartPlayerTurnMechanics ProcessStartPlayerTurn { get; }
-        private FinishPlayerTurnMechanics ProcessFinishPlayerTurn { get; }
-        private AttackMechanics ProcessAttack { get; }
-        private FinishGameMechanics ProcessFinishGame { get; }
+        ProcessTurn ProcessTurn { get; }
+        PreStartGameMechanics ProcessPreStartGame { get; }
+        StartGameMechanics ProcessStartGame { get; }
+        TickTimeMechanics ProcessTick { get; }
+        StartPlayerTurnMechanics ProcessStartPlayerTurn { get; }
+        FinishPlayerTurnMechanics ProcessFinishPlayerTurn { get; }
+        AttackMechanics ProcessAttack { get; }
+        FinishGameMechanics ProcessFinishGame { get; }
 
         #endregion
 
@@ -63,35 +63,17 @@ namespace SimpleCardGames.Battle
 
         #region Execution
 
-        public void PreStartGame()
-        {
-            ProcessPreStartGame.Execute();
-        }
+        public void PreStartGame() => ProcessPreStartGame.Execute();
 
-        public void StartGame()
-        {
-            ProcessStartGame.Execute();
-        }
+        public void StartGame() => ProcessStartGame.Execute();
 
-        public void StartCurrentPlayerTurn()
-        {
-            ProcessStartPlayerTurn.Execute();
-        }
+        public void StartCurrentPlayerTurn() => ProcessStartPlayerTurn.Execute();
 
-        public void FinishCurrentPlayerTurn()
-        {
-            ProcessFinishPlayerTurn.Execute();
-        }
+        public void FinishCurrentPlayerTurn() => ProcessFinishPlayerTurn.Execute();
 
-        public void Tick()
-        {
-            ProcessTick.Execute();
-        }
+        public void Tick() => ProcessTick.Execute();
 
-        public void Attack(AttackMechanics.RuntimeAttackData data)
-        {
-            ProcessAttack.Execute(data);
-        }
+        public void Attack(AttackMechanics.RuntimeAttackData data) => ProcessAttack.Execute(data);
 
         #endregion
 

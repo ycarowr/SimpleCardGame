@@ -14,7 +14,7 @@ namespace SimpleCardGames.Battle.UI.Card
 
         #region Initialization and Unity Callbacks
 
-        private void Awake()
+        void Awake()
         {
             //data
             Data = GetComponent<IUiCardData>();
@@ -48,7 +48,7 @@ namespace SimpleCardGames.Battle.UI.Card
             IsInitialized = true;
         }
 
-        private void Update()
+        void Update()
         {
             if (!IsInitialized)
                 return;
@@ -74,16 +74,16 @@ namespace SimpleCardGames.Battle.UI.Card
         IUiPlayerHand IUiCard.Hand => Hand;
         public string Name => gameObject.name;
         [SerializeField] public UiCardParameters cardConfigsParameters;
-        private UiCardHandFsm Fsm { get; set; }
-        private Transform MyTransform { get; set; }
-        private Collider MyCollider { get; set; }
-        private SpriteRenderer[] MyRenderers { get; set; }
-        private SpriteRenderer MyRenderer { get; set; }
-        private MeshRenderer[] MyMRenderers { get; set; }
-        private MeshRenderer MyMRenderer { get; set; }
-        private Rigidbody MyRigidbody { get; set; }
-        private IMouseInput MyInput { get; set; }
-        private IUiPlayerHand Hand { get; set; }
+        UiCardHandFsm Fsm { get; set; }
+        Transform MyTransform { get; set; }
+        Collider MyCollider { get; set; }
+        SpriteRenderer[] MyRenderers { get; set; }
+        SpriteRenderer MyRenderer { get; set; }
+        MeshRenderer[] MyMRenderers { get; set; }
+        MeshRenderer MyMRenderer { get; set; }
+        Rigidbody MyRigidbody { get; set; }
+        IMouseInput MyInput { get; set; }
+        IUiPlayerHand Hand { get; set; }
         public IUiCardData Data { get; private set; }
         public MonoBehaviour MonoBehavior => this;
         public Camera MainCamera => Camera.main;
@@ -98,20 +98,11 @@ namespace SimpleCardGames.Battle.UI.Card
 
         #region Card Operations
 
-        public void Hover()
-        {
-            Fsm.Hover();
-        }
+        public void Hover() => Fsm.Hover();
 
-        public void Disable()
-        {
-            Fsm.Disable();
-        }
+        public void Disable() => Fsm.Disable();
 
-        public void Enable()
-        {
-            Fsm.Enable();
-        }
+        public void Enable() => Fsm.Enable();
 
         public void Select()
         {
@@ -119,35 +110,17 @@ namespace SimpleCardGames.Battle.UI.Card
             Fsm.Select();
         }
 
-        public void Unselect()
-        {
-            Fsm.Unselect();
-        }
+        public void Unselect() => Fsm.Unselect();
 
-        public void Draw()
-        {
-            Fsm.Draw();
-        }
+        public void Draw() => Fsm.Draw();
 
-        public void Discard()
-        {
-            Fsm.Discard();
-        }
+        public void Discard() => Fsm.Discard();
 
-        public void Play()
-        {
-            Fsm.Play();
-        }
+        public void Play() => Fsm.Play();
 
-        public void Restart()
-        {
-            IsInitialized = false;
-        }
+        public void Restart() => IsInitialized = false;
 
-        public void Target()
-        {
-            Fsm.Target();
-        }
+        public void Target() => Fsm.Target();
 
         #endregion
 

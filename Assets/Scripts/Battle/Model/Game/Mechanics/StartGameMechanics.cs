@@ -29,9 +29,7 @@
         ///     Dispatch start game event to the listeners.
         /// </summary>
         /// <param name="starterPlayer"></param>
-        private void OnGameStarted(IPlayer starterPlayer)
-        {
+        void OnGameStarted(IPlayer starterPlayer) =>
             GameEvents.Instance.Notify<IStartGame>(i => i.OnStartGame(starterPlayer));
-        }
     }
 }

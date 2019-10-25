@@ -12,17 +12,17 @@ namespace SimpleCardGames.Battle.UI.Card
     [RequireComponent(typeof(IMouseInput))]
     public class UiCardDiscardClick : MonoBehaviour
     {
-        private UiPlayerHandUtils Utils { get; set; }
-        private IMouseInput Input { get; set; }
+        UiPlayerHandUtils Utils { get; set; }
+        IMouseInput Input { get; set; }
 
-        private void Awake()
+        void Awake()
         {
             Utils = transform.parent.GetComponentInChildren<UiPlayerHandUtils>();
             Input = GetComponent<IMouseInput>();
             Input.OnPointerClick += PlayRandom;
         }
 
-        private void PlayRandom(PointerEventData obj)
+        void PlayRandom(PointerEventData obj)
         {
             var myPlayer = GameController.Instance.GetPlayerController(PlayerSeat.Left).Player;
             if (myPlayer.Hand.Size > 0)

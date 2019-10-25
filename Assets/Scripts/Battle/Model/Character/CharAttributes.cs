@@ -6,10 +6,7 @@ namespace SimpleCardGames.Battle
     {
         //----------------------------------------------------------------------------------------------------------
 
-        public CharAttributes(ICharacterData data, IPlayer owner)
-        {
-            SetData(data, owner);
-        }
+        public CharAttributes(ICharacterData data, IPlayer owner) => SetData(data, owner);
 
         public bool IsFullHealth => Health == MaxHealth;
 

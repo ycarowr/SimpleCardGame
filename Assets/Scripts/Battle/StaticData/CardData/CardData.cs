@@ -6,14 +6,14 @@ namespace SimpleCardGames.Data.Card
     [CreateAssetMenu(menuName = "Data/Card")]
     public class CardData : ScriptableObject, ICardData
     {
-        [SerializeField] private Sprite artwork;
-        [SerializeField] private int cardCost;
-        [SerializeField] private CardMonsterType cardMonsterType;
-        [SerializeField] private string cardName;
-        [SerializeField] private CardType cardType;
-        [SerializeField] private EffectsSet dataEffects;
-        [SerializeField] private string description;
-        [SerializeField] private CardId id;
+        [SerializeField] Sprite artwork;
+        [SerializeField] int cardCost;
+        [SerializeField] CardMonsterType cardMonsterType;
+        [SerializeField] string cardName;
+        [SerializeField] CardType cardType;
+        [SerializeField] EffectsSet dataEffects;
+        [SerializeField] string description;
+        [SerializeField] CardId id;
 
         //--------------------------------------------------------------------------------------------------------------
 

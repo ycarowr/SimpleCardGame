@@ -16,7 +16,7 @@
                 DiscardAll();
         }
 
-        private void DiscardAll()
+        void DiscardAll()
         {
             var quant = Player.Hand.Size;
             for (var i = 0; i < quant; i++)

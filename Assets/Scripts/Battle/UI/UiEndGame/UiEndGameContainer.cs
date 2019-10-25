@@ -21,16 +21,13 @@ namespace SimpleCardGames.Battle
     {
         //----------------------------------------------------------------------------------------------------------
 
-        void IRestartGameHandler.RestartGame()
-        {
-            Controller.RestartGameImmediately();
-        }
+        void IRestartGameHandler.RestartGame() => Controller.RestartGameImmediately();
 
         //----------------------------------------------------------------------------------------------------------
 
         #region Unity Callbacks
 
-        private void Awake()
+        void Awake()
         {
             //user input
             UserInput = gameObject.AddComponent<UiUserInput>();
@@ -41,7 +38,7 @@ namespace SimpleCardGames.Battle
 
         #endregion
 
-        private IEnumerator EnableInput()
+        IEnumerator EnableInput()
         {
             yield return new WaitForSeconds(DelayToEnable);
             UserInput.Enable();
@@ -50,8 +47,8 @@ namespace SimpleCardGames.Battle
 
         #region Properties
 
-        private const float DelayToEnable = 1f;
-        private IUiUserInput UserInput { get; set; }
+        const float DelayToEnable = 1f;
+        IUiUserInput UserInput { get; set; }
         public IGameController Controller => GameController.Instance;
 
         #endregion
@@ -60,15 +57,9 @@ namespace SimpleCardGames.Battle
 
         #region Game Events
 
-        void IFinishGame.OnFinishGame(IPlayer winner)
-        {
-            StartCoroutine(EnableInput());
-        }
+        void IFinishGame.OnFinishGame(IPlayer winner) => StartCoroutine(EnableInput());
 
-        void IStartGame.OnStartGame(IPlayer starter)
-        {
-            UserInput.Disable();
-        }
+        void IStartGame.OnStartGame(IPlayer starter) => UserInput.Disable();
 
         #endregion
     }

@@ -7,10 +7,10 @@ public class UiText3D : MonoBehaviour
     [Tooltip("Color of the text.")] [SerializeField]
     protected Color color = Color.black;
 
-    [SerializeField] private string defaultText = string.Empty;
+    [SerializeField] string defaultText = string.Empty;
 
     [Tooltip("TMPro Component assigned by the Editor or Automatically on Awake.")]
-    private TextMeshPro TmProText;
+    TextMeshPro TmProText;
 
     protected virtual void Awake()
     {
@@ -21,10 +21,7 @@ public class UiText3D : MonoBehaviour
         SetText(defaultText);
     }
 
-    public virtual void SetText(string text)
-    {
-        TmProText.text = text;
-    }
+    public virtual void SetText(string text) => TmProText.text = text;
 
     public void ResetColor()
     {

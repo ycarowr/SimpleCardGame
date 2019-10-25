@@ -2,11 +2,8 @@
 {
     public class UiChangeCharacterDef : UiChangeCharacterText
     {
-        private const string Def = "Def: ";
+        const string Def = "Def: ";
 
-        protected override string GetText()
-        {
-            return ""; // Def + Handler.Data.Defense;
-        }
+        protected override string GetText() => "";
     }
 }

@@ -73,10 +73,7 @@ namespace SimpleCardGames.Battle.Controller
             Fsm.PushState(nextState);
         }
 
-        void IRestartGame.OnRestart()
-        {
-            OnClear();
-        }
+        void IRestartGame.OnRestart() => OnClear();
 
         #endregion
 

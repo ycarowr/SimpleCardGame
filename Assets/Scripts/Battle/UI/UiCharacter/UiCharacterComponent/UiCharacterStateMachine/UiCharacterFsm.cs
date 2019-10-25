@@ -38,14 +38,14 @@ namespace SimpleCardGames.Battle.UI.Character
 
         #region Properties
 
-        private UiCharacterIdle IdleState { get; }
-        private UiCharacterDisable DisableState { get; }
-        private UiCharacterHover HoverState { get; }
+        UiCharacterIdle IdleState { get; }
+        UiCharacterDisable DisableState { get; }
+        UiCharacterHover HoverState { get; }
 
-        private UiCharacterSelected SelectedState { get; }
+        UiCharacterSelected SelectedState { get; }
 
         //private UiCharacterUnselected UnselectedState { get; }
-        private UiCharacterAttack AttackState { get; }
+        UiCharacterAttack AttackState { get; }
 
         #endregion
 
@@ -53,30 +53,15 @@ namespace SimpleCardGames.Battle.UI.Character
 
         #region Operations
 
-        public void Hover()
-        {
-            PushState<UiCharacterHover>();
-        }
+        public void Hover() => PushState<UiCharacterHover>();
 
-        public void Disable()
-        {
-            PushState<UiCharacterDisable>();
-        }
+        public void Disable() => PushState<UiCharacterDisable>();
 
-        public void Enable()
-        {
-            PushState<UiCharacterIdle>();
-        }
+        public void Enable() => PushState<UiCharacterIdle>();
 
-        public void Unselect()
-        {
-            Enable();
-        }
+        public void Unselect() => Enable();
 
-        public void Select()
-        {
-            PushState<UiCharacterSelected>();
-        }
+        public void Select() => PushState<UiCharacterSelected>();
 
         public void Attack(Vector3 targetPosition)
         {

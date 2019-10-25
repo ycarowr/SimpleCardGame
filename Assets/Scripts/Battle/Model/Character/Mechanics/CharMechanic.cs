@@ -5,10 +5,7 @@
     /// </summary>
     public abstract class CharMechanic
     {
-        protected CharMechanic(IRuntimeCharacter character)
-        {
-            Character = character;
-        }
+        protected CharMechanic(IRuntimeCharacter character) => Character = character;
 
         protected IRuntimeCharacter Character { get; set; }
         protected CharAttributes Attributes => Character.Attributes;

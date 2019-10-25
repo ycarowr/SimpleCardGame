@@ -34,11 +34,11 @@ namespace SimpleCardGames.Battle.UI.Card
 
         #region Properties
 
-        private ITargetResolver TargetResolver { get; set; }
+        ITargetResolver TargetResolver { get; set; }
 
-        private IUiPlayerTeam[] PlayerTeams { get; set; }
+        IUiPlayerTeam[] PlayerTeams { get; set; }
 
-        private IUiPlayer Controller { get; set; }
+        IUiPlayer Controller { get; set; }
 
         public IUiCard SelectedCard { get; private set; }
 
@@ -136,10 +136,7 @@ namespace SimpleCardGames.Battle.UI.Card
         /// <summary>
         ///     Unselect the card which is currently selected. Nothing happens if current is null.
         /// </summary>
-        public void Unselect()
-        {
-            UnselectCard(SelectedCard);
-        }
+        public void Unselect() => UnselectCard(SelectedCard);
 
         /// <summary>
         ///     Disables input for all cards.
@@ -160,15 +157,9 @@ namespace SimpleCardGames.Battle.UI.Card
         }
 
         [Button]
-        private void NotifyCardSelected()
-        {
-            OnCardSelected?.Invoke(SelectedCard);
-        }
+        void NotifyCardSelected() => OnCardSelected?.Invoke(SelectedCard);
 
-        public IUiCard GetCard(IRuntimeCard card)
-        {
-            return Cards.Find(x => x.Data.StaticData == card.Data);
-        }
+        public IUiCard GetCard(IRuntimeCard card) => Cards.Find(x => x.Data.StaticData == card.Data);
 
         public override void Restart()
         {

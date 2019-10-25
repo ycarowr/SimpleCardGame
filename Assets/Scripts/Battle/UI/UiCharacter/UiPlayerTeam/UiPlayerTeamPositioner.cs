@@ -13,7 +13,7 @@ namespace SimpleCardGames.Battle.UI.Character
 
         #region Unitycallbacks
 
-        private void Awake()
+        void Awake()
         {
             dirtyChrs = new List<IUiCharacter>();
             PlayerTeam = GetComponent<IUiPlayerTeam>();
@@ -31,7 +31,7 @@ namespace SimpleCardGames.Battle.UI.Character
 
         //--------------------------------------------------------------------------------------------------------------
 
-        private void Positioning(IUiCharacter[] characters, IUiCharacter capitain)
+        void Positioning(IUiCharacter[] characters, IUiCharacter capitain)
         {
             var pivotX = pivot.position.x;
             var pivotY = pivot.position.y;
@@ -87,39 +87,33 @@ namespace SimpleCardGames.Battle.UI.Character
                     character.Motion.MoveTo(mainHerosPosition.transform.position, 4f);
             }
 
-            void ResetPx()
-            {
-                px = minX + side * deltaX / 2;
-            }
+            void ResetPx() => px = minX + side * deltaX / 2;
 
-            void ResetPy()
-            {
-                py = minY + deltaY / 2;
-            }
+            void ResetPy() => py = minY + deltaY / 2;
         }
 
         //--------------------------------------------------------------------------------------------------------------
 
         #region Fields and Properties
 
-        private const int MaxCharactersPerLine = 4;
-        private const int MaxCharactersPerColumn = 2;
+        const int MaxCharactersPerLine = 4;
+        const int MaxCharactersPerColumn = 2;
 
-        [SerializeField] private UiCharacterParameters characterParameters;
+        [SerializeField] UiCharacterParameters characterParameters;
 
         [SerializeField] [Tooltip("The Card Prefab")]
-        private UiCharacterComponent characterPrefab;
+        UiCharacterComponent characterPrefab;
 
         [SerializeField] [Tooltip("Transform used as anchor to position the characters.")]
-        private Transform pivot;
+        Transform pivot;
 
-        private float CharacterWidth => characterPrefab.GetComponentInChildren<SpriteRenderer>().bounds.size.x;
-        private float CharacterHeight => characterPrefab.GetComponentInChildren<SpriteRenderer>().bounds.size.y;
+        float CharacterWidth => characterPrefab.GetComponentInChildren<SpriteRenderer>().bounds.size.x;
+        float CharacterHeight => characterPrefab.GetComponentInChildren<SpriteRenderer>().bounds.size.y;
 
-        private IUiPlayerTeam PlayerTeam { get; set; }
-        private List<IUiCharacter> dirtyChrs;
+        IUiPlayerTeam PlayerTeam { get; set; }
+        List<IUiCharacter> dirtyChrs;
 
-        [SerializeField] private Transform mainHerosPosition;
+        [SerializeField] Transform mainHerosPosition;
 
         #endregion
 

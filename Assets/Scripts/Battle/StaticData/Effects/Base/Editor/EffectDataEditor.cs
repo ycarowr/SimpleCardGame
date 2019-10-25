@@ -5,8 +5,8 @@ using UnityEngine;
 [CustomEditor(typeof(BaseEffectData), true)]
 public class EffectDataEditor : Editor
 {
-    private BaseEffectData MyTarget => target as BaseEffectData;
-    private Vector2Int Position { get; set; }
+    BaseEffectData MyTarget => target as BaseEffectData;
+    Vector2Int Position { get; set; }
 
     public override void OnInspectorGUI()
     {

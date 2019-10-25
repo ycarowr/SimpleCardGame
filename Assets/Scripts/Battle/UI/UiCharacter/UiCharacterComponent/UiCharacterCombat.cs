@@ -4,12 +4,12 @@ namespace SimpleCardGames.Battle.UI.Character
 {
     public class UiCharacterCombat : UiListener, IDoAttack
     {
-        private const string CantAttack = "CantAttack";
-        private const float HeightNotification = 4;
-        private const float SpeedNotification = 3;
-        [SerializeField] private UiPlayerTeam leftTeam;
+        const string CantAttack = "CantAttack";
+        const float HeightNotification = 4;
+        const float SpeedNotification = 3;
+        [SerializeField] UiPlayerTeam leftTeam;
 
-        [SerializeField] private UiPlayerTeam rightTeam;
+        [SerializeField] UiPlayerTeam rightTeam;
 
         void IDoAttack.OnCantAttack(IDamager source, IDamageable target, int amount)
         {
@@ -32,7 +32,7 @@ namespace SimpleCardGames.Battle.UI.Character
                 agressor.Attack(defender.transform.position);
         }
 
-        private IUiCharacter GetUi(IRuntimeCharacter ch)
+        IUiCharacter GetUi(IRuntimeCharacter ch)
         {
             var ui = rightTeam.GetCharacter(ch);
             if (ui == null)

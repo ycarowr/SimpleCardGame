@@ -6,9 +6,6 @@
         {
         }
 
-        public int DoHeal(IHealable target, int bonusHeal)
-        {
-            return target.TakeHeal(Character, bonusHeal);
-        }
+        public int DoHeal(IHealable target, int bonusHeal) => target.TakeHeal(Character, bonusHeal);
     }
 }

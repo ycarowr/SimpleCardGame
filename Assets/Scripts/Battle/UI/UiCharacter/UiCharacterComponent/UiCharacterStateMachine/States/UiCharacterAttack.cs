@@ -8,20 +8,17 @@ namespace SimpleCardGames.Battle.UI.Character
     /// </summary>
     public class UiCharacterAttack : UiBaseCharacterState
     {
-        private readonly float moveSpeedAttack = 10;
+        readonly float moveSpeedAttack = 10;
 
         public UiCharacterAttack(IUiCharacter handler, BaseStateMachine fsm, UiCharacterParameters parameters) : base(
             handler, fsm, parameters)
         {
         }
 
-        private Vector3 TargetPosition { get; set; }
-        private Vector3 PreviousPosition { get; set; }
+        Vector3 TargetPosition { get; set; }
+        Vector3 PreviousPosition { get; set; }
 
-        public override void OnExitState()
-        {
-            Handler.Motion.Movement.OnFinishMotion -= Handler.Enable;
-        }
+        public override void OnExitState() => Handler.Motion.Movement.OnFinishMotion -= Handler.Enable;
 
         public void ExecuteAttack(Vector3 targetPosition)
         {
@@ -29,7 +26,7 @@ namespace SimpleCardGames.Battle.UI.Character
             MoveTowards();
         }
 
-        private void MoveTowards()
+        void MoveTowards()
         {
             Handler.Motion.Movement.StopMotion();
             PreviousPosition = Handler.transform.position;
@@ -37,7 +34,7 @@ namespace SimpleCardGames.Battle.UI.Character
             Handler.Motion.Movement.OnFinishMotion += MoveBack;
         }
 
-        private void MoveBack()
+        void MoveBack()
         {
             Handler.Motion.Movement.OnFinishMotion -= MoveBack;
             Handler.Motion.MoveTo(PreviousPosition, moveSpeedAttack);

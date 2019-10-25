@@ -26,9 +26,9 @@ namespace SimpleCardGames
 
     public class UiTargetResolver : SingletonMB<UiTargetResolver>, ITargetResolver
     {
-        [SerializeField] private UiPlayerHand hand;
-        [SerializeField] private UiPlayerTeam leftTeam;
-        [SerializeField] private UiPlayerTeam rightTeam;
+        [SerializeField] UiPlayerHand hand;
+        [SerializeField] UiPlayerTeam leftTeam;
+        [SerializeField] UiPlayerTeam rightTeam;
 
         /// <summary>
         ///     Resolves the game data reference using singleton pattern.
@@ -96,19 +96,10 @@ namespace SimpleCardGames
             LeftTeam.OnCharacterSelected += SelectTargetLeft;
         }
 
-        private void SelectTargetRight(IUiCharacter target)
-        {
-            OnSelectTarget(target.Data.RuntimeData, PlayerSeat.Right);
-        }
+        void SelectTargetRight(IUiCharacter target) => OnSelectTarget(target.Data.RuntimeData, PlayerSeat.Right);
 
-        private void SelectTargetLeft(IUiCharacter target)
-        {
-            OnSelectTarget(target.Data.RuntimeData, PlayerSeat.Left);
-        }
+        void SelectTargetLeft(IUiCharacter target) => OnSelectTarget(target.Data.RuntimeData, PlayerSeat.Left);
 
-        private EffectRegister GetEffects(IRuntimeCard card)
-        {
-            return card.Data.Effects.Register;
-        }
+        EffectRegister GetEffects(IRuntimeCard card) => card.Data.Effects.Register;
     }
 }

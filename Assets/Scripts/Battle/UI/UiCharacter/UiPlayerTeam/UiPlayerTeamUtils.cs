@@ -8,35 +8,23 @@ namespace SimpleCardGames.Battle.UI.Character
     public class UiPlayerTeamUtils : UiListener, IPreGameStart, IDoDamage, IDoAttack, IDoKill, IPlayerSpawnCharacter
     {
         //--------------------------------------------------------------------------------------------------------------
-        private const float TimeUntilRemoveUnit = 1;
+        const float TimeUntilRemoveUnit = 1;
 
         [SerializeField] [Tooltip("World point where the character is positioned")]
-        private Transform characterPosition;
+        Transform characterPosition;
 
-        private int Count { get; set; }
+        int Count { get; set; }
 
-        private IUiPlayerTeam UiPlayerTeam { get; set; }
-        private IUiPlayer Controller { get; set; }
+        IUiPlayerTeam UiPlayerTeam { get; set; }
+        IUiPlayer Controller { get; set; }
 
-        void IDoAttack.OnDamage(IDamager source, IDamageable target, int amount)
-        {
-            UiPlayerTeam.Unselect();
-        }
+        void IDoAttack.OnDamage(IDamager source, IDamageable target, int amount) => UiPlayerTeam.Unselect();
 
-        void IDoAttack.OnCantAttack(IDamager source, IDamageable target, int amount)
-        {
-            UiPlayerTeam.Unselect();
-        }
+        void IDoAttack.OnCantAttack(IDamager source, IDamageable target, int amount) => UiPlayerTeam.Unselect();
 
-        void IDoDamage.OnDamage(IDamager source, IDamageable target, int amount)
-        {
-            UiPlayerTeam.Unselect();
-        }
+        void IDoDamage.OnDamage(IDamager source, IDamageable target, int amount) => UiPlayerTeam.Unselect();
 
-        public void OnKill(IRuntimeCharacter target)
-        {
-            StartCoroutine(RemoveEffectively(target));
-        }
+        public void OnKill(IRuntimeCharacter target) => StartCoroutine(RemoveEffectively(target));
 
         void IPlayerSpawnCharacter.OnSpawnCharacter(IPlayer player, IRuntimeCharacter character)
         {
@@ -56,7 +44,7 @@ namespace SimpleCardGames.Battle.UI.Character
 
         //--------------------------------------------------------------------------------------------------------------
 
-        private void Awake()
+        void Awake()
         {
             Controller = GetComponent<IUiPlayer>();
             UiPlayerTeam = GetComponentInChildren<IUiPlayerTeam>();
@@ -80,7 +68,7 @@ namespace SimpleCardGames.Battle.UI.Character
             UiPlayerTeam.RemoveCharacter(uiCharacter);
         }
 
-        private IEnumerator RemoveEffectively(IRuntimeCharacter target)
+        IEnumerator RemoveEffectively(IRuntimeCharacter target)
         {
             yield return new WaitForSeconds(TimeUntilRemoveUnit);
             UiPlayerTeam.RemoveCharacter(target);

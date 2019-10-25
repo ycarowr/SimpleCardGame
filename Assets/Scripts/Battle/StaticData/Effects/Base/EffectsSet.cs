@@ -11,7 +11,7 @@ namespace SimpleCardGames.Data.Effects
     [CreateAssetMenu(menuName = "Data/Effect Set")]
     public class EffectsSet : ScriptableObject
     {
-        [SerializeField] private EffectRegister register = new EffectRegister();
+        [SerializeField] EffectRegister register = new EffectRegister();
         public EffectRegister Register => register;
 
         public bool HasDynamicTarget => register.Values.ToList().Exists(x => x.HasDynamicTarget);

@@ -10,20 +10,11 @@
 
         public int AttacksThisTurn { get; private set; }
 
-        public bool CanAttack()
-        {
-            return AttacksThisTurn < Attributes.MaxAttackPerTurn;
-        }
+        public bool CanAttack() => AttacksThisTurn < Attributes.MaxAttackPerTurn;
 
-        public void Execute()
-        {
-            AttacksThisTurn++;
-        }
+        public void Execute() => AttacksThisTurn++;
 
-        public void ResetAttackQuantity()
-        {
-            AttacksThisTurn = 0;
-        }
+        public void ResetAttackQuantity() => AttacksThisTurn = 0;
 
         public void OnBeforeAttack()
         {

@@ -4,10 +4,10 @@ namespace SimpleCardGames
 {
     public class UiGuiTextButtonDamage : UiGUIText
     {
-        [SerializeField] private Configurations configurations;
+        [SerializeField] Configurations configurations;
 
-        private int MaxDamage => configurations.Amount.Damage.MaxDamage;
-        private int MinDamage => configurations.Amount.Damage.MinDamage;
+        int MaxDamage => configurations.Amount.Damage.MaxDamage;
+        int MinDamage => configurations.Amount.Damage.MinDamage;
 
         protected override void Awake()
         {

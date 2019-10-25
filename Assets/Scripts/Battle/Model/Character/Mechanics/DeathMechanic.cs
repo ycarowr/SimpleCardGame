@@ -18,10 +18,7 @@ namespace SimpleCardGames.Battle
             GameController.Instance.Data.RuntimeGame.FinishGame.CheckWinCondition();
         }
 
-        public void OnDeath(IPlayer Owner, IRuntimeCharacter target)
-        {
-            //Find player who owns target. remove from roster
+        public void OnDeath(IPlayer Owner, IRuntimeCharacter target) =>
             GameEvents.Instance.Notify<IDoKill>(i => i.OnKill(target));
-        }
     }
 }

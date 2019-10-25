@@ -18,10 +18,7 @@ namespace SimpleCardGames.Battle
         public Collection<IRuntimeCharacter> Characters { get; }
         public Collection<IBoardPosition> Positions { get; }
 
-        public void CreateBoard()
-        {
-            OnCreateBoard();
-        }
+        public void CreateBoard() => OnCreateBoard();
 
         /// <summary>
         ///     Clear all positions and characters on the board.
@@ -55,20 +52,17 @@ namespace SimpleCardGames.Battle
         /// </summary>
         /// <param name="pos"></param>
         /// <returns></returns>
-        public BoardPosition GetPosition(BoardPosition pos)
-        {
-            return null;
-        }
+        public BoardPosition GetPosition(BoardPosition pos) => null;
 
-        private void OnAddTile(IRuntimeCharacter tile, IBoardPosition pos)
+        void OnAddTile(IRuntimeCharacter tile, IBoardPosition pos)
         {
         }
 
-        private void OnRemoveTile(IRuntimeCharacter tile, IBoardPosition pos)
+        void OnRemoveTile(IRuntimeCharacter tile, IBoardPosition pos)
         {
         }
 
-        private void OnCreateBoard()
+        void OnCreateBoard()
         {
         }
     }

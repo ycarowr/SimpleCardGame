@@ -2,7 +2,7 @@
 {
     public class UiParticlesDamage : UiParticles, IDoDamage
     {
-        private IUiPlayer Ui { get; set; }
+        IUiPlayer Ui { get; set; }
 
         void IDoDamage.OnDamage(IDamager source, IDamageable target, int amount)
         {

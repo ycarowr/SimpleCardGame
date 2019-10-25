@@ -4,7 +4,7 @@ namespace SimpleCardGames
 {
     public class UiGuiLocalizedTextView : UiGUIText
     {
-        [SerializeField] private LocalizationIds id;
+        [SerializeField] LocalizationIds id;
 
         protected override void Awake()
         {

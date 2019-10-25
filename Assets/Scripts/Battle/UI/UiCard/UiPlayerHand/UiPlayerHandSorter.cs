@@ -8,12 +8,12 @@ namespace SimpleCardGames.Battle.UI.Card
     {
         //--------------------------------------------------------------------------------------------------------------
 
-        private const int OffsetZ = -1;
-        private IUiPlayerHand PlayerHand { get; set; }
+        const int OffsetZ = -1;
+        IUiPlayerHand PlayerHand { get; set; }
 
         //--------------------------------------------------------------------------------------------------------------
 
-        private void Awake()
+        void Awake()
         {
             PlayerHand = GetComponent<IUiPlayerHand>();
             PlayerHand.OnPileChanged += Sort;

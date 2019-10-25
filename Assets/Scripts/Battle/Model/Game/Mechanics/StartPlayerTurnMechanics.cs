@@ -33,9 +33,7 @@
         ///     Dispatch start current player turn to the listeners.
         /// </summary>
         /// <param name="currentPlayer"></param>
-        private void OnStartedCurrentPlayerTurn(IPlayer currentPlayer)
-        {
+        void OnStartedCurrentPlayerTurn(IPlayer currentPlayer) =>
             GameEvents.Instance.Notify<IStartPlayerTurn>(i => i.OnStartPlayerTurn(currentPlayer));
-        }
     }
 }

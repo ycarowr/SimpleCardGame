@@ -42,7 +42,7 @@ namespace SimpleCardGames.Battle.Controller
             Fsm.Handler.MonoBehaviour.StartCoroutine(NextStateRoutine(nextState));
         }
 
-        private IEnumerator NextStateRoutine(BaseBattleState nextState)
+        IEnumerator NextStateRoutine(BaseBattleState nextState)
         {
             yield return new WaitForSeconds(Configurations.FirstPlayer);
             OnNextState(nextState);
@@ -54,13 +54,13 @@ namespace SimpleCardGames.Battle.Controller
 
         #region Coroutines
 
-        private IEnumerator PreGameRoutine()
+        IEnumerator PreGameRoutine()
         {
             yield return new WaitForSeconds(Configurations.PreGameEvent);
             GameData.RuntimeGame.PreStartGame();
         }
 
-        private IEnumerator StartGameRoutine()
+        IEnumerator StartGameRoutine()
         {
             var time = Configurations.PreGameEvent + Configurations.StartGameEvent;
             yield return new WaitForSeconds(time);

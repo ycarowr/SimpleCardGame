@@ -13,17 +13,14 @@ namespace SimpleCardGames.Battle.UI.Card
 
         #region Unitycallbacks
 
-        private void Awake()
+        void Awake()
         {
             PlayerHand = GetComponent<IUiPlayerHand>();
             CardRenderer = CardPrefab.GetComponent<SpriteRenderer>();
             PlayerHand.OnPileChanged += Bend;
         }
 
-        private void Update()
-        {
-            Bend(PlayerHand.Cards.ToArray());
-        }
+        void Update() => Bend(PlayerHand.Cards.ToArray());
 
         #endregion
 
@@ -31,17 +28,17 @@ namespace SimpleCardGames.Battle.UI.Card
 
         #region Fields and Properties
 
-        [SerializeField] private UiCardParameters parameters;
+        [SerializeField] UiCardParameters parameters;
 
         [SerializeField] [Tooltip("The Card Prefab")]
-        private UiCardComponent CardPrefab;
+        UiCardComponent CardPrefab;
 
         [SerializeField] [Tooltip("Transform used as anchor to position the cards.")]
-        private Transform pivot;
+        Transform pivot;
 
-        private SpriteRenderer CardRenderer { get; set; }
-        private float CardWidth => CardRenderer.bounds.size.x;
-        private IUiPlayerHand PlayerHand { get; set; }
+        SpriteRenderer CardRenderer { get; set; }
+        float CardWidth => CardRenderer.bounds.size.x;
+        IUiPlayerHand PlayerHand { get; set; }
 
         #endregion
 
@@ -49,7 +46,7 @@ namespace SimpleCardGames.Battle.UI.Card
 
         #region Operations
 
-        private void Bend(IUiCard[] cards)
+        void Bend(IUiCard[] cards)
         {
             if (cards == null)
                 throw new ArgumentException("Can't bend a card list null");
@@ -96,7 +93,7 @@ namespace SimpleCardGames.Battle.UI.Card
         /// </summary>
         /// <param name="fullAngle"></param>
         /// <returns></returns>
-        private static float CalcFirstAngle(float fullAngle)
+        static float CalcFirstAngle(float fullAngle)
         {
             var magicMathFactor = 0.1f;
             return -(fullAngle / 2) + fullAngle * magicMathFactor;
@@ -107,7 +104,7 @@ namespace SimpleCardGames.Battle.UI.Card
         /// </summary>
         /// <param name="quantityOfCards"></param>
         /// <returns></returns>
-        private float CalcHandWidth(int quantityOfCards)
+        float CalcHandWidth(int quantityOfCards)
         {
             var widthCards = quantityOfCards * CardWidth;
             var widthSpacing = (quantityOfCards - 1) * parameters.Spacing;

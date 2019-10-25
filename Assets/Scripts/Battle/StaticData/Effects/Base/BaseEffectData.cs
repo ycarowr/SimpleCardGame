@@ -13,7 +13,7 @@ namespace SimpleCardGames.Data.Effects
         //---------------------------------------------------------------------------------------------------------------------
 
         [SerializeField] [Tooltip("Quantity of the effect.")]
-        private int amount;
+        int amount;
         //---------------------------------------------------------------------------------------------------------------------
 
         #region Fields
@@ -23,12 +23,12 @@ namespace SimpleCardGames.Data.Effects
         [SerializeField]
         [Tooltip("A brief description of what it does. This text won't be show to the user")]
         [Multiline]
-        private string description;
+        string description;
 
         #endregion
 
         [SerializeField] [Tooltip("Targets of this effect.")]
-        private BaseTargetType target;
+        BaseTargetType target;
 
         public int Amount => amount;
         public BaseTargetType Target => target;

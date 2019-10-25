@@ -30,9 +30,7 @@
         ///     Dispatch to the listeners.
         /// </summary>
         /// <param name="currentPlayer"></param>
-        private void OnFinishedCurrentPlayerTurn(IPlayer currentPlayer)
-        {
+        void OnFinishedCurrentPlayerTurn(IPlayer currentPlayer) =>
             GameEvents.Instance.Notify<IFinishPlayerTurn>(i => i.OnFinishPlayerTurn(currentPlayer));
-        }
     }
 }

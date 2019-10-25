@@ -7,7 +7,7 @@ namespace SimpleCardGames.Data.Team
 {
     public class TeamDatabase : Singleton<TeamDatabase>
     {
-        private const string PathDataBase = "Battle/TeamDatabase/Database";
+        const string PathDataBase = "Battle/TeamDatabase/Database";
 
         public TeamDatabase()
         {
@@ -15,16 +15,10 @@ namespace SimpleCardGames.Data.Team
                 Teams = Resources.LoadAll<TeamData>(PathDataBase).ToList();
         }
 
-        private List<TeamData> Teams { get; }
+        List<TeamData> Teams { get; }
 
-        public TeamData Get(TeamId id)
-        {
-            return Teams?.Find(team => team.Id == id);
-        }
+        public TeamData Get(TeamId id) => Teams?.Find(team => team.Id == id);
 
-        public List<TeamData> GetFullList()
-        {
-            return Teams;
-        }
+        public List<TeamData> GetFullList() => Teams;
     }
 }

@@ -5,12 +5,9 @@ namespace SimpleCardGames.Infrastructure
 {
     public class PlayerBuilder : DataBuilder<Player>
     {
-        private PlayerSeat defaultSeat = PlayerSeat.Left;
+        PlayerSeat defaultSeat = PlayerSeat.Left;
 
-        public PlayerBuilder(PlayerSeat seat)
-        {
-            defaultSeat = seat;
-        }
+        public PlayerBuilder(PlayerSeat seat) => defaultSeat = seat;
 
         public PlayerBuilder() : this(PlayerSeat.Left)
         {
@@ -22,9 +19,6 @@ namespace SimpleCardGames.Infrastructure
             return this;
         }
 
-        public override Player Build()
-        {
-            return new Player(defaultSeat);
-        }
+        public override Player Build() => new Player(defaultSeat);
     }
 }

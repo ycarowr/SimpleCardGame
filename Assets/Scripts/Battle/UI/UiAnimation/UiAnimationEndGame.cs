@@ -5,10 +5,10 @@ namespace SimpleCardGames.Battle
 {
     public class UiAnimationEndGame : UiAnimation, IFinishGame
     {
-        private const float DelayToNotify = 1f;
-        [SerializeField] private LocalizationIds id;
-        [SerializeField] private PlayerSeat seat;
-        private TMP_Text Text;
+        const float DelayToNotify = 1f;
+        [SerializeField] LocalizationIds id;
+        [SerializeField] PlayerSeat seat;
+        TMP_Text Text;
 
         void IFinishGame.OnFinishGame(IPlayer winner)
         {

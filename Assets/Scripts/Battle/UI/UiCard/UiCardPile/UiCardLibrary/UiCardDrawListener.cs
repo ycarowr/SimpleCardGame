@@ -2,8 +2,8 @@
 {
     public class UiCardDrawListener : UiListener, IPlayerDrawCard
     {
-        private UiPlayerHandUtils CardUtils { get; set; }
-        private IUiPlayer UiPlayer { get; set; }
+        UiPlayerHandUtils CardUtils { get; set; }
+        IUiPlayer UiPlayer { get; set; }
 
         void IPlayerDrawCard.OnDrawCard(IPlayer player, IRuntimeCard card)
         {
@@ -13,7 +13,7 @@
             CardUtils.Draw(card);
         }
 
-        private void Awake()
+        void Awake()
         {
             CardUtils = transform.parent.GetComponentInChildren<UiPlayerHandUtils>();
             UiPlayer = transform.parent.GetComponentInChildren<IUiPlayer>();

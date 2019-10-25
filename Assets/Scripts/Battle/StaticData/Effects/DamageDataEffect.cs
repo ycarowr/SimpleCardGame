@@ -13,10 +13,7 @@ namespace SimpleCardGames.Data.Effects
             return damageDealt;
         }
 
-        public override void Apply(ITargetable target, IEffectable source)
-        {
-            GiveDamage(target as IDamageable);
-        }
+        public override void Apply(ITargetable target, IEffectable source) => GiveDamage(target as IDamageable);
 
         /// <summary>
         ///     Dispatch damage dealt to the listeners.
@@ -24,9 +21,7 @@ namespace SimpleCardGames.Data.Effects
         /// <param name="source"></param>
         /// <param name="target"></param>
         /// <param name="amount"></param>
-        private void OnDoneDamage(IDamager source, IDamageable target, int amount)
-        {
+        void OnDoneDamage(IDamager source, IDamageable target, int amount) =>
             GameEvents.Instance.Notify<IDoDamage>(i => i.OnDamage(source, target, amount));
-        }
     }
 }

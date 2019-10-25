@@ -45,7 +45,7 @@ namespace SimpleCardGames.Battle
         /// </summary>
         /// <param name="player"></param>
         /// <param name="card"></param>
-        private void OnDrawCard(IPlayer player, IRuntimeCard card)
+        void OnDrawCard(IPlayer player, IRuntimeCard card)
         {
             GameEvents.Instance.Notify<IPlayerDrawCard>(i => i.OnDrawCard(player, card));
             switch (card.Data.CardType)

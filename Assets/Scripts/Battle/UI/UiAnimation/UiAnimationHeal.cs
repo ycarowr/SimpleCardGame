@@ -4,7 +4,7 @@ namespace SimpleCardGames.Battle
 {
     public class UiAnimationHeal : UiAnimation, IDoHeal
     {
-        private TMP_Text Text { get; set; }
+        TMP_Text Text { get; set; }
 
         void IDoHeal.OnHeal(IHealer source, IHealable target, int amount)
         {

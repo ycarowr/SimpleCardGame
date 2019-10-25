@@ -28,9 +28,9 @@ namespace SimpleCardGames.Battle.UI.Character
 
         #region Properties
 
-        [SerializeField] private UiPlayerTeam uiEnemyTeam;
+        [SerializeField] UiPlayerTeam uiEnemyTeam;
         public IClickZone UnselectZone { get; private set; }
-        private IUiPlayerHand PlayerHand { get; set; }
+        IUiPlayerHand PlayerHand { get; set; }
         public IUiPlayer Controller { get; set; }
 
         public Action<IUiCharacter> OnCharacterSelected { get; set; } = character => { };
@@ -81,10 +81,7 @@ namespace SimpleCardGames.Battle.UI.Character
         /// <summary>
         ///     Unselect the character which is currently selected. Nothing happens if current is null.
         /// </summary>
-        public void Unselect()
-        {
-            UnselectCharacter(SelectedCharacter);
-        }
+        public void Unselect() => UnselectCharacter(SelectedCharacter);
 
         /// <summary>
         ///     Disables input for all characters.
@@ -105,12 +102,9 @@ namespace SimpleCardGames.Battle.UI.Character
         }
 
         [Button]
-        private void NotifyCharacterSelected()
-        {
-            OnCharacterSelected?.Invoke(SelectedCharacter);
-        }
+        void NotifyCharacterSelected() => OnCharacterSelected?.Invoke(SelectedCharacter);
 
-        private void TryAttack(IUiCharacter defender)
+        void TryAttack(IUiCharacter defender)
         {
             if (SelectedCharacter == null)
                 return;
@@ -129,10 +123,8 @@ namespace SimpleCardGames.Battle.UI.Character
             Controller.PlayerController.Attack(attackData);
         }
 
-        public IUiCharacter GetCharacter(IRuntimeCharacter character)
-        {
-            return Characters.Find(x => x.Data.RuntimeData == character);
-        }
+        public IUiCharacter GetCharacter(IRuntimeCharacter character) =>
+            Characters.Find(x => x.Data.RuntimeData == character);
 
         public override void Restart()
         {

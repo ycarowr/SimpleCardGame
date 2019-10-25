@@ -2,9 +2,6 @@
 {
     public class UiChangeCharacterName : UiChangeCharacterText
     {
-        protected override string GetText()
-        {
-            return Handler.StaticData.Name;
-        }
+        protected override string GetText() => Handler.StaticData.Name;
     }
 }

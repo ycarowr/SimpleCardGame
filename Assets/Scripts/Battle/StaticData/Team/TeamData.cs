@@ -14,15 +14,15 @@ namespace SimpleCardGames.Data.Team
     public class TeamData : ScriptableObject
     {
         [SerializeField] [Tooltip("The capitan of the crew.")]
-        private CharacterData capitain;
+        CharacterData capitain;
 
         [SerializeField] [Multiline] [Tooltip("Brief description of the team. The text won't be visible to the user.")]
-        private string description;
+        string description;
 
-        [SerializeField] private TeamId id;
+        [SerializeField] TeamId id;
 
         [SerializeField] [Tooltip("All data of the members")]
-        private List<CharacterData> members = new List<CharacterData>();
+        List<CharacterData> members = new List<CharacterData>();
 
         public TeamId Id => id;
 
@@ -37,9 +37,6 @@ namespace SimpleCardGames.Data.Team
             return allData;
         }
 
-        public ICharacterData GetCapitain()
-        {
-            return capitain;
-        }
+        public ICharacterData GetCapitain() => capitain;
     }
 }

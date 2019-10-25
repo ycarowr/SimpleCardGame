@@ -7,15 +7,9 @@ namespace SimpleCardGames.Battle
 
     public class GameEvents : Observer<GameEvents>
     {
-        protected override void OnAwake()
-        {
-            Logger.Instance.Log<GameEvents>("Awake");
-        }
+        protected override void OnAwake() => Logger.Instance.Log<GameEvents>("Awake");
 
-        private void Start()
-        {
-            Logger.Instance.Log<GameEvents>("Start");
-        }
+        void Start() => Logger.Instance.Log<GameEvents>("Start");
     }
 
     //----------------------------------------------------------------------------------------------------------

@@ -10,15 +10,15 @@ namespace SimpleCardGames.Battle.UI.Card
     public class UiCardGraveyardSorter : MonoBehaviour
     {
         [SerializeField] [Tooltip("World point where the graveyard is positioned")]
-        private Transform graveyardPosition;
+        Transform graveyardPosition;
 
-        [SerializeField] private UiCardParameters parameters;
+        [SerializeField] UiCardParameters parameters;
 
-        private IUiCardPile Graveyard { get; set; }
+        IUiCardPile Graveyard { get; set; }
 
         //--------------------------------------------------------------------------------------------------------------
 
-        private void Awake()
+        void Awake()
         {
             Graveyard = GetComponent<UiCardGraveyard>();
             Graveyard.OnPileChanged += Sort;

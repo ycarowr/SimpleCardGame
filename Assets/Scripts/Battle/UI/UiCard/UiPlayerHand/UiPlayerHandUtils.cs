@@ -8,10 +8,7 @@ namespace SimpleCardGames.Battle.UI.Card
     {
         //--------------------------------------------------------------------------------------------------------------
 
-        private void Awake()
-        {
-            PlayerHand = transform.parent.GetComponentInChildren<IUiPlayerHand>();
-        }
+        void Awake() => PlayerHand = transform.parent.GetComponentInChildren<IUiPlayerHand>();
 
         //--------------------------------------------------------------------------------------------------------------
 
@@ -38,25 +35,22 @@ namespace SimpleCardGames.Battle.UI.Card
 
         //--------------------------------------------------------------------------------------------------------------
 
-        private void Update()
+        void Update()
         {
             if (Input.GetKeyDown(KeyCode.Escape)) Restart();
         }
 
-        public void Restart()
-        {
-            SceneManager.LoadScene(0);
-        }
+        public void Restart() => SceneManager.LoadScene(0);
         //--------------------------------------------------------------------------------------------------------------
 
         #region Fields
 
-        private int Count { get; set; }
+        int Count { get; set; }
 
         [SerializeField] [Tooltip("World point where the deck is positioned")]
-        private Transform deckPosition;
+        Transform deckPosition;
 
-        private IUiPlayerHand PlayerHand { get; set; }
+        IUiPlayerHand PlayerHand { get; set; }
 
         #endregion
 

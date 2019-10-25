@@ -4,13 +4,20 @@ using System.Collections.Generic;
 namespace Patterns
 {
     /// <summary>
-    ///     Creates a Singleton Class which allows to Pool/Release objects of the type <typeparam name="T"></typeparam>>.
+    ///     Creates a Singleton Class which allows to Pool/Release objects of the type
+    ///     <typeparam name="T"></typeparam>
+    ///     >.
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public abstract class Pooler<T, T1> : Singleton<T1> 
+    public abstract class Pooler<T, T1> : Singleton<T1>
         where T : class, IPoolable, new()
         where T1 : class, new()
     {
+        //--------------------------------------------------------------------------------------------------------------
+
+        readonly List<T> busy = new List<T>();
+
+        readonly List<T> free = new List<T>();
         //--------------------------------------------------------------------------------------------------------------
 
         #region Constructor
@@ -33,6 +40,14 @@ namespace Patterns
 
         #endregion
 
+        public int StartSize { get; }
+
+        public int SizeFreeObjects => free.Count;
+
+        public int SizeBusyObjects => busy.Count;
+
+        public Type PoolType => typeof(T);
+
         //--------------------------------------------------------------------------------------------------------------
 
         #region Exceptions
@@ -45,19 +60,6 @@ namespace Patterns
         }
 
         #endregion
-
-        //--------------------------------------------------------------------------------------------------------------
-
-        private readonly List<T> busy = new List<T>();
-        private readonly List<T> free = new List<T>();
-
-        public int StartSize { get; }
-
-        public int SizeFreeObjects => free.Count;
-
-        public int SizeBusyObjects => busy.Count;
-
-        public Type PoolType => typeof(T);
 
         //--------------------------------------------------------------------------------------------------------------
 
@@ -85,7 +87,7 @@ namespace Patterns
 
             //add to the busy list
             busy.Add(pooled);
-            
+
             OnPool(pooled);
             return pooled;
         }
@@ -107,7 +109,7 @@ namespace Patterns
 
             //remove from busy list
             busy.Remove(released);
-            
+
             OnRelease(released);
         }
 
@@ -117,16 +119,14 @@ namespace Patterns
         /// <param name="obj"></param>
         protected virtual void OnPool(T obj)
         {
-            
         }
-        
+
         /// <summary>
         ///     Dispatched after release an object.
         /// </summary>
         /// <param name="obj"></param>
         protected virtual void OnRelease(T obj)
         {
-            
         }
 
         #endregion

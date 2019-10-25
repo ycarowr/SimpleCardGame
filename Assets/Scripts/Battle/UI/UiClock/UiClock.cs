@@ -8,13 +8,13 @@ namespace SimpleCardGames.Battle
     {
         //----------------------------------------------------------------------------------------------------------
 
-        private void Awake()
+        void Awake()
         {
             Text = GetComponent<TMP_Text>();
             TimeText = Localization.Instance.Get(LocalizationIds.Time) + ":";
         }
 
-        private void Update()
+        void Update()
         {
             if (!IsBlinking)
                 return;
@@ -27,7 +27,7 @@ namespace SimpleCardGames.Battle
             Text.enabled = !Text.enabled;
         }
 
-        private void Restart()
+        void Restart()
         {
             IsBlinking = false;
             Text.enabled = false;
@@ -36,14 +36,14 @@ namespace SimpleCardGames.Battle
 
         #region Fields and Properties 
 
-        private const float BlinkFactor = 0.1f;
-        private const int BlinkStart = 3;
-        private float currentBlinkTime;
-        private float maxBlinkTime;
-        [SerializeField] private PlayerSeat seat;
-        private TMP_Text Text { get; set; }
-        private string TimeText { get; set; }
-        private bool IsBlinking { get; set; }
+        const float BlinkFactor = 0.1f;
+        const int BlinkStart = 3;
+        float currentBlinkTime;
+        float maxBlinkTime;
+        [SerializeField] PlayerSeat seat;
+        TMP_Text Text { get; set; }
+        string TimeText { get; set; }
+        bool IsBlinking { get; set; }
 
         #endregion
 
@@ -68,15 +68,9 @@ namespace SimpleCardGames.Battle
                 maxBlinkTime = time * BlinkFactor;
         }
 
-        void IFinishPlayerTurn.OnFinishPlayerTurn(IPlayer player)
-        {
-            Restart();
-        }
+        void IFinishPlayerTurn.OnFinishPlayerTurn(IPlayer player) => Restart();
 
-        void IPreGameStart.OnPreGameStart(List<IPlayer> players)
-        {
-            Restart();
-        }
+        void IPreGameStart.OnPreGameStart(List<IPlayer> players) => Restart();
 
         #endregion
     }

@@ -8,8 +8,8 @@ namespace SimpleCardGames.Battle.UI.Card
     /// </summary>
     public abstract class UiBaseCardState : IState, IUiPlayer
     {
-        private const int LayerToRenderNormal = 0;
-        private const int LayerToRenderTop = 1;
+        const int LayerToRenderNormal = 0;
+        const int LayerToRenderTop = 1;
 
         //--------------------------------------------------------------------------------------------------------------
 
@@ -98,18 +98,12 @@ namespace SimpleCardGames.Battle.UI.Card
         /// <summary>
         ///     Disables the collision with this card.
         /// </summary>
-        protected void DisableCollision()
-        {
-            Handler.Collider.enabled = false;
-        }
+        protected void DisableCollision() => Handler.Collider.enabled = false;
 
         /// <summary>
         ///     Enables the collision with this card.
         /// </summary>
-        protected void EnableCollision()
-        {
-            Handler.Collider.enabled = true;
-        }
+        protected void EnableCollision() => Handler.Collider.enabled = true;
 
         /// <summary>
         ///     Remove any alpha channel in all renderers.

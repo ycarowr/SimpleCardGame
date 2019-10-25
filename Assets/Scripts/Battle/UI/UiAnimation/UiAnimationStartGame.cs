@@ -4,11 +4,11 @@ namespace SimpleCardGames.Battle
 {
     public class UiAnimationStartGame : UiAnimation, IStartGame
     {
-        private const float DelayToNotify = 0.75f;
-        private const string You = "You";
-        private const string Opp = "Opponent";
-        private const string S = "s";
-        private TMP_Text Text;
+        const float DelayToNotify = 0.75f;
+        const string You = "You";
+        const string Opp = "Opponent";
+        const string S = "s";
+        TMP_Text Text;
 
         void IStartGame.OnStartGame(IPlayer player)
         {

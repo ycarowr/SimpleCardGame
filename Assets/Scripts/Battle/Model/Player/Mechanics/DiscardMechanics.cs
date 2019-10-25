@@ -42,7 +42,7 @@ namespace SimpleCardGames.Battle
         /// </summary>
         /// <param name="player"></param>
         /// <param name="card"></param>
-        private void OnDiscardCard(IPlayer player, IRuntimeCard card)
+        void OnDiscardCard(IPlayer player, IRuntimeCard card)
         {
             GameEvents.Instance.Notify<IPlayerDiscardCard>(i => i.OnDiscardCard(player, card));
             switch (card.Data.CardType)

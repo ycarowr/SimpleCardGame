@@ -15,18 +15,18 @@ namespace SimpleCardGames.Battle.UI.Character
 
         //--------------------------------------------------------------------------------------------------------------
 
-        private Vector3 DefaultSize { get; set; }
+        Vector3 DefaultSize { get; set; }
 
 
         //--------------------------------------------------------------------------------------------------------------
 
-        private void OnPointerExit(PointerEventData obj)
+        void OnPointerExit(PointerEventData obj)
         {
             if (Fsm.IsCurrent(this))
                 Handler.Enable();
         }
 
-        private void OnPointerDown(PointerEventData eventData)
+        void OnPointerDown(PointerEventData eventData)
         {
             if (Fsm.IsCurrent(this))
                 Handler.Select();
@@ -34,29 +34,23 @@ namespace SimpleCardGames.Battle.UI.Character
 
         //--------------------------------------------------------------------------------------------------------------
 
-        private void ResetValues()
-        {
-            Handler.Motion.ScaleTo(DefaultSize, 5);
-        }
+        void ResetValues() => Handler.Motion.ScaleTo(DefaultSize, 5);
 
-        private void SetScale()
+        void SetScale()
         {
             var finalScale = DefaultSize * Parameters.ScaleHover;
             Handler.Motion.ScaleTo(finalScale, 5);
         }
 
-        private void CachePreviousValues()
-        {
-            DefaultSize = Handler.transform.localScale;
-        }
+        void CachePreviousValues() => DefaultSize = Handler.transform.localScale;
 
-        private void SubscribeInput()
+        void SubscribeInput()
         {
             Handler.Input.OnPointerExit += OnPointerExit;
             Handler.Input.OnPointerDown += OnPointerDown;
         }
 
-        private void UnsubscribeInput()
+        void UnsubscribeInput()
         {
             Handler.Input.OnPointerExit -= OnPointerExit;
             Handler.Input.OnPointerDown -= OnPointerDown;

@@ -4,10 +4,10 @@ namespace SimpleCardGames
 {
     public class UiGuiTextButtonHeal : UiGUIText
     {
-        [SerializeField] private Configurations configurations;
+        [SerializeField] Configurations configurations;
 
-        private int MaxHeal => configurations.Amount.Heal.MaxHeal;
-        private int MinHeal => configurations.Amount.Heal.MinHeal;
+        int MaxHeal => configurations.Amount.Heal.MaxHeal;
+        int MinHeal => configurations.Amount.Heal.MinHeal;
 
         protected override void Awake()
         {

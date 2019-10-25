@@ -41,7 +41,7 @@
         ///     Dispatch end game to the listeners.
         /// </summary>
         /// <param name="winner"></param>
-        private void OnGameFinished(IPlayer winner)
+        void OnGameFinished(IPlayer winner)
         {
             var playerLeft = Game.TurnLogic.GetPlayer(PlayerSeat.Left);
             GameEvents.Instance.Notify<IFinishGame>(i => i.OnFinishGame(winner));

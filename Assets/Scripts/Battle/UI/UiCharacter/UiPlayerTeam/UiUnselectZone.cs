@@ -15,25 +15,19 @@ namespace SimpleCardGames.Battle.UI.Character
     [RequireComponent(typeof(Collider))]
     public class UiUnselectZone : MonoBehaviour, IClickZone
     {
-        private readonly Vector3 Offset = new Vector3(0, 0, 0.1f);
+        readonly Vector3 Offset = new Vector3(0, 0, 0.1f);
 
         //--------------------------------------------------------------------------------------------------------------
 
-        private IUiPlayerTeam UiPlayerTeam { get; set; }
-        private IMouseInput Input { get; set; }
+        IUiPlayerTeam UiPlayerTeam { get; set; }
+        IMouseInput Input { get; set; }
         public Collider Collider { get; private set; }
 
-        public void Disable()
-        {
-            Collider.enabled = false;
-        }
+        public void Disable() => Collider.enabled = false;
 
-        public void Enable()
-        {
-            Collider.enabled = true;
-        }
+        public void Enable() => Collider.enabled = true;
 
-        private void Awake()
+        void Awake()
         {
             Collider = GetComponent<Collider>();
             Input = GetComponent<IMouseInput>();
@@ -42,10 +36,7 @@ namespace SimpleCardGames.Battle.UI.Character
             Disable();
         }
 
-        private void Unselect(PointerEventData obj)
-        {
-            UiPlayerTeam.Unselect();
-        }
+        void Unselect(PointerEventData obj) => UiPlayerTeam.Unselect();
 
         public void EnableOnTarget(Transform target)
         {

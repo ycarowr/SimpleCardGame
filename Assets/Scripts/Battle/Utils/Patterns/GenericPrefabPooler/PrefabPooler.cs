@@ -11,15 +11,15 @@ public class PrefabPooler<T, T1> : SingletonMB<T>
     #region Fields
 
     //StatesRegister of the already pooled objects
-    private readonly Dictionary<GameObject, List<GameObject>> busyObjects =
+    readonly Dictionary<GameObject, List<GameObject>> busyObjects =
         new Dictionary<GameObject, List<GameObject>>();
 
     //StatesRegister of the pooled available objects
-    private readonly Dictionary<GameObject, List<GameObject>> poolAbleObjects =
+    readonly Dictionary<GameObject, List<GameObject>> poolAbleObjects =
         new Dictionary<GameObject, List<GameObject>>();
 
     [Tooltip("How many objects will be created as soon as the game loads")] [SerializeField]
-    private readonly int startSize = 10;
+    readonly int startSize = 10;
 
     [Tooltip("All pooled models have to be inside this array before the initialization")] [SerializeField]
     protected GameObject[] modelsPooled;
@@ -33,7 +33,7 @@ public class PrefabPooler<T, T1> : SingletonMB<T>
     /// <summary>
     ///     I am initializing it as soon as possible. You can move it to Awake or Start calls. It's up to you.
     /// </summary>
-    private void OnEnable()
+    void OnEnable()
     {
         //avoiding execution when the game isn't playing
         if (!Application.isPlaying)
@@ -47,7 +47,7 @@ public class PrefabPooler<T, T1> : SingletonMB<T>
     ///     Here is the initialization of the pooler. All the models/prefabs which you need to pool have to be inside
     ///     the modelPooled array. They will be keys for the Lists inside the pool system.
     /// </summary>
-    private void Initialize()
+    void Initialize()
     {
         foreach (var model in modelsPooled)
         {
@@ -118,10 +118,7 @@ public class PrefabPooler<T, T1> : SingletonMB<T>
         return pooledObj.GetComponent<T1>();
     }
 
-    public virtual T1 Get()
-    {
-        return Get(modelsPooled[0]);
-    }
+    public virtual T1 Get() => Get(modelsPooled[0]);
 
     /// <summary>
     ///     Here you pool back objects that you no longer use. They are deactivated and

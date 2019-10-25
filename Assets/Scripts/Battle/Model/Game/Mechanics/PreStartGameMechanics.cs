@@ -26,7 +26,7 @@ namespace SimpleCardGames.Battle
         }
 
 
-        private void DrawStartingHands()
+        void DrawStartingHands()
         {
             if (!Game.Configurations.WithStartingHands)
                 return;
@@ -39,9 +39,7 @@ namespace SimpleCardGames.Battle
         ///     Dispatch pre start game event to the listeners
         /// </summary>
         /// <param name="players"></param>
-        private void OnGamePreStarted(List<IPlayer> players)
-        {
+        void OnGamePreStarted(List<IPlayer> players) =>
             GameEvents.Instance.Notify<IPreGameStart>(i => i.OnPreGameStart(players));
-        }
     }
 }

@@ -4,7 +4,7 @@ namespace SimpleCardGames.Battle
 {
     public class UiAnimationDamage : UiAnimation, IDoDamage
     {
-        private TMP_Text Text { get; set; }
+        TMP_Text Text { get; set; }
 
         void IDoDamage.OnDamage(IDamager source, IDamageable target, int amount)
         {

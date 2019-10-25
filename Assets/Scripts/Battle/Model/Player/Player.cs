@@ -58,10 +58,8 @@ namespace SimpleCardGames.Battle
 
         #region Spawn
 
-        public void DoSpawn(int amount, ICharacterData data, IEffectable source)
-        {
+        public void DoSpawn(int amount, ICharacterData data, IEffectable source) =>
             SpawnMechanics.DoSpawn(amount, data, source);
-        }
 
         #endregion
 
@@ -87,20 +85,11 @@ namespace SimpleCardGames.Battle
 
         #region Draw 
 
-        void IPlayer.DrawStartingHand()
-        {
-            DrawMechanics.DrawStartingHand();
-        }
+        void IPlayer.DrawStartingHand() => DrawMechanics.DrawStartingHand();
 
-        void IDrawable.DoDraw(int amount, IEffectable source)
-        {
-            DrawMechanics.DoDraw(amount, source);
-        }
+        void IDrawable.DoDraw(int amount, IEffectable source) => DrawMechanics.DoDraw(amount, source);
 
-        public bool Draw()
-        {
-            return DrawMechanics.Draw();
-        }
+        public bool Draw() => DrawMechanics.Draw();
 
         #endregion
 
@@ -108,15 +97,9 @@ namespace SimpleCardGames.Battle
 
         #region Discard 
 
-        void IDiscardable.DoDiscard(int amount, IEffectable source)
-        {
-            DiscardMechanics.DoDiscard(amount, source);
-        }
+        void IDiscardable.DoDiscard(int amount, IEffectable source) => DiscardMechanics.DoDiscard(amount, source);
 
-        public bool Discard(IRuntimeCard card)
-        {
-            return DiscardMechanics.Discard(card);
-        }
+        public bool Discard(IRuntimeCard card) => DiscardMechanics.Discard(card);
 
         #endregion
 
@@ -124,15 +107,9 @@ namespace SimpleCardGames.Battle
 
         #region Play
 
-        bool IPlayer.Play(IRuntimeCard card)
-        {
-            return PlayCardMechanics.Play(card);
-        }
+        bool IPlayer.Play(IRuntimeCard card) => PlayCardMechanics.Play(card);
 
-        public bool CanPlay(IRuntimeCard card)
-        {
-            return PlayCardMechanics.CanPlay(card);
-        }
+        public bool CanPlay(IRuntimeCard card) => PlayCardMechanics.CanPlay(card);
 
         #endregion
 
@@ -140,15 +117,9 @@ namespace SimpleCardGames.Battle
 
         #region Turn
 
-        void IPlayer.FinishTurn()
-        {
-            FinishTurnMechanics.FinishTurn();
-        }
+        void IPlayer.FinishTurn() => FinishTurnMechanics.FinishTurn();
 
-        void IPlayer.StartTurn()
-        {
-            StartTurnMechanics.StartTurn();
-        }
+        void IPlayer.StartTurn() => StartTurnMechanics.StartTurn();
 
         #endregion
 
@@ -158,20 +129,11 @@ namespace SimpleCardGames.Battle
 
         public int Mana => ManaMechanics.Mana;
 
-        public bool HasMana(int amount)
-        {
-            return ManaMechanics.HasMana(amount);
-        }
+        public bool HasMana(int amount) => ManaMechanics.HasMana(amount);
 
-        public void ConsumeMana(int amount)
-        {
-            ManaMechanics.ConsumeMana(amount);
-        }
+        public void ConsumeMana(int amount) => ManaMechanics.ConsumeMana(amount);
 
-        public void ReplanishMana()
-        {
-            ManaMechanics.ReplenishMana();
-        }
+        public void ReplanishMana() => ManaMechanics.ReplenishMana();
 
         #endregion
     }

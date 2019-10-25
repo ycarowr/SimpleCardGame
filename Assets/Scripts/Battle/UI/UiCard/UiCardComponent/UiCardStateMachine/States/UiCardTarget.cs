@@ -17,12 +17,9 @@ namespace SimpleCardGames.Battle.UI.Card
             Speed = 8;
         }
 
-        private Vector3 WorldCenter { get; }
-        private float Speed { get; }
+        Vector3 WorldCenter { get; }
+        float Speed { get; }
 
-        public override void OnEnterState()
-        {
-            Handler.Motion.MoveTo(WorldCenter, Speed);
-        }
+        public override void OnEnterState() => Handler.Motion.MoveTo(WorldCenter, Speed);
     }
 }

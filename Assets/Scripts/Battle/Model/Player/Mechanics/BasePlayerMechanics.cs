@@ -5,10 +5,7 @@
     /// </summary>
     public abstract class BasePlayerMechanics
     {
-        protected BasePlayerMechanics(IPlayer player)
-        {
-            Player = player;
-        }
+        protected BasePlayerMechanics(IPlayer player) => Player = player;
 
         /// <summary>
         ///     Player reference.

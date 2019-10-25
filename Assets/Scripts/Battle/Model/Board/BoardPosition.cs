@@ -22,9 +22,6 @@ namespace SimpleCardGames.Battle
             Character = character;
         }
 
-        public void RemoveCharacter()
-        {
-            Character = null;
-        }
+        public void RemoveCharacter() => Character = null;
     }
 }

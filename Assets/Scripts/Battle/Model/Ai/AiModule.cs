@@ -37,7 +37,7 @@ namespace SimpleCardGames.Battle
         /// <param name="player"></param>
         /// <param name="game"></param>
         /// <returns></returns>
-        private static AiBase GetAi(AiArchetype archetype, IPlayer player, IGame game)
+        static AiBase GetAi(AiArchetype archetype, IPlayer player, IGame game)
         {
             switch (archetype)
             {
@@ -56,12 +56,12 @@ namespace SimpleCardGames.Battle
         /// <summary>
         ///     Register with all the AiConfigs submodules.
         /// </summary>
-        private readonly Dictionary<AiArchetype, AiBase> subModules = new Dictionary<AiArchetype, AiBase>();
+        readonly Dictionary<AiArchetype, AiBase> subModules = new Dictionary<AiArchetype, AiBase>();
 
         /// <summary>
         ///     AiConfigs that is current operating.
         /// </summary>
-        private AiArchetype CurrentAi { get; set; }
+        AiArchetype CurrentAi { get; set; }
 
         #endregion
 
@@ -86,10 +86,7 @@ namespace SimpleCardGames.Battle
         ///     Change the current archetype.
         /// </summary>
         /// <param name="archetype"></param>
-        public void SwapAiToArchetype(AiArchetype archetype)
-        {
-            CurrentAi = archetype;
-        }
+        public void SwapAiToArchetype(AiArchetype archetype) => CurrentAi = archetype;
 
         #endregion
 

@@ -15,13 +15,13 @@ namespace SimpleCardGames.Battle.UI.Card
 
         //--------------------------------------------------------------------------------------------------------------
 
-        private void OnPointerExit(PointerEventData obj)
+        void OnPointerExit(PointerEventData obj)
         {
             if (Fsm.IsCurrent(this))
                 Handler.Enable();
         }
 
-        private void OnPointerDown(PointerEventData eventData)
+        void OnPointerDown(PointerEventData eventData)
         {
             if (Fsm.IsCurrent(this))
                 Handler.Select();
@@ -29,20 +29,20 @@ namespace SimpleCardGames.Battle.UI.Card
 
         //--------------------------------------------------------------------------------------------------------------
 
-        private void ResetValues()
+        void ResetValues()
         {
             Handler.Motion.RotateTo(StartEuler, Parameters.RotationSpeed);
             Handler.Motion.MoveTo(StartPosition, Parameters.HoverSpeed);
             Handler.Motion.ScaleTo(StartScale, Parameters.ScaleSpeed);
         }
 
-        private void SetRotation()
+        void SetRotation()
         {
             if (!Parameters.HoverRotation)
                 Handler.Motion.RotateTo(Vector3.zero, Parameters.RotationSpeed);
         }
 
-        private void SetPosition()
+        void SetPosition()
         {
             var halfCardHeight = new Vector3(0, Handler.Renderer.bounds.size.y / 2);
             var pointZeroScreen = Handler.MainCamera.ScreenToWorldPoint(Vector3.zero);
@@ -53,27 +53,27 @@ namespace SimpleCardGames.Battle.UI.Card
             Handler.Motion.MoveTo(final, Parameters.HoverSpeed);
         }
 
-        private void SetScale()
+        void SetScale()
         {
             var currentScale = Handler.transform.localScale;
             var finalScale = currentScale * Parameters.HoverScale;
             Handler.Motion.ScaleTo(finalScale, Parameters.ScaleSpeed);
         }
 
-        private void CachePreviousValues()
+        void CachePreviousValues()
         {
             StartPosition = Handler.transform.position;
             StartEuler = Handler.transform.eulerAngles;
             StartScale = Handler.transform.localScale;
         }
 
-        private void SubscribeInput()
+        void SubscribeInput()
         {
             Handler.Input.OnPointerExit += OnPointerExit;
             Handler.Input.OnPointerDown += OnPointerDown;
         }
 
-        private void UnsubscribeInput()
+        void UnsubscribeInput()
         {
             Handler.Input.OnPointerExit -= OnPointerExit;
             Handler.Input.OnPointerDown -= OnPointerDown;
@@ -106,9 +106,9 @@ namespace SimpleCardGames.Battle.UI.Card
 
         #region Properties
 
-        private Vector3 StartPosition { get; set; }
-        private Vector3 StartEuler { get; set; }
-        private Vector3 StartScale { get; set; }
+        Vector3 StartPosition { get; set; }
+        Vector3 StartEuler { get; set; }
+        Vector3 StartScale { get; set; }
 
         #endregion
 

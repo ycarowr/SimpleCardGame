@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a72a8417c7d0fae4286b0893b137ceb9, type: 3}
   m_Name: RockFungus Minion
   m_EditorClassIdentifier: 
-  id: 7
-  characterName: Rock Fungus
-  description: Simple Rock Ichor
   artwork: {fileID: 21300000, guid: b382a729d8a624d21906df72eafbd0e1, type: 3}
-  health: 2
   attack: 2
   attacksTurn: 1
+  characterName: Rock Fungus
   defense: 1
+  description: Simple Rock Ichor
+  hasTaunt: 0
+  health: 2
+  id: 7

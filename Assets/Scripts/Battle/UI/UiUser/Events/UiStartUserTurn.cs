@@ -7,9 +7,9 @@ namespace SimpleCardGames.Battle
     [RequireComponent(typeof(IUiPlayer))]
     public class UiStartUserTurn : UiListener, IStartPlayerTurn
     {
-        private const float DelayToEnableInput = 2;
-        private IUiUserInput UserInput { get; set; }
-        private IUiPlayer Ui { get; set; }
+        const float DelayToEnableInput = 2;
+        IUiUserInput UserInput { get; set; }
+        IUiPlayer Ui { get; set; }
 
         //----------------------------------------------------------------------------------------------------------
 
@@ -29,13 +29,13 @@ namespace SimpleCardGames.Battle
 
         //----------------------------------------------------------------------------------------------------------
 
-        private IEnumerator EnableInput()
+        IEnumerator EnableInput()
         {
             yield return new WaitForSeconds(DelayToEnableInput);
             UserInput.Enable();
         }
 
-        private void Awake()
+        void Awake()
         {
             Ui = GetComponentInParent<IUiPlayer>();
             UserInput = GetComponent<IUiUserInput>();

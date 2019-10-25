@@ -2,9 +2,6 @@
 {
     public class UiChangeCardDescription : UiChangeCardText
     {
-        protected override string GetText()
-        {
-            return Handler.StaticData.Description;
-        }
+        protected override string GetText() => Handler.StaticData.Description;
     }
 }

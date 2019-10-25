@@ -6,27 +6,21 @@ namespace SimpleCardGames.Battle.UI.Character
     [RequireComponent(typeof(SpriteRenderer))]
     public class UiChangeCharacterTexture : MonoBehaviour
     {
-        private SpriteRenderer MyRenderer { get; set; }
-        private IUiCharacterData Handler { get; set; }
+        SpriteRenderer MyRenderer { get; set; }
+        IUiCharacterData Handler { get; set; }
 
-        private void OnSetData(ICharacterData data)
-        {
-            SetTexture(data.Artwork);
-        }
+        void OnSetData(ICharacterData data) => SetTexture(data.Artwork);
 
-        private void SetTexture(Sprite sprite)
-        {
-            MyRenderer.sprite = sprite;
-        }
+        void SetTexture(Sprite sprite) => MyRenderer.sprite = sprite;
 
-        private void Awake()
+        void Awake()
         {
             MyRenderer = GetComponent<SpriteRenderer>();
             Handler = GetComponentInParent<IUiCharacterData>();
             Handler.OnSetData += OnSetData;
         }
 
-        private void OnDestroy()
+        void OnDestroy()
         {
             if (Handler?.OnSetData != null)
                 Handler.OnSetData -= OnSetData;

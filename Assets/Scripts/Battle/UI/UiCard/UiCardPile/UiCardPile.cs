@@ -90,15 +90,9 @@ namespace SimpleCardGames.Battle.UI.Card
         ///     Notify all listeners of this pile that some change has been made.
         /// </summary>
         [Button]
-        public void NotifyPileChange()
-        {
-            OnPileChanged?.Invoke(Cards.ToArray());
-        }
+        public void NotifyPileChange() => OnPileChanged?.Invoke(Cards.ToArray());
 
-        void IRestartGame.OnRestart()
-        {
-            Restart();
-        }
+        void IRestartGame.OnRestart() => Restart();
 
         #endregion
 

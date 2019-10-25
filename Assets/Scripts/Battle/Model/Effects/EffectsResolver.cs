@@ -11,7 +11,7 @@ namespace SimpleCardGames.Battle
             /// <summary>
             ///     Resolves the game data reference using singleton pattern.
             /// </summary>
-            private static IGame GameData => GameController.Instance.Data.RuntimeGame;
+            static IGame GameData => GameController.Instance.Data.RuntimeGame;
 
             /// <summary>
             ///     Resolves and apply an effect caused by a source uppon one or many targets.
@@ -30,7 +30,7 @@ namespace SimpleCardGames.Battle
                 ApplyEffect(effect, targets, source);
             }
 
-            private static void ApplyEffect(BaseEffectData effect, ITargetable[] targets, IEffectable source)
+            static void ApplyEffect(BaseEffectData effect, ITargetable[] targets, IEffectable source)
             {
                 for (var i = 0; i < targets.Length; i++)
                 {

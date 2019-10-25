@@ -8,7 +8,7 @@ namespace SimpleCardGames.Battle.Controller
     /// </summary>
     public class GameController : SingletonMB<GameController>, IGameController
     {
-        [SerializeField] private Configurations configurations;
+        [SerializeField] Configurations configurations;
 
         //----------------------------------------------------------------------------------------------------------
 
@@ -22,7 +22,7 @@ namespace SimpleCardGames.Battle.Controller
         /// <summary>
         ///     State machine that holds the game logic.
         /// </summary>
-        private TurnBasedFsm TurnBasedLogic { get; set; }
+        TurnBasedFsm TurnBasedLogic { get; set; }
 
         /// <summary>
         ///     Handler for the state machine. Used to dispatch coroutines.
@@ -37,14 +37,11 @@ namespace SimpleCardGames.Battle.Controller
 
         #region Initialization
 
-        protected override void OnAwake()
-        {
-            Logger.Instance.Log<GameController>("Awake");
-        }
+        protected override void OnAwake() => Debug.Log("Awake");
 
-        private void Start()
+        void Start()
         {
-            Logger.Instance.Log<GameController>("Start");
+            Debug.Log("Start");
 
             StartBattle();
         }
@@ -59,20 +56,14 @@ namespace SimpleCardGames.Battle.Controller
         ///     Return the Left Player. TODO: Define this value inside the configurations.
         /// </summary>
         /// <returns></returns>
-        public IPlayerTurn GetUser()
-        {
-            return GetPlayerController(PlayerSeat.Left);
-        }
+        public IPlayerTurn GetUser() => GetPlayerController(PlayerSeat.Left);
 
         /// <summary>
         ///     Provides access to players controllers according to the player seat.
         /// </summary>
         /// <param name="seat"></param>
         /// <returns></returns>
-        public IPlayerTurn GetPlayerController(PlayerSeat seat)
-        {
-            return TurnBasedLogic.GetPlayerController(seat);
-        }
+        public IPlayerTurn GetPlayerController(PlayerSeat seat) => TurnBasedLogic.GetPlayerController(seat);
 
         /// <summary>
         ///     Start the battle. Called only once after being initialized by the Bootstrapper.
@@ -85,10 +76,7 @@ namespace SimpleCardGames.Battle.Controller
         }
 
         [Button]
-        public void EndBattle()
-        {
-            TurnBasedLogic.EndBattle();
-        }
+        public void EndBattle() => TurnBasedLogic.EndBattle();
 
         [Button]
         public void RestartGameImmediately()

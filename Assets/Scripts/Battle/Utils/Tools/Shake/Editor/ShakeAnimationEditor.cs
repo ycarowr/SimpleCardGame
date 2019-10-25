@@ -5,7 +5,7 @@ using UnityEngine;
 [CustomEditor(typeof(ShakeAnimation))]
 public class ShakeAnimationEditor : Editor
 {
-    private ShakeAnimation Target => target as ShakeAnimation;
+    ShakeAnimation Target => target as ShakeAnimation;
 
     public override void OnInspectorGUI()
     {

@@ -11,11 +11,11 @@ namespace SimpleCardGames.Data.Character
     /// </summary>
     public class CharacterFactory : PrefabPooler<CharacterFactory, IUiCharacter>
     {
-        private CharacterDatabase Database { get; set; }
+        CharacterDatabase Database { get; set; }
 
         protected override void OnAwake()
         {
-            if(Database == null)
+            if (Database == null)
                 Database = new CharacterDatabase();
         }
 
@@ -33,21 +33,15 @@ namespace SimpleCardGames.Data.Character
             base.OnRelease(prefabModel);
         }
 
-        private class CharacterDatabase
+        class CharacterDatabase
         {
-            private const string PathDataBase = "CharacterDatabase";
+            const string PathDataBase = "CharacterDatabase";
 
-            public CharacterDatabase()
-            {
-                Characters = Resources.LoadAll<CharacterData>(PathDataBase).ToList();
-            }
+            public CharacterDatabase() => Characters = Resources.LoadAll<CharacterData>(PathDataBase).ToList();
 
-            private List<CharacterData> Characters { get; }
+            List<CharacterData> Characters { get; }
 
-            public CharacterData Get(CharacterId id)
-            {
-                return Characters?.Find(character => character.Id == id);
-            }
+            public CharacterData Get(CharacterId id) => Characters?.Find(character => character.Id == id);
         }
     }
 }

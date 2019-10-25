@@ -24,25 +24,14 @@ namespace Tools.UI
 
         #region Transform Operations
 
-        public void RotateTo(Vector3 rotation, float speed)
-        {
-            Rotation?.Execute(rotation, speed);
-        }
+        public void RotateTo(Vector3 rotation, float speed) => Rotation?.Execute(rotation, speed);
 
-        public void MoveTo(Vector3 position, float speed, float delay = 0)
-        {
-            Movement?.Execute(position, speed, delay, false);
-        }
+        public void MoveTo(Vector3 position, float speed, float delay = 0) => Movement?.Execute(position, speed, delay);
 
-        public void MoveToWithZ(Vector3 position, float speed, float delay = 0)
-        {
+        public void MoveToWithZ(Vector3 position, float speed, float delay = 0) =>
             Movement?.Execute(position, speed, delay, true);
-        }
 
-        public void ScaleTo(Vector3 scale, float speed, float delay = 0)
-        {
-            Scale?.Execute(scale, speed, delay);
-        }
+        public void ScaleTo(Vector3 scale, float speed, float delay = 0) => Scale?.Execute(scale, speed, delay);
 
         #endregion
     }

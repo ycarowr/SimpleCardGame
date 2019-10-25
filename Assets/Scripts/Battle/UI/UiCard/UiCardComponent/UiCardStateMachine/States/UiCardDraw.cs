@@ -13,7 +13,7 @@ namespace SimpleCardGames.Battle.UI.Card
         {
         }
 
-        private Vector3 StartScale { get; set; }
+        Vector3 StartScale { get; set; }
 
         //--------------------------------------------------------------------------------------------------------------
 
@@ -27,26 +27,17 @@ namespace SimpleCardGames.Battle.UI.Card
             Handler.Motion.Movement.OnFinishMotion += GoToIdle;
         }
 
-        public override void OnExitState()
-        {
-            Handler.Motion.Movement.OnFinishMotion -= GoToIdle;
-        }
+        public override void OnExitState() => Handler.Motion.Movement.OnFinishMotion -= GoToIdle;
 
-        private void GoToIdle()
-        {
-            Handler.Enable();
-        }
+        void GoToIdle() => Handler.Enable();
 
-        private void CachePreviousValue()
+        void CachePreviousValue()
         {
             StartScale = Handler.transform.localScale;
             Handler.transform.localScale *= Parameters.StartSizeWhenDraw;
         }
 
-        private void SetScale()
-        {
-            Handler.Motion.ScaleTo(StartScale, Parameters.ScaleSpeed);
-        }
+        void SetScale() => Handler.Motion.ScaleTo(StartScale, Parameters.ScaleSpeed);
 
         #endregion
     }

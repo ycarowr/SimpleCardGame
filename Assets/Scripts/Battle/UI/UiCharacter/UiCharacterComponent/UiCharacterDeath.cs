@@ -6,8 +6,8 @@ namespace SimpleCardGames.Battle.UI.Character
 {
     public class UiCharacterDeath : UiListener, IDoKill
     {
-        private const float TimeUntilRemoveUnit = 1;
-        private IUiCharacterData MyData { get; set; }
+        const float TimeUntilRemoveUnit = 1;
+        IUiCharacterData MyData { get; set; }
 
         void IDoKill.OnKill(IRuntimeCharacter target)
         {
@@ -15,12 +15,9 @@ namespace SimpleCardGames.Battle.UI.Character
                 StartCoroutine(RemoveEffectively(target));
         }
 
-        private void Awake()
-        {
-            MyData = GetComponent<IUiCharacterData>();
-        }
+        void Awake() => MyData = GetComponent<IUiCharacterData>();
 
-        private IEnumerator RemoveEffectively(IRuntimeCharacter target)
+        IEnumerator RemoveEffectively(IRuntimeCharacter target)
         {
             yield return new WaitForSeconds(TimeUntilRemoveUnit);
             CharacterFactory.Instance.ReleasePooledObject(gameObject);

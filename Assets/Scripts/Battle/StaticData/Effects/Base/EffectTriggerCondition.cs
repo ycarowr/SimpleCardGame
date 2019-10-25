@@ -6,7 +6,7 @@ namespace SimpleCardGames.Data.Effects
     [Serializable]
     public class EffectTriggerCondition
     {
-        [SerializeField] private int currentAmt;
+        [SerializeField] int currentAmt;
 
         public int triggerAmt;
         public EffectTriggerType tType;
@@ -25,24 +25,12 @@ namespace SimpleCardGames.Data.Effects
             this.currentAmt = currentAmt;
         }
 
-        public int GetCurrentAmt()
-        {
-            return currentAmt;
-        }
+        public int GetCurrentAmt() => currentAmt;
 
-        public void Trigger()
-        {
-            currentAmt++;
-        }
+        public void Trigger() => currentAmt++;
 
-        public void Reset()
-        {
-            currentAmt = 0;
-        }
+        public void Reset() => currentAmt = 0;
 
-        public bool CanExpressEffect()
-        {
-            return currentAmt >= triggerAmt;
-        }
+        public bool CanExpressEffect() => currentAmt >= triggerAmt;
     }
 }

@@ -2,7 +2,7 @@
 {
     public class UiParticlesHeal : UiParticles, IDoHeal
     {
-        private IUiPlayer Ui { get; set; }
+        IUiPlayer Ui { get; set; }
 
         void IDoHeal.OnHeal(IHealer source, IHealable target, int amount)
         {

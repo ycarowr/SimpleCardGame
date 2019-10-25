@@ -6,14 +6,11 @@ namespace SimpleCardGames.Infrastructure
 {
     public class TokenBuilder : DataBuilder<ProcessTurn>
     {
-        private PlayerSeat currentIndex;
-        private List<IPlayer> defaultPlayers;
-        private PlayerSeat startIndex;
+        PlayerSeat currentIndex;
+        List<IPlayer> defaultPlayers;
+        PlayerSeat startIndex;
 
-        public TokenBuilder(List<IPlayer> players)
-        {
-            defaultPlayers = players;
-        }
+        public TokenBuilder(List<IPlayer> players) => defaultPlayers = players;
 
         public TokenBuilder() : this(new List<IPlayer> {(Player) A.Player()})
         {
@@ -37,9 +34,6 @@ namespace SimpleCardGames.Infrastructure
             return this;
         }
 
-        public override ProcessTurn Build()
-        {
-            return new ProcessTurn(defaultPlayers, startIndex, currentIndex);
-        }
+        public override ProcessTurn Build() => new ProcessTurn(defaultPlayers, startIndex, currentIndex);
     }
 }

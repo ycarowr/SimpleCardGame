@@ -4,7 +4,7 @@ namespace SimpleCardGames.Battle
 {
     public class UiParticlesTurn : UiParticles, IStartPlayerTurn
     {
-        [SerializeField] private PlayerSeat seat;
+        [SerializeField] PlayerSeat seat;
 
         void IStartPlayerTurn.OnStartPlayerTurn(IPlayer player)
         {

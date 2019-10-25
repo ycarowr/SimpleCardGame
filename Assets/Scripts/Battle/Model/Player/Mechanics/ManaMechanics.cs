@@ -30,19 +30,14 @@
             OnChangeMana(Player, amount);
         }
 
-        public bool HasMana(int amount)
-        {
-            return amount <= Mana;
-        }
+        public bool HasMana(int amount) => amount <= Mana;
 
         /// <summary>
         ///     Dispatch to the listeners.
         /// </summary>
         /// <param name="player"></param>
         /// <param name="card"></param>
-        private void OnChangeMana(IPlayer player, int amount)
-        {
+        void OnChangeMana(IPlayer player, int amount) =>
             GameEvents.Instance.Notify<IDoManaManipulation>(i => i.OnChangeMana(player, amount));
-        }
     }
 }

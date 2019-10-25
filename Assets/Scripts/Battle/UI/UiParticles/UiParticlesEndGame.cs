@@ -4,8 +4,8 @@ namespace SimpleCardGames.Battle
 {
     public class UiParticlesEndGame : UiParticles, IFinishGame
     {
-        private const float DelayToNotify = 1f;
-        [SerializeField] private PlayerSeat seat;
+        const float DelayToNotify = 1f;
+        [SerializeField] PlayerSeat seat;
 
         void IFinishGame.OnFinishGame(IPlayer winner)
         {

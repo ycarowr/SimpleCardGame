@@ -5,16 +5,16 @@ namespace SimpleCardGames.Data.Character
     [CreateAssetMenu(menuName = "Data/Character")]
     public class CharacterData : ScriptableObject, ICharacterData
     {
-        [SerializeField] private Sprite artwork;
-        [Range(1, 16)] [SerializeField] private int attack;
-        [Range(1, 16)] [SerializeField] private int attacksTurn = 1;
-        [SerializeField] private string characterName;
-        [Range(1, 16)] [SerializeField] private int defense;
-        [SerializeField] private string description;
-        [SerializeField] private bool hasTaunt;
+        [SerializeField] Sprite artwork;
+        [Range(1, 16)] [SerializeField] int attack;
+        [Range(1, 16)] [SerializeField] int attacksTurn = 1;
+        [SerializeField] string characterName;
+        [Range(1, 16)] [SerializeField] int defense;
+        [SerializeField] string description;
+        [SerializeField] bool hasTaunt;
 
-        [Range(1, 16)] [SerializeField] private int health = 1;
-        [SerializeField] private CharacterId id;
+        [Range(1, 16)] [SerializeField] int health = 1;
+        [SerializeField] CharacterId id;
         public int Defense => defense;
 
         //--------------------------------------------------------------------------------------------------------------

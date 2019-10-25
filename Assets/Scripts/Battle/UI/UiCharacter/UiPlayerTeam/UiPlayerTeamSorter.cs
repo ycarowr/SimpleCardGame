@@ -7,11 +7,11 @@ namespace SimpleCardGames.Battle.UI.Character
     {
         //--------------------------------------------------------------------------------------------------------------
 
-        private IUiPlayerTeam PlayerTeam { get; set; }
+        IUiPlayerTeam PlayerTeam { get; set; }
 
         //--------------------------------------------------------------------------------------------------------------
 
-        private void Awake()
+        void Awake()
         {
             PlayerTeam = GetComponent<IUiPlayerTeam>();
             PlayerTeam.OnPileChanged += Sort;

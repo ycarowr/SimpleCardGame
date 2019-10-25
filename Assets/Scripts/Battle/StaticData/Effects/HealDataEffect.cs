@@ -13,14 +13,9 @@ namespace SimpleCardGames.Data.Effects
             return dmgHealed;
         }
 
-        public override void Apply(ITargetable target, IEffectable source)
-        {
-            DoHeal(target as IHealable, Amount);
-        }
+        public override void Apply(ITargetable target, IEffectable source) => DoHeal(target as IHealable, Amount);
 
-        private void OnDoneHeal(IHealer source, IHealable target, int amount)
-        {
+        void OnDoneHeal(IHealer source, IHealable target, int amount) =>
             GameEvents.Instance.Notify<IDoHeal>(i => i.OnHeal(source, target, amount));
-        }
     }
 }

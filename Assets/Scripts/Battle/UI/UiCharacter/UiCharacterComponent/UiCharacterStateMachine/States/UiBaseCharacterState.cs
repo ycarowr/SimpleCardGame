@@ -7,8 +7,8 @@ namespace SimpleCardGames.Battle.UI.Character
     /// </summary>
     public abstract class UiBaseCharacterState : IState
     {
-        private const int LayerToRenderNormal = 0;
-        private const int LayerToRenderTop = 1;
+        const int LayerToRenderNormal = 0;
+        const int LayerToRenderTop = 1;
 
         //--------------------------------------------------------------------------------------------------------------
 
@@ -33,19 +33,13 @@ namespace SimpleCardGames.Battle.UI.Character
         /// <summary>
         ///     Renders the textures in the first layer. Each card state is responsible to handle its own layer activity.
         /// </summary>
-        protected virtual void MakeRenderFirst()
-        {
-            Handler.Renderer.sortingOrder = LayerToRenderTop;
-        }
+        protected virtual void MakeRenderFirst() => Handler.Renderer.sortingOrder = LayerToRenderTop;
 
 
         /// <summary>
         ///     Renders the textures in the regular layer. Each card state is responsible to handle its own layer activity.
         /// </summary>
-        protected virtual void MakeRenderNormal()
-        {
-            Handler.Renderer.sortingOrder = LayerToRenderNormal;
-        }
+        protected virtual void MakeRenderNormal() => Handler.Renderer.sortingOrder = LayerToRenderNormal;
 
         /// <summary>
         ///     Enables the card entirely. Collision, Rigidybody and adds Alpha.
@@ -77,18 +71,12 @@ namespace SimpleCardGames.Battle.UI.Character
         /// <summary>
         ///     Disables the collision with this card.
         /// </summary>
-        protected void DisableCollision()
-        {
-            Handler.Collider.enabled = false;
-        }
+        protected void DisableCollision() => Handler.Collider.enabled = false;
 
         /// <summary>
         ///     Enables the collision with this card.
         /// </summary>
-        protected void EnableCollision()
-        {
-            Handler.Collider.enabled = true;
-        }
+        protected void EnableCollision() => Handler.Collider.enabled = true;
 
         /// <summary>
         ///     Remove any alpha channel in all renderers.

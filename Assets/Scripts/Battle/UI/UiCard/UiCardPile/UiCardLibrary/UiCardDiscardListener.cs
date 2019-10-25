@@ -6,8 +6,8 @@ namespace SimpleCardGames.Battle.UI.Card
 {
     public class UiCardDiscardListener : UiListener, IPlayerDiscardCard
     {
-        private UiPlayerHandUtils CardUtils { get; set; }
-        private IUiPlayer UiPlayer { get; set; }
+        UiPlayerHandUtils CardUtils { get; set; }
+        IUiPlayer UiPlayer { get; set; }
 
         void IPlayerDiscardCard.OnDiscardCard(IPlayer player, IRuntimeCard card)
         {
@@ -17,7 +17,7 @@ namespace SimpleCardGames.Battle.UI.Card
             CardUtils.Discard(card);
         }
 
-        private void Awake()
+        void Awake()
         {
             CardUtils = transform.parent.GetComponentInChildren<UiPlayerHandUtils>();
             UiPlayer = transform.parent.GetComponentInChildren<IUiPlayer>();
@@ -25,7 +25,7 @@ namespace SimpleCardGames.Battle.UI.Card
 
 
         // TOOD: it will be removed
-        private void Update()
+        void Update()
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {

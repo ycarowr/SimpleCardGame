@@ -9,7 +9,7 @@ namespace SimpleCardGames.Data.Target
         protected const string SOPath = "Data/Targets";
 
         [SerializeField] [Multiline] [Tooltip("Brief description of the target for internal purposes.")]
-        private string description;
+        string description;
 
         protected PlayerSeat PlayerSeat => PlayerSeat.Left;
         protected PlayerSeat OpponentSeat => PlayerSeat.Right;

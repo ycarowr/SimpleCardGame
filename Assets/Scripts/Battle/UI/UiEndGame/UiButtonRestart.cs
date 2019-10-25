@@ -12,8 +12,8 @@ namespace SimpleCardGames.Battle
         IPreGameStart,
         IFinishGame
     {
-        private const float DelayToShow = 3.5f;
-        private UITextMeshImage UiButton { get; set; }
+        const float DelayToShow = 3.5f;
+        UITextMeshImage UiButton { get; set; }
 
         protected override void OnSetHandler(IButtonHandler handler)
         {
@@ -21,7 +21,7 @@ namespace SimpleCardGames.Battle
                 AddListener(restart.PressRestart);
         }
 
-        private IEnumerator ShowButton()
+        IEnumerator ShowButton()
         {
             yield return new WaitForSeconds(DelayToShow);
             UiButton.Enabled = true;
@@ -36,15 +36,9 @@ namespace SimpleCardGames.Battle
 
         #region Game Events
 
-        void IFinishGame.OnFinishGame(IPlayer winner)
-        {
-            StartCoroutine(ShowButton());
-        }
+        void IFinishGame.OnFinishGame(IPlayer winner) => StartCoroutine(ShowButton());
 
-        void IPreGameStart.OnPreGameStart(List<IPlayer> players)
-        {
-            UiButton.Enabled = false;
-        }
+        void IPreGameStart.OnPreGameStart(List<IPlayer> players) => UiButton.Enabled = false;
 
         #endregion
 
@@ -52,19 +46,14 @@ namespace SimpleCardGames.Battle
 
         #region Unity callbacks
 
-        protected void Awake()
-        {
+        protected void Awake() =>
             UiButton = new UITextMeshImage(
                 GetComponentInChildren<TMP_Text>(),
                 GetComponent<Image>());
-        }
 
-        private void Start()
-        {
-            GameEvents.Instance.AddListener(this);
-        }
+        void Start() => GameEvents.Instance.AddListener(this);
 
-        private void OnDestroy()
+        void OnDestroy()
         {
             if (GameEvents.Instance)
                 GameEvents.Instance.RemoveListener(this);

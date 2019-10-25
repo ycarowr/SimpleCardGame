@@ -6,7 +6,7 @@ namespace SimpleCardGames.Data.Card
     {
         protected IUiCardData Handler { get; set; }
 
-        private void OnSetData(ICardData data)
+        void OnSetData(ICardData data)
         {
             SetSprite(GetSprite(), ShowSprite());
             SetSpriteColor(GetSpriteColor());
@@ -19,7 +19,7 @@ namespace SimpleCardGames.Data.Card
             Handler.OnSetData += OnSetData;
         }
 
-        private void OnDestroy()
+        void OnDestroy()
         {
             if (Handler?.OnSetData != null)
                 Handler.OnSetData -= OnSetData;

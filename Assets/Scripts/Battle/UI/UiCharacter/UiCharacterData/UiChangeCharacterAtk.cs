@@ -2,11 +2,8 @@
 {
     public class UiChangeCharacterAtk : UiChangeCharacterText
     {
-        private const string Atk = "Atk: ";
+        const string Atk = "Atk: ";
 
-        protected override string GetText()
-        {
-            return Atk + Handler.StaticData.Attack;
-        }
+        protected override string GetText() => Atk + Handler.StaticData.Attack;
     }
 }

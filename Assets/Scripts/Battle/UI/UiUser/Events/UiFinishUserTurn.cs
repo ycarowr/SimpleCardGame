@@ -6,8 +6,8 @@ namespace SimpleCardGames.Battle
     [RequireComponent(typeof(IUiPlayer))]
     public class UiFinishUserTurn : UiListener, IFinishPlayerTurn
     {
-        private IUiUserInput UserInput { get; set; }
-        private IUiPlayer Ui { get; set; }
+        IUiUserInput UserInput { get; set; }
+        IUiPlayer Ui { get; set; }
 
         //----------------------------------------------------------------------------------------------------------
 
@@ -23,7 +23,7 @@ namespace SimpleCardGames.Battle
 
         //----------------------------------------------------------------------------------------------------------
 
-        private void Awake()
+        void Awake()
         {
             Ui = GetComponent<IUiPlayer>();
             UserInput = GetComponent<IUiUserInput>();

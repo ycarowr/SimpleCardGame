@@ -7,21 +7,15 @@ namespace SimpleCardGames.Battle.UI.Character
     {
         //--------------------------------------------------------------------------------------------------------------
 
-        private IUiPlayerTeam PlayerTeam { get; set; }
+        IUiPlayerTeam PlayerTeam { get; set; }
 
         //--------------------------------------------------------------------------------------------------------------
 
-        void IRestartGame.OnRestart()
-        {
-            PlayerTeam.Restart();
-        }
+        void IRestartGame.OnRestart() => PlayerTeam.Restart();
 
         //--------------------------------------------------------------------------------------------------------------
 
-        private void Awake()
-        {
-            PlayerTeam = GetComponent<IUiPlayerTeam>();
-        }
+        void Awake() => PlayerTeam = GetComponent<IUiPlayerTeam>();
 
         //--------------------------------------------------------------------------------------------------------------
     }

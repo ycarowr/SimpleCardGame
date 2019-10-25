@@ -4,10 +4,7 @@
     {
         protected IUiCardData Handler { get; set; }
 
-        private void OnSetData(ICardData data)
-        {
-            SetText(GetText());
-        }
+        void OnSetData(ICardData data) => SetText(GetText());
 
         protected override void Awake()
         {
@@ -16,7 +13,7 @@
             Handler.OnSetData += OnSetData;
         }
 
-        private void OnDestroy()
+        void OnDestroy()
         {
             if (Handler?.OnSetData != null)
                 Handler.OnSetData -= OnSetData;

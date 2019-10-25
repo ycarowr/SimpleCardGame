@@ -63,10 +63,8 @@
         /// <param name="source"></param>
         /// <param name="target"></param>
         /// <param name="amount"></param>
-        private void OnDoneDamage(IRuntimeCharacter source, IRuntimeCharacter target, int amount)
-        {
+        void OnDoneDamage(IRuntimeCharacter source, IRuntimeCharacter target, int amount) =>
             GameEvents.Instance.Notify<IDoAttack>(i => i.OnDamage(source, target, amount));
-        }
 
         public struct RuntimeAttackData
         {

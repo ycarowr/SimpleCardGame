@@ -7,10 +7,7 @@ namespace SimpleCardGames
     {
         protected ParticleSystem[] Particles { get; set; }
 
-        protected virtual void Awake()
-        {
-            Particles = GetComponentsInChildren<ParticleSystem>();
-        }
+        protected virtual void Awake() => Particles = GetComponentsInChildren<ParticleSystem>();
 
         protected virtual IEnumerator Play(float delay = 0)
         {

@@ -3,7 +3,7 @@
 public class UiSprite3D : MonoBehaviour
 {
     [Tooltip("SpriteRenderer Component assigned by the Editor or Automatically on Awake.")]
-    private SpriteRenderer rendy;
+    SpriteRenderer rendy;
 
     protected virtual void Awake()
     {
@@ -20,10 +20,7 @@ public class UiSprite3D : MonoBehaviour
         rendy.enabled = show;
     }
 
-    public virtual void SetSpriteColor(Color clr)
-    {
-        rendy.color = clr;
-    }
+    public virtual void SetSpriteColor(Color clr) => rendy.color = clr;
 
     public void ResetSprite()
     {

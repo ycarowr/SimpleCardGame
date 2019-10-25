@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using Patterns;
-using SimpleCardGames.Data.Card;
-using SimpleCardGames.Data.Effects;
+﻿using Patterns;
 
 namespace SimpleCardGames.Battle
 {
@@ -10,11 +7,10 @@ namespace SimpleCardGames.Battle
     /// </summary>
     public class RuntimeCardFactory : Pooler<RuntimeCard, RuntimeCardFactory>
     {
-        private const int Size = 30;
-        
+        const int Size = 30;
+
         public RuntimeCardFactory() : base(Size)
         {
-            
         }
     }
 }

@@ -24,7 +24,7 @@ public class Logger : PersistentSingleton<Logger>
 
     #region Util
 
-    private static string GetTypeName(Type type)
+    static string GetTypeName(Type type)
     {
         if (type == null)
             return string.Empty;
@@ -40,10 +40,10 @@ public class Logger : PersistentSingleton<Logger>
 
     #region Fields and Properties
 
-    private const char Period = '.';
-    private const string OpenColor = "]: <color={0}><b>";
-    private const string CloseColor = "</b></color>";
-    [SerializeField] private bool AreLogsEnabled = true;
+    const char Period = '.';
+    const string OpenColor = "]: <color={0}><b>";
+    const string CloseColor = "</b></color>";
+    [SerializeField] bool AreLogsEnabled = true;
 
     #endregion
 

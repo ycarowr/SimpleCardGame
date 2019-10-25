@@ -8,7 +8,7 @@ namespace SimpleCardGames.Battle
 {
     public class Library : Collection<IRuntimeCard>, ILibrary
     {
-        private readonly IReadOnlyList<ICardData> cardDataRegister;
+        readonly IReadOnlyList<ICardData> cardDataRegister;
 
         //----------------------------------------------------------------------------------------------------------
 
@@ -24,9 +24,9 @@ namespace SimpleCardGames.Battle
             CreateAndShuffle();
         }
 
-        private Configurations Configurations { get; }
-        private LibraryData Deck { get; }
-        private IPlayer Owner { get; }
+        Configurations Configurations { get; }
+        LibraryData Deck { get; }
+        IPlayer Owner { get; }
         public bool IsFinite => Configurations.Amount.LibraryPlayer.isFinite;
 
         /// <summary>
@@ -64,7 +64,7 @@ namespace SimpleCardGames.Battle
         /// <summary>
         ///     Creates and shuffle the Library based on the cards in the register.
         /// </summary>
-        private void CreateAndShuffle()
+        void CreateAndShuffle()
         {
             foreach (var card in cardDataRegister)
                 AddCard(card);
@@ -72,7 +72,7 @@ namespace SimpleCardGames.Battle
             Shuffle();
         }
 
-        private void ReShuffleGraveyard()
+        void ReShuffleGraveyard()
         {
             foreach (var card in Owner.Graveyard.Units)
                 Add(card);
@@ -82,9 +82,6 @@ namespace SimpleCardGames.Battle
             OnReShuffle(Owner);
         }
 
-        private void OnReShuffle(IPlayer player)
-        {
-            GameEvents.Instance.Notify<IDoReShuffle>(i => i.OnReShuffle(player));
-        }
+        void OnReShuffle(IPlayer player) => GameEvents.Instance.Notify<IDoReShuffle>(i => i.OnReShuffle(player));
     }
 }

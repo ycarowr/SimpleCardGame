@@ -9,19 +9,13 @@ namespace SimpleCardGames.Battle
         UiButtonRestart.IPressRestart,
         UiButtonFinishBattle.IFinishBattle
     {
-        private IRestartGameHandler PlayerHandler { get; set; }
+        IRestartGameHandler PlayerHandler { get; set; }
 
-        void UiButtonFinishBattle.IFinishBattle.FinishBattle()
-        {
-            SceneManager.LoadScene("RewardScene");
-        }
+        void UiButtonFinishBattle.IFinishBattle.FinishBattle() => SceneManager.LoadScene("RewardScene");
 
-        void UiButtonRestart.IPressRestart.PressRestart()
-        {
-            PlayerHandler.RestartGame();
-        }
+        void UiButtonRestart.IPressRestart.PressRestart() => PlayerHandler.RestartGame();
 
-        private void Awake()
+        void Awake()
         {
             PlayerHandler = GetComponent<IRestartGameHandler>();
 

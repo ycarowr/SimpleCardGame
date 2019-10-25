@@ -118,10 +118,7 @@ namespace SimpleCardGames.Battle.UI.Character
         ///     Notify all listeners of this pile that some change has been made.
         /// </summary>
         [Button]
-        public void NotifyPileChange()
-        {
-            OnPileChanged?.Invoke(Characters.ToArray(), Capitain);
-        }
+        public void NotifyPileChange() => OnPileChanged?.Invoke(Characters.ToArray(), Capitain);
 
         #endregion
 

@@ -16,7 +16,7 @@ namespace SimpleCardGames.Battle
         {
             var member = RuntimeCharacterFactory.Instance.Get();
             member.SetData(data, Player);
-            
+
             for (var i = 0; i < amount; i++)
                 Player.Team.AddMember(member);
 
@@ -28,9 +28,7 @@ namespace SimpleCardGames.Battle
         /// </summary>
         /// <param name="player"></param>
         /// <param name="character"></param>
-        private void OnSpawnCharacter(IPlayer player, IRuntimeCharacter character)
-        {
+        void OnSpawnCharacter(IPlayer player, IRuntimeCharacter character) =>
             GameEvents.Instance.Notify<IPlayerSpawnCharacter>(i => i.OnSpawnCharacter(player, character));
-        }
     }
 }

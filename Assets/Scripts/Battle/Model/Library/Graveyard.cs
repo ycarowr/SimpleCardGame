@@ -6,12 +6,9 @@ namespace SimpleCardGames.Battle
     {
         //----------------------------------------------------------------------------------------------------------
 
-        public Graveyard(IPlayer player)
-        {
-            Owner = player;
-        }
+        public Graveyard(IPlayer player) => Owner = player;
 
-        private IPlayer Owner { get; }
+        IPlayer Owner { get; }
 
         public void AddCard(IRuntimeCard card)
         {

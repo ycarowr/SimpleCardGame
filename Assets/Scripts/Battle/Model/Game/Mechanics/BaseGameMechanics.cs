@@ -5,10 +5,7 @@
     /// </summary>
     public abstract class BaseGameMechanics
     {
-        protected BaseGameMechanics(IGame game)
-        {
-            Game = game;
-        }
+        protected BaseGameMechanics(IGame game) => Game = game;
 
         /// <summary>
         ///     All game data.

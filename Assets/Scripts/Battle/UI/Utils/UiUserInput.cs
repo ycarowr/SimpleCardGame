@@ -17,21 +17,12 @@ namespace SimpleCardGames
     [RequireComponent(typeof(CanvasGroup))]
     public class UiUserInput : MonoBehaviour, IUiUserInput
     {
-        private CanvasGroup CanvasGroup { get; set; }
+        CanvasGroup CanvasGroup { get; set; }
 
-        void IUiUserInput.Disable()
-        {
-            CanvasGroup.interactable = false;
-        }
+        void IUiUserInput.Disable() => CanvasGroup.interactable = false;
 
-        void IUiUserInput.Enable()
-        {
-            CanvasGroup.interactable = true;
-        }
+        void IUiUserInput.Enable() => CanvasGroup.interactable = true;
 
-        private void Awake()
-        {
-            CanvasGroup = GetComponent<CanvasGroup>();
-        }
+        void Awake() => CanvasGroup = GetComponent<CanvasGroup>();
     }
 }

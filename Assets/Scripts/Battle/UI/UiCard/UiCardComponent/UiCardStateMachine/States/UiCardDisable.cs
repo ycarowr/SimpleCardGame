@@ -12,9 +12,6 @@ namespace SimpleCardGames.Battle.UI.Card
         {
         }
 
-        public override void OnEnterState()
-        {
-            Disable();
-        }
+        public override void OnEnterState() => Disable();
     }
 }

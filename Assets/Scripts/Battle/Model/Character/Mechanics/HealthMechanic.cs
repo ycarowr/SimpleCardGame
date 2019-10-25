@@ -10,12 +10,9 @@ namespace SimpleCardGames.Battle
 
         //----------------------------------------------------------------------------------------------------------
 
-        public int TakeDamage(IDamager source, int amount)
-        {
-            return IgnoreOverKill(amount);
-        }
+        public int TakeDamage(IDamager source, int amount) => IgnoreOverKill(amount);
 
-        private int IgnoreOverKill(int damage)
+        int IgnoreOverKill(int damage)
         {
             var current = Attributes.Health;
             var total = Attributes.Health - damage;
@@ -25,12 +22,9 @@ namespace SimpleCardGames.Battle
 
         //----------------------------------------------------------------------------------------------------------
 
-        public int TakeHeal(IHealer source, int amount)
-        {
-            return IgnoreOverHeal(amount);
-        }
+        public int TakeHeal(IHealer source, int amount) => IgnoreOverHeal(amount);
 
-        private int IgnoreOverHeal(int heal)
+        int IgnoreOverHeal(int heal)
         {
             var current = Attributes.Health;
             var total = Attributes.Health + heal;

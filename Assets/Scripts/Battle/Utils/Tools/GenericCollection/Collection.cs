@@ -11,10 +11,7 @@ namespace Tools
     public class Collection<T> where T : class
     {
         //public clean constructor
-        public Collection()
-        {
-            Units = new List<T>();
-        }
+        public Collection() => Units = new List<T>();
 
         /// <summary>
         ///     Consider change it to an Array of Objects
@@ -52,10 +49,7 @@ namespace Tools
         ///     Clear the list completely. You lose all the references, however
         ///     the elements are still in memory waiting for the Garbage Collector to clean
         /// </summary>
-        public virtual void Restart()
-        {
-            Units.Clear();
-        }
+        public virtual void Restart() => Units.Clear();
 
         /// <summary>
         ///     Add elements to the collection. Null and duplicated elements raises Exceptions.
@@ -90,20 +84,14 @@ namespace Tools
         /// </summary>
         /// <param name="unit"></param>
         /// <returns></returns>
-        public bool Has(T unit)
-        {
-            return Units.Contains(unit);
-        }
+        public bool Has(T unit) => Units.Contains(unit);
 
         /// <summary>
         ///     Remove element from the collection and returns whether the element has been successfully removed or not.
         /// </summary>
         /// <param name="unit"></param>
         /// <returns></returns>
-        public bool Remove(T unit)
-        {
-            return Units.Remove(unit);
-        }
+        public bool Remove(T unit) => Units.Remove(unit);
 
         /// <summary>
         ///     Shuffles the collection using Fisher Yates algorithm: https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle.
@@ -197,10 +185,7 @@ namespace Tools
         /// <summary>
         ///     Clears the list.
         /// </summary>
-        public void Clear()
-        {
-            Units.Clear();
-        }
+        public void Clear() => Units.Clear();
 
         #endregion
     }

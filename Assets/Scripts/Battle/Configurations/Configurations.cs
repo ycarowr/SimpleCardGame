@@ -17,7 +17,7 @@ namespace SimpleCardGames
 
         #region Extra
 
-        [SerializeField] private bool areLogsEnabled;
+        [SerializeField] bool areLogsEnabled;
 
         #endregion
 
@@ -67,10 +67,7 @@ namespace SimpleCardGames
                 [Range(1, 15)] public int healthTopPlayer = 6;
                 [Range(1, 15)] public int maxMana = 5;
 
-                public int GetHealth(PlayerSeat seat)
-                {
-                    return seat == PlayerSeat.Left ? healthBottomPlayer : healthTopPlayer;
-                }
+                public int GetHealth(PlayerSeat seat) => seat == PlayerSeat.Left ? healthBottomPlayer : healthTopPlayer;
             }
 
             #endregion

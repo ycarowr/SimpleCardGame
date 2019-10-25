@@ -11,7 +11,7 @@ namespace SimpleCardGames.Data.Deck
         protected List<CardData> cards = new List<CardData>();
 
         [SerializeField] [Multiline] [Tooltip("Brief description of the deck. The text won't be visible to the user.")]
-        private string description;
+        string description;
 
         /// <summary>
         ///     It returns a list with all the data of the library.
@@ -25,14 +25,8 @@ namespace SimpleCardGames.Data.Deck
             return allData;
         }
 
-        public void Clear()
-        {
-            cards.Clear();
-        }
+        public void Clear() => cards.Clear();
 
-        public void AddCard(CardData card)
-        {
-            cards.Add(card);
-        }
+        public void AddCard(CardData card) => cards.Add(card);
     }
 }

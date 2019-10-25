@@ -10,8 +10,8 @@ namespace SimpleCardGames.Battle
     /// </summary>
     public class Team : Collection<IRuntimeCharacter>, ITeam
     {
-        private readonly ICharacterData capitainDataRegister;
-        private readonly IReadOnlyList<ICharacterData> memberDataRegister;
+        readonly ICharacterData capitainDataRegister;
+        readonly IReadOnlyList<ICharacterData> memberDataRegister;
 
         public Team(IPlayer player, TeamData teamData)
         {
@@ -42,25 +42,19 @@ namespace SimpleCardGames.Battle
         ///     Adds a new team member.
         /// </summary>
         /// <param name="member"></param>
-        public void AddMember(IRuntimeCharacter member)
-        {
-            Add(member);
-        }
+        public void AddMember(IRuntimeCharacter member) => Add(member);
 
 
         /// <summary>
         ///     Removes a team member.
         /// </summary>
         /// <param name="member"></param>
-        public void RemoveMember(IRuntimeCharacter member)
-        {
-            Remove(member);
-        }
+        public void RemoveMember(IRuntimeCharacter member) => Remove(member);
 
         /// <summary>
         ///     Creates the team based on the characters in the register.
         /// </summary>
-        private void CreateTeam()
+        void CreateTeam()
         {
             if (capitainDataRegister != null)
             {
@@ -83,12 +77,9 @@ namespace SimpleCardGames.Battle
         /// </summary>
         /// <param name="member"></param>
         /// <returns></returns>
-        public int GetIndex(IRuntimeCharacter member)
-        {
-            return Units.IndexOf(member);
-        }
+        public int GetIndex(IRuntimeCharacter member) => Units.IndexOf(member);
 
-        private bool EvaluateTaunt()
+        bool EvaluateTaunt()
         {
             foreach (var u in Units)
                 if (u.Attributes.HasTaunt && !u.Attributes.IsDead)

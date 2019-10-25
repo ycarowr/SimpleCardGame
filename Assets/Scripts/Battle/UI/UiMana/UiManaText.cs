@@ -5,7 +5,7 @@ namespace SimpleCardGames.Battle
 {
     public class UiManaText : UiText3DListener, IDoManaManipulation, IPreGameStart
     {
-        private const string Mana = "Mana: ";
+        const string Mana = "Mana: ";
 
         void IDoManaManipulation.OnChangeMana(IPlayer player, int amount)
         {
@@ -21,9 +21,6 @@ namespace SimpleCardGames.Battle
             SetMana(player.Player);
         }
 
-        private void SetMana(IPlayer player)
-        {
-            SetText(Mana + player.Mana);
-        }
+        void SetMana(IPlayer player) => SetText(Mana + player.Mana);
     }
 }

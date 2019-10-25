@@ -14,9 +14,12 @@ namespace SimpleCardGames.Battle
         {
         }
 
-        public RuntimeCharacter(ICharacterData characterData, IPlayer player)
+        public RuntimeCharacter(ICharacterData characterData, IPlayer player) => SetData(characterData, player);
+
+        //----------------------------------------------------------------------------------------------------------
+
+        public void Restart()
         {
-            SetData(characterData, player);
         }
 
         public ICharacterData Data { get; set; }
@@ -26,10 +29,7 @@ namespace SimpleCardGames.Battle
 
         #region Death
 
-        public void EvaluateDeath()
-        {
-            Death.EvaluateDeath();
-        }
+        public void EvaluateDeath() => Death.EvaluateDeath();
 
         #endregion
 
@@ -56,11 +56,11 @@ namespace SimpleCardGames.Battle
 
         #region Mechanics
 
-        private AttackCharacterMechanic AttackTurn { get; set; }
-        private HealthMechanic Health { get; set; }
-        private DamageMechanic Damage { get; set; }
-        private DeathMechanic Death { get; set; }
-        private HealMechanic Heal { get; set; }
+        AttackCharacterMechanic AttackTurn { get; set; }
+        HealthMechanic Health { get; set; }
+        DamageMechanic Damage { get; set; }
+        DeathMechanic Death { get; set; }
+        HealMechanic Heal { get; set; }
 
         #endregion
 
@@ -68,25 +68,13 @@ namespace SimpleCardGames.Battle
 
         #region Attack
 
-        bool IAttackable.CanAttack()
-        {
-            return AttackTurn.CanAttack() && !Attributes.HasSummoningSickness;
-        }
+        bool IAttackable.CanAttack() => AttackTurn.CanAttack() && !Attributes.HasSummoningSickness;
 
-        void IAttackable.ExecuteAttack()
-        {
-            AttackTurn.Execute();
-        }
+        void IAttackable.ExecuteAttack() => AttackTurn.Execute();
 
-        void IAttackable.OnBeforeAttack()
-        {
-            AttackTurn.OnBeforeAttack();
-        }
+        void IAttackable.OnBeforeAttack() => AttackTurn.OnBeforeAttack();
 
-        void IAttackable.OnAfterAttack()
-        {
-            AttackTurn.OnAfterAttack();
-        }
+        void IAttackable.OnAfterAttack() => AttackTurn.OnAfterAttack();
 
         #endregion
 
@@ -113,23 +101,10 @@ namespace SimpleCardGames.Battle
 
         #region Heal
 
-        int IHealer.DoHeal(IHealable target, int healAmount)
-        {
-            return Heal.DoHeal(target, healAmount);
-        }
+        int IHealer.DoHeal(IHealable target, int healAmount) => Heal.DoHeal(target, healAmount);
 
-        int IHealable.TakeHeal(IHealer source, int amount)
-        {
-            return Health.TakeHeal(source, amount);
-        }
+        int IHealable.TakeHeal(IHealer source, int amount) => Health.TakeHeal(source, amount);
 
         #endregion
-        
-        //----------------------------------------------------------------------------------------------------------
-
-        public void Restart()
-        {
-            
-        }
     }
 }

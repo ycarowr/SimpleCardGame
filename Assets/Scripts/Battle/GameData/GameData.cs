@@ -14,12 +14,12 @@ namespace SimpleCardGames.Battle
     {
         //--------------------------------------------------------------------------------------------------------
 
-        [SerializeField] private Configurations configurations;
-        [SerializeField] private TeamsCurrentData currentTeams;
-        [SerializeField] private LibraryData deckData;
+        [SerializeField] Configurations configurations;
+        [SerializeField] TeamsCurrentData currentTeams;
+        [SerializeField] LibraryData deckData;
 
-        private TeamData TeamData => currentTeams.PlayerTeam;
-        private TeamData EnemiesData => currentTeams.EnemyTeam;
+        TeamData TeamData => currentTeams.PlayerTeam;
+        TeamData EnemiesData => currentTeams.EnemyTeam;
 
         #region Properties
 
@@ -43,10 +43,7 @@ namespace SimpleCardGames.Battle
             CreateGame();
         }
 
-        private void Start()
-        {
-            Logger.Instance.Log<GameData>("Start");
-        }
+        void Start() => Logger.Instance.Log<GameData>("Start");
 
         #endregion
 
@@ -57,10 +54,7 @@ namespace SimpleCardGames.Battle
         /// <summary>
         ///     Clears the game data.
         /// </summary>
-        public void Clear()
-        {
-            RuntimeGame = null;
-        }
+        public void Clear() => RuntimeGame = null;
 
         /// <summary>
         ///     Create a new game data overriding the previous one. Produces Garbage.
@@ -77,10 +71,7 @@ namespace SimpleCardGames.Battle
             RuntimeGame = new Game(new List<IPlayer> {player1, player2}, configurations);
         }
 
-        public void LoadGame()
-        {
-            throw new NotImplementedException();
-        }
+        public void LoadGame() => throw new NotImplementedException();
 
         #endregion
 

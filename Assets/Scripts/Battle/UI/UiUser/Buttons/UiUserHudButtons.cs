@@ -9,14 +9,14 @@ namespace SimpleCardGames.Battle
         UiButtonDamage.IPressDamage,
         UiButtonHeal.IPressHeal
     {
-        private IUiPlayer Ui { get; set; }
-        private IUiUserInput UserInput { get; set; }
+        IUiPlayer Ui { get; set; }
+        IUiUserInput UserInput { get; set; }
 
         //----------------------------------------------------------------------------------------------------------
 
         #region Unity callback 
 
-        private void Awake()
+        void Awake()
         {
             UserInput = GetComponent<IUiUserInput>();
             Ui = GetComponent<IUiPlayer>();
@@ -29,10 +29,7 @@ namespace SimpleCardGames.Battle
 
         //----------------------------------------------------------------------------------------------------------
 
-        private void DisableInput()
-        {
-            UserInput.Disable();
-        }
+        void DisableInput() => UserInput.Disable();
 
         //----------------------------------------------------------------------------------------------------------
 

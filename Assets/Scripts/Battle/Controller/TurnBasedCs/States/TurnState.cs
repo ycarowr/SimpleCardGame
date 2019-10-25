@@ -34,8 +34,8 @@ namespace SimpleCardGames.Battle.Controller
         public virtual bool IsAi => false;
         public virtual bool IsUser => false;
 
-        private Coroutine TimeOutRoutine { get; set; }
-        private Coroutine TickRoutine { get; set; }
+        Coroutine TimeOutRoutine { get; set; }
+        Coroutine TickRoutine { get; set; }
 
         #endregion
 
@@ -52,7 +52,7 @@ namespace SimpleCardGames.Battle.Controller
         /// <summary>
         ///     Switches the turn according to the next player.
         /// </summary>
-        private void NextTurn()
+        void NextTurn()
         {
             var game = GameData.RuntimeGame;
             var nextPlayer = game.TurnLogic.NextPlayer;
@@ -112,10 +112,7 @@ namespace SimpleCardGames.Battle.Controller
             return true;
         }
 
-        public void Attack(AttackMechanics.RuntimeAttackData attackData)
-        {
-            GameData.RuntimeGame.Attack(attackData);
-        }
+        public void Attack(AttackMechanics.RuntimeAttackData attackData) => GameData.RuntimeGame.Attack(attackData);
 
         //----------------------------------------------------------------------------------------------------------
 
@@ -125,7 +122,7 @@ namespace SimpleCardGames.Battle.Controller
 
         #region Coroutines
 
-        private IEnumerator TickRoutineAsync()
+        IEnumerator TickRoutineAsync()
         {
             while (true)
             {

@@ -7,9 +7,6 @@ namespace SimpleCardGames.Battle.UI.Card
     /// </summary>
     public class UiZoneHand : UiBaseDropZone
     {
-        protected override void OnPointerUp(PointerEventData eventData)
-        {
-            CardHand?.Unselect();
-        }
+        protected override void OnPointerUp(PointerEventData eventData) => CardHand?.Unselect();
     }
 }

@@ -12,20 +12,20 @@ namespace SimpleCardGames.Battle.Controller
         /// <summary>
         ///     Register with all players states.
         /// </summary>
-        private readonly Dictionary<IPlayer, TurnState> actorsRegister =
+        readonly Dictionary<IPlayer, TurnState> actorsRegister =
             new Dictionary<IPlayer, TurnState>();
 
         /// <summary>
         ///     All Game Data.
         /// </summary>
-        private IGameData GameData { get; }
+        IGameData GameData { get; }
 
         /// <summary>
         ///     MonoBehavior which holds this FSM.
         /// </summary>
         public new IGameController Handler { get; }
 
-        private Configurations Configurations { get; }
+        Configurations Configurations { get; }
 
         #endregion
 
@@ -63,10 +63,7 @@ namespace SimpleCardGames.Battle.Controller
         /// </summary>
         /// <param name="player"></param>
         /// <param name="state"></param>
-        public void RegisterPlayerState(IPlayer player, TurnState state)
-        {
-            actorsRegister.Add(player, state);
-        }
+        public void RegisterPlayerState(IPlayer player, TurnState state) => actorsRegister.Add(player, state);
 
         #endregion
 
@@ -79,10 +76,8 @@ namespace SimpleCardGames.Battle.Controller
         /// </summary>
         /// <param name="player"></param>
         /// <returns></returns>
-        public TurnState GetPlayerController(IPlayer player)
-        {
-            return IsInitialized && actorsRegister.ContainsKey(player) ? actorsRegister[player] : null;
-        }
+        public TurnState GetPlayerController(IPlayer player) =>
+            IsInitialized && actorsRegister.ContainsKey(player) ? actorsRegister[player] : null;
 
         /// <summary>
         ///     Returns a the player turn according to the position. Null if there isn't player registered with the argument.

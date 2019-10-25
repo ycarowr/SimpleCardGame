@@ -13,10 +13,7 @@ namespace SimpleCardGames.Battle
         {
         }
 
-        public override AttackMechanics.RuntimeAttackData[] GetAttackMoves()
-        {
-            return GetAllAttackMoves();
-        }
+        public override AttackMechanics.RuntimeAttackData[] GetAttackMoves() => GetAllAttackMoves();
 
         protected AttackMechanics.RuntimeAttackData[] GetAllAttackMoves()
         {

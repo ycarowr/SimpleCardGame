@@ -7,7 +7,7 @@
     {
         public override PlayerSeat Seat => PlayerSeat.Left;
 
-        private void Awake()
+        void Awake()
         {
             //HUD input
             gameObject.AddComponent<UiUserInput>();

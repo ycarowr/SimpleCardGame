@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a72a8417c7d0fae4286b0893b137ceb9, type: 3}
   m_Name: LordAldor
   m_EditorClassIdentifier: 
-  id: 4
-  characterName: Lord Aldor
-  description: Lord of Pain
   artwork: {fileID: 21300000, guid: 97eed4db298436a45971e9b17442b6e5, type: 3}
-  health: 4
   attack: 2
   attacksTurn: 1
+  characterName: Lord Aldor
   defense: 1
+  description: Lord of Pain
+  hasTaunt: 0
+  health: 4
+  id: 4

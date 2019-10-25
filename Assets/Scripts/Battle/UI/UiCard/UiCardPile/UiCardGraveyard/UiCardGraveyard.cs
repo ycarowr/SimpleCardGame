@@ -11,12 +11,12 @@ namespace SimpleCardGames.Battle.UI.Card
     public class UiCardGraveyard : UiCardPile
     {
         [SerializeField] [Tooltip("World point where the graveyard is positioned")]
-        private Transform graveyardPosition;
+        Transform graveyardPosition;
 
         //--------------------------------------------------------------------------------------------------------------
 
-        private IUiPlayerHand PlayerHand { get; set; }
-        private ITargetResolver TargetResolver { get; set; }
+        IUiPlayerHand PlayerHand { get; set; }
+        ITargetResolver TargetResolver { get; set; }
 
         //--------------------------------------------------------------------------------------------------------------
 

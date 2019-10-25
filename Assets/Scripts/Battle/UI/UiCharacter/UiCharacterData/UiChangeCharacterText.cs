@@ -7,10 +7,7 @@ namespace SimpleCardGames.Battle.UI.Character
     {
         protected IUiCharacterData Handler { get; set; }
 
-        private void OnSetData(ICharacterData data)
-        {
-            SetText(GetText());
-        }
+        void OnSetData(ICharacterData data) => SetText(GetText());
 
         protected override void Awake()
         {
@@ -25,7 +22,7 @@ namespace SimpleCardGames.Battle.UI.Character
                 GameEvents.Instance.AddListener(this);
         }
 
-        private void OnDestroy()
+        void OnDestroy()
         {
             if (GameEvents.Instance)
                 GameEvents.Instance.RemoveListener(this);
@@ -34,10 +31,7 @@ namespace SimpleCardGames.Battle.UI.Character
                 Handler.OnSetData -= OnSetData;
         }
 
-        protected bool IsMyData(IRuntimeCharacter target)
-        {
-            return target == Handler.RuntimeData;
-        }
+        protected bool IsMyData(IRuntimeCharacter target) => target == Handler.RuntimeData;
 
         protected abstract string GetText();
     }

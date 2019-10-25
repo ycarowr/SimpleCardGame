@@ -42,14 +42,14 @@ namespace SimpleCardGames.Battle.UI.Card
 
         #region Properties
 
-        private UiCardIdle IdleState { get; }
-        private UiCardDisable DisableState { get; }
-        private UiCardDrag DragState { get; }
-        private UiCardHover HoverState { get; }
-        private UiCardDraw DrawState { get; }
-        private UiCardDiscard DiscardState { get; }
-        private UiCardTarget TargetState { get; }
-        private UiCardParameters CardConfigsParameters { get; }
+        UiCardIdle IdleState { get; }
+        UiCardDisable DisableState { get; }
+        UiCardDrag DragState { get; }
+        UiCardHover HoverState { get; }
+        UiCardDraw DrawState { get; }
+        UiCardDiscard DiscardState { get; }
+        UiCardTarget TargetState { get; }
+        UiCardParameters CardConfigsParameters { get; }
 
         #endregion
 
@@ -57,49 +57,25 @@ namespace SimpleCardGames.Battle.UI.Card
 
         #region Operations
 
-        public void Hover()
-        {
-            PushState<UiCardHover>();
-        }
+        public void Hover() => PushState<UiCardHover>();
 
-        public void Disable()
-        {
-            PushState<UiCardDisable>();
-        }
+        public void Disable() => PushState<UiCardDisable>();
 
-        public void Enable()
-        {
-            PushState<UiCardIdle>();
-        }
+        public void Enable() => PushState<UiCardIdle>();
 
-        public void Select()
-        {
-            PushState<UiCardDrag>();
-        }
+        public void Select() => PushState<UiCardDrag>();
 
-        public void Unselect()
-        {
-            Enable();
-        }
+        public void Unselect() => Enable();
 
-        public void Draw()
-        {
-            PushState<UiCardDraw>();
-        }
+        public void Draw() => PushState<UiCardDraw>();
 
-        public void Discard()
-        {
-            PushState<UiCardDiscard>();
-        }
+        public void Discard() => PushState<UiCardDiscard>();
 
         public void Play()
         {
         }
 
-        public void Target()
-        {
-            PushState<UiCardTarget>();
-        }
+        public void Target() => PushState<UiCardTarget>();
 
         #endregion
 

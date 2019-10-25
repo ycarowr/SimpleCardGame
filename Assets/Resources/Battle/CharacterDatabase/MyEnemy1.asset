@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a72a8417c7d0fae4286b0893b137ceb9, type: 3}
   m_Name: MyEnemy1
   m_EditorClassIdentifier: 
-  id: 0
-  characterName: My enemy 1
-  description: 
   artwork: {fileID: 21300000, guid: 414573ad2042481438dfea15faa9abf1, type: 3}
-  health: 10
   attack: 1
+  attacksTurn: 1
+  characterName: My enemy 1
   defense: 2
+  description: 
+  hasTaunt: 0
+  health: 10
+  id: 0

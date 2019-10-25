@@ -9,8 +9,8 @@
         {
         }
 
-        private float TimeOutTurn => Game.Configurations.TimeOutTurn;
-        private float TimeStartTurn => Game.Configurations.TimeStartTurn;
+        float TimeOutTurn => Game.Configurations.TimeOutTurn;
+        float TimeStartTurn => Game.Configurations.TimeStartTurn;
 
         /// <summary>
         ///     Execution of the tick logic.
@@ -37,9 +37,7 @@
         /// </summary>
         /// <param name="time"></param>
         /// <param name="current"></param>
-        private void OnTickTime(int time, IPlayer current)
-        {
+        void OnTickTime(int time, IPlayer current) =>
             GameEvents.Instance.Notify<IDoTick>(i => i.OnTickTime(time, current));
-        }
     }
 }
